@@ -1,0 +1,65 @@
+#vsim{
+    padding:20px;
+}
+
+#vsim_img{
+    position:relative;
+    width:85%;
+    margin:0 auto;
+}
+
+.sim_cover{
+    position:absolute;
+    cursor: pointer;
+}
+
+.sim_disabled{
+    cursor: default !important;
+}
+#sim_cover_100{top:212px;left:188px;}
+#sim_cover_2{top:173px;left:188px;}
+
+#sim_cover_3{top:210px;left:265px;}
+#sim_cover_4{top:173px;left:265px;}
+
+#sim_cover_6{top:30px;left:269px;}
+#sim_cover_5{top:69px;left:269px;}
+
+#sim_cover_7{top:210px;left:344px;}
+#sim_cover_8{top:173px;left:344px;}
+
+#sim_cover_9{top:69px;left:375px;}
+#sim_cover_10{top:30px;left:375px;}
+
+#sim_cover_13{top:69px;left:485px;}
+#sim_cover_14{top:30px;left:485px;}
+
+#sim_cover_17{top:68px;left:590px;}
+#sim_cover_18{top:29px;left:590px;}
+
+#sim_cover_21{top:68px;left:678px;}
+#sim_cover_22{top:29px;left:678px;}
+
+#sim_cover_25{top:118px;left:752px;}
+#sim_cover_26{top:68px;left:752px;}
+#sim_cover_27{top:29px;left:752px;}
+
+#sim_cover_19{top:211px;left:675px;}
+#sim_cover_20{top:172px;left:675px;}
+
+#sim_cover_23{top:212px;left:752px;}
+#sim_cover_24{top:173px;left:752px;}
+
+#sim_cover_11{top:211px;left:525px;}
+#sim_cover_12{top:172px;left:525px;}
+
+#sim_cover_15{top:211px;left:599px;}
+#sim_cover_16{top:172px;left:599px;}
+
+.sim_cover span{
+    position:absolute;
+    top:10px;
+    left:13px;
+    color:#fff;
+    font-size:16px;
+}

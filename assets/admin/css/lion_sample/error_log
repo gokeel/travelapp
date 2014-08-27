@@ -1,0 +1,2 @@
+[10-Mar-2013 14:32:33] PHP Warning:  fopen(captcha/8a71755ffc5ed6f22e5c97cb7c400639.jpg) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/traveler/public_html/css/lion_sample/b2c_lion_captcha.php on line 48
+[10-Mar-2013 14:32:33] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/traveler/public_html/css/lion_sample/b2c_lion_captcha.php on line 50

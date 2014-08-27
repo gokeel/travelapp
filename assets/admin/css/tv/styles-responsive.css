@@ -1,0 +1,75 @@
+@charset "utf-8";
+/* default style */
+.selectnav { display: none; }
+
+@media (min-width: 768px) and (max-width: 979px) {	
+	/* Blog article*/
+	.article_list li  .video{ width:436px; height:248px }	
+	.blog-search .search-query{ width:160px!important;}
+}
+
+@media (max-width: 767px) {
+	body{ padding:0px; margin:0px;}
+	.js #nav { display: none; }
+	.js .selectnav { display: block; width: 440px; border:1px #DDD solid; }
+	.logo { display: block!important; position:relative; width:100%; }
+	.navbar{ float: left!important; padding:10px 20px; }
+	.section-title{ padding: 30px 20px;}
+	
+	.contact-top{ position: static; padding-bottom:15px;}
+	.contact-top span{ text-align:center; margin-top:-5px !important;}
+	.navbar-search{ float:left!important; padding-top:20px; display:none}
+	.navbar-search .search-query{ width: 440px;}
+	.blog-search .search-query{ width:370px!important;}
+	
+	/* blockquote */
+	blockquote { margin-top:10px; }
+	
+	/* Float Align*/
+	.alignright, .alignleft { display:block; float:none; margin:3px 0 15px 0px; }
+	
+	/* Inner Box*/
+	.inner.unleft,	
+	.inner.unright{ padding-left:20px;	padding-right:20px;}	
+	
+	/* Blog article*/
+	.article_list li  .video{ width:420px; height:239px }
+	
+	/* theme changer ,separate_border */
+	.theme-changer-wrap,.separate_border:before,.separate_border:after,.separate_border_left:before , .separate_border_right:after{ display:none; }
+	
+	/* footer*/
+	.copyright{ padding:20px!important; text-align:center;}
+	.footer-link{ display:block!important; float:none!important;}
+	.footer-link li { float:none!important; border:none!important;}
+}
+
+@media (max-width: 480px) {
+	.one_third { width: 100%; }
+	.js .selectnav { width: 280px;}
+	.navbar-search .search-query{ width: 280px;}
+	.blog-search .search-query{ width:230px!important;}
+	.counter_pos { width:100%;}
+	.counter_desc div{ display:block!important; }
+	#peelback{
+		display:none;
+		}
+	
+	/* Map_canvas */
+	#map_canvas{ height:200px; }
+	
+	/* Blog article*/
+	.article_list li  .video{ width:280px; height:159px; }
+	.commentlist ol{padding-left:20px;}
+	.comment-img,.comment .text:before ,.comment:before,.comments:before{ display:none; }
+	.comment{margin-left:0px;}
+	.comment .text { margin-right:0;}
+	
+	/* blockquote */
+	blockquote { margin-top:10px; }
+
+}
+
+@media (max-width: 320px) {
+
+}

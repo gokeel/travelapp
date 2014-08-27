@@ -1,0 +1,211 @@
+/* CSS Document */
+#pageframe{
+width:807px;
+}
+#menubar{
+	height:31px;
+	border:0px solid #bfbfbf;
+}
+#menubar .tabnav{
+	float:left;
+	height:20px;
+	padding:5px 20px 5px 20px;
+	line-height:20px;
+	background:	#ededed;
+	border:1px solid #bfbfbf;
+	margin-right:1px;
+}
+#menubar .tabnav:hover{
+	background:	#f6f6f6;
+	cursor:pointer;
+}
+#menubar .select,#menubar .select:hover{
+	float:left;
+	height:21px;
+	padding:5px 20px 5px 20px;
+	line-height:20px;
+	background:	#fff;
+	border:1px solid #bfbfbf;
+	border-bottom:0px;
+}
+
+.boxtab{
+	border:1px solid #bfbfbf;
+	padding:2px;
+	min-height:250px;
+}
+.mainbox{
+	
+	border:0px solid #ecf1ea;
+}
+#framebox{
+	float:left;
+	width:208px;
+	height:120px;
+	border:0px solid #ecf1ea;
+	padding:5px;
+}
+.box-i-color{
+	float:left;	
+	display:block;
+	width:120px;
+	height:120px;	
+}
+.i-color,.box-i-color div{
+	display:block;
+	float:left;
+	width:6px;
+	height:6px;	
+}
+
+.box-i-color2{
+	display:block;
+	width:1400px;	
+}
+.i-color2{
+	display:block;
+	float:left;
+	width:70px;
+	height:20px;	
+}
+#tobw{
+	width:15px;
+	height:120px;
+	float:left;	
+	margin-right:5px;
+	background:#999999;
+}
+#tobw div{
+	height:6px;	
+}
+#zoom{
+	width:60px;
+	height:60px;
+	float:left;	
+	margin-left:5px;
+	background:#edf5eb;
+}
+#addcolor{
+	width:60px;
+	height:60px;
+	float:left;	
+	margin:0px 0px 0px 5px;
+	line-height:80px;
+	background:#e6ecd4;
+	text-align:center;
+	padding:0px;
+	color:#9999aa;
+}
+#palet{
+	width:580px;
+	height:118px;
+	float:left;	
+	margin-top:5px;
+	border:0px solid #F8F8F8;
+}
+#scalebar{
+	margin-top:5px;
+	width:800px;
+	height:40px;
+	border:1px solid #CCC;
+	background:#e9eeee;
+}
+#scalebar div{
+	display:block;
+	float:left;
+	width:20px;
+	height:20px;
+	color:#FFF;
+	font-size:10px;
+	text-align:center;
+}
+#palet div{
+	float:left;
+	margin:0;
+	width:70px;
+	height:38px;
+	text-align:center;
+	line-height:30px;
+	border:1px solid #FFF;
+	background:#ebf2ea;
+	cursor:pointer;
+	color:#888;
+	overflow:hidden;
+	line-height:220px;
+}
+#bassiccolor{
+	height:18px; width:18px; float:left;
+	margin:4px;
+	border:1px solid #EEE;
+	background:#999999;	
+	overflow:hidden;
+	line-height:100px;
+}
+#greed{
+	height:6px;	
+	border:0px solid #ddd;
+	padding-left:10px;
+}
+#greed div{
+	float:left;
+	width:19px;
+	height:6px;
+	margin-left:-1px;
+	border-right:1px solid #ddd;
+	border-left:1px solid #ddd;	
+}
+#number{
+	height:25px;
+}
+#number div{
+	width:20px;
+	float:left;
+	margin:0px;
+	text-align:center;
+	font-size:10px;
+	color:#ddd;	
+}
+#c_topmenu{
+	height:30px;
+	border:0px solid #ddd;	
+	padding:5px;
+}
+#c_rightmenu{
+	float:right;
+	width:155px;
+	height:300px;
+	border:1px solid #ddd;	
+	overflow:hidden;
+}
+#c_leftmenu{
+	height:290px;
+	width:620px;
+	margin-left:10px;
+	float:left;
+	padding:5px;
+	border:1px solid #ddd;
+	overflow:auto;
+}
+#c_downmenu{
+	clear:both;
+	height:20px;
+	border:0px solid #ddd;	
+}
+.pan_name{
+	clear:both;
+	padding:10px 5px 4px 5px;
+	color:#666;	
+}
+#c_rightmenu div{
+	height:40px;
+	text-align:center;
+	color:#999;
+	line-height:30px;
+}
+.pan_box div{
+	width:75px; height:90px;
+	float:left;
+	line-height:400px; 
+	overflow:hidden;
+	border:0px solid #ddd;	
+}

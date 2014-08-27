@@ -1,0 +1,199 @@
+table.jCalendar {
+	border: 0px;
+	margin-left:0px;
+	margin-bottom:4px;
+}
+table.jCalendar th {
+	color: #555555;
+	font-weight: bold;
+	padding:4px 0 3px 0;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border-left: 1px solid #F0F0F0;
+	border-right: 1px solid #CCC;
+	border-top: 1px solid #FFF;
+	background:#DDE4DD;
+}
+table.jCalendar td {
+	color: #777;
+	text-align: center;
+	width:24px;
+	height:22px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight:bold;
+	border-top: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	border-right: 1px solid #CFCFCF;
+	border-bottom: 1px solid #CFCFCF;
+	background-color:#EEEEEE;
+}
+table.jCalendar td:hover{
+background-color:#DDEEFF;
+}
+table.jCalendar td.other-month {
+	color: #AAA;
+}
+table.jCalendar td.today {
+	color: #FFF;
+	background-color: #F94;
+	font-size: 14px;
+	border: 1px solid #888888;
+}
+table.jCalendar td.selected {
+	color: #FFF;
+	font-size: 14px;
+	background-color: #00A0C9;
+	border: 1px solid #668088;
+}
+table.jCalendar td.selected:hover {
+	background: #06F;
+	color: #fff;
+}
+table.jCalendar td:hover, table.jCalendar td.dp-hover {
+	color: #000;
+	border: 1px solid #44AAFF;
+	width:20px;
+	height:20px;
+}
+table.jCalendar td.disabled, table.jCalendar td.disabled:hover {
+	color: #888;
+	background-color: #BBBBBB;
+}
+
+/* For the popup */
+
+/* NOTE - you will probably want to style a.dp-choose-date - see how I did it in demo.css */
+
+div.dp-popup {
+	position: relative;
+	font-size: 10px;
+	font-family: arial, sans-serif;
+	margin-top:-30px;
+	margin-left:-2px;
+	padding: 2px;
+	width: 184px;
+	background:#DFE4DF;
+	border:1px solid #999999;
+	 -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);  
+	 -moz-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.4); 
+	filter:progid:DXImageTransform.Microsoft.Shadow(direction=135, color=#e0e0e0 ,strength=6);
+}
+div#dp-popup {
+	position: absolute;
+	z-index: 1000;
+}
+/*tahun*/
+div.dp-popup h2 {
+	font-size: 12px;
+	text-align: center;
+	margin: -2px;
+	margin-bottom: 2px;
+	padding:3px;
+	border-bottom:1px solid #AFAFAF;
+	background-color:#EFF4EF;
+}
+a#dp-close {
+	font-size: 11px;
+	text-align: center;
+	display: block;
+	padding-top: 4px;
+	padding-right: 0;
+	padding-bottom: 4px;
+	padding-left: 0;
+	
+}
+a#dp-close:hover {
+	text-decoration: underline;
+}
+div.dp-popup a {
+	color: #333333;
+	text-decoration: none;
+	padding-top: 3px;
+	padding-right: 2px;
+	padding-bottom: 0;
+	padding-left: 2px;
+}
+div.dp-popup div.dp-nav-prev {
+	position: absolute;
+	top: 0px;
+	left: 2px;
+	width: 100px;
+}
+div.dp-popup div.dp-nav-prev a {	float: left;
+	}
+/* Opera needs the rules to be this specific otherwise it doesn't change the cursor back to pointer after you have disabled and re-enabled a link */
+div.dp-popup div.dp-nav-prev a, div.dp-popup div.dp-nav-next a {
+	cursor: pointer;
+	}
+div.dp-popup div.dp-nav-prev a.disabled, div.dp-popup div.dp-nav-next a.disabled {
+	cursor: default;
+	}
+div.dp-popup div.dp-nav-next {
+	position: absolute;	top: 0px;	right: 4px;	width: 100px;
+	}
+div.dp-popup div.dp-nav-next a {
+	float: right;
+	}
+div.dp-popup a.disabled {	cursor: default;	color: #aaa;
+	}
+div.dp-popup td {	cursor: pointer; 
+	}
+div.dp-popup td.disabled {	cursor: default; }
+
+.dp-nav-prev-year{
+	background-image:url(images/ly.gif);
+	background-repeat:no-repeat;
+	width:12px; height:11px;
+	margin-top:5px;
+	margin-left:2px;
+}
+.dp-nav-prev-month{
+	background-image:url(images/lm.gif);
+	background-repeat:no-repeat;
+	width:10px; height:11px;
+	margin-left:10px;
+	margin-top:5px;
+}
+.dp-nav-next-year{
+	background-image:url(images/ry.gif);
+	background-repeat:no-repeat;
+	width:12px; height:11px;
+	margin-top:5px;
+	margin-right:-5px;
+}
+.dp-nav-next-month{
+	background-image:url(images/rm.gif);
+	background-repeat:no-repeat;
+	width:10px; height:11px;
+	margin-right:10px;
+	margin-top:5px;
+}
+
+/* 
+ * instead of a text link for "Choose date"
+ */
+a.dp-choose-date {
+/*	float: left;*/
+	width: 16px;
+	height: 20px;
+	padding: 0px;
+	margin-left:3px;
+/*	margin: 7px 3px -7px ;*/
+	display:inline-block;
+	text-indent: -2000px;
+	overflow: hidden;
+	border:0px solid #DDD;
+	background: url(images/calendar.png)left 2px no-repeat; 
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+	float: left;
+}

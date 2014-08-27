@@ -1,0 +1,120 @@
+/* 
+Project:		BlauMail Modern Email Template
+Version:		1.0
+Last change:	07/07/10 
+Author: Ionut Oroian 
+Website: http://themeforest.net/user/webtunes
+*/
+
+/* Reset Margins and Paddings */
+body, p, h1, h2, h3, h4, h5, h6 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+/* Default Typography */
+/* Default Typography */
+body, th, td, p, h1, h2, h3, h4, h5, h6 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #575757;
+	font-weight: normal;
+	-webkit-text-size-adjust: none; /* disable font adjust sizes */
+}
+
+.main_content, .main_content td, .main_content th, .footer, .footer td, .footer th {
+	line-height: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #252525;
+	font-weight: bold;
+	line-height: normal;
+}
+
+h1 {
+	font-size: 20px;
+}
+
+h2 {
+	font-size: 14px;
+	line-height: 20px;
+}
+
+/* Default Link Style */
+/* Some email clients overwrite the default link style, using a span tag will help the links display properly */
+a, a:hover, a span, a:hover span {
+	color: #63a607;
+	text-decoration: none;
+	outline: none;
+}
+
+/* Windows Live Hotmail images fix */
+img { display: block; }
+
+/* Background Color */
+body, .content_background { background-color: #545454; }
+
+/* Outer Border */
+.outer-border {
+	width: 3px;
+}
+
+.top_border, .outer-border {
+	background-color: #474747;
+}
+
+/* Top Links */
+.top_links {
+	background-color: #f0f0f0;
+}
+
+.top_links, .top_links td, .top_links th {
+	color: #898989;
+	font-size: 11px;
+	line-height: 12px;
+}
+
+.top_links a, .top_links a:hover, .top_links a span, .top_links a:hover span {
+	color: #898989;
+	text-decoration: none;
+}
+
+/* Logo & Issue Date */
+h1.logo {
+	margin-bottom: 0;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+h2.date {
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/* Main Content */
+.main_content {
+	background-color: #ffffff;
+}
+
+/* Footer */
+.footer {
+	background-color: #f0f0f0;
+}
+
+.social_links a, .social_links a:hover, .social_links a span, .social_links a:hover span {
+	color: #a1a1a1;
+	text-decoration: none;
+}
+
+/* Gray Box */
+.gray_box {
+	background-color: #e1e1e1;
+}

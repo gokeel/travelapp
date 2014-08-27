@@ -1,0 +1,981 @@
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+<title>Crop - Responsive E-mail Template</title>
+
+<!-- Hotmail ignores some valid styling, so we have to add this -->
+<style type="text/css">
+
+div, p, a, li, td { -webkit-text-size-adjust:none; }
+
+.ReadMsgBody {width: 100%; background-color: #fafafa;}
+.ExternalClass {width: 100%; background-color: #fafafa;}
+
+body {width: 100%; background-color: #fafafa; margin:0; padding:0; -webkit-font-smoothing: antialiased;}
+html {width: 100%; }
+
+.image1MC img {width: 263px!important; height: auto!important; border-radius: 4px!important;}
+
+@media only screen and (max-width: 640px) 
+		   {
+		body							{width:auto!important;}
+		table table               		{width:440px!important; }
+		.fullWidth						{width: 100%!important;}
+		.mobileCenter					{width: 440px !important; text-align: center!important; }
+		.eraseForMobile					{width:0; display:none !important;}
+		.navPad							{margin-right: 35px!important; margin-left: 35px; }
+		.crop1							{width: 100%!important; text-align: center!important; font-size: 28px!important;}
+		.crop2							{width: 100%!important; text-align: center!important;}
+		.crop3							{width: 100%!important; font-size: 17px!important;}
+		.crop4							{width: 100%!important; font-size: 17px!important; padding-top: 0px;}
+		.headerLogo						{text-align: center!important; padding-top: 30px!important; padding-bottom: 30px!important;}
+		.pad1							{height: 20px!important;}
+		.pad2							{height: 10px!important;}
+		.pad3							{height: 0px!important;}
+		.line1							{width: 367px!important;}
+		.roundIcons						{width: 75px!important; height: 75px!important; border-radius: 50px!important;}
+		.scalePad						{width: 107px!important;}
+		.scalePad2						{width: 182px!important;}
+		.scalePad3						{width: 36px!important; }
+		.width1							{width: 1px!important;}
+		.BG								{background-color: #fafafa!important; width: 100%!important;}
+		.text1							{width: 240px!important;}
+		.image1							{width: 200px!important; border-radius: 4px!important;}
+		.image1MC						{width: 200px!important; border-radius: 4px!important;}
+		.image1MC img					{width: 200px!important; border-radius: 4px!important;}
+		.textForMobile					{width: 200px!important;}
+		.imageScale1					{width: 200px!important; height: auto!important;}
+		.imageScale2					{width: 200px!important; height: auto!important; padding: 0px!important;}
+		.footerScale					{width: 146px!important;}
+		.tableSponsors					{width: 440px; }
+		.footerScaleRight				{width: 70%!important; }
+		.FooterIconsScale1				{width: 8%!important; text-align: left!important; padding-right: 15px;}
+		}
+		
+@media only screen and (max-width: 479px) 
+		   {
+		body							{width:auto!important;}
+		table table 					{width: 280px!important; }
+		.fullWidth						{width: 100%!important;}
+		.mobileCenter					{width:280px !important; text-align: center!important; }
+		.eraseForMobile					{width:0; display:none !important;}
+		.navPad							{margin-right: 9px!important; margin-left: 9px; font-size: 12px!important; }
+		.threeFeatures					{width: 280px!important; text-align: center!important; font-size: 26px!important; line-height: 32px!important;}
+		.crop1							{width: 280px!important; text-align: center!important; font-size: 26px!important; }
+		.crop2							{width: 100%!important; text-align: center!important;}
+		.crop3							{width: 100%!important; font-size: 16px!important; line-height: 26px!important;}
+		.crop4							{width: 100%!important; font-size: 16px!important; padding-top: 8px; }
+		.pad1							{height: 20px!important;}
+		.pad2							{height: 10px!important;}
+		.pad3							{height: 50px!important;}
+		.line1							{width: 209px!important;}
+		.roundIcons						{width: 75px!important; height: 75px!important; border-radius: 50px!important;}
+		.scalePad						{width: 28px!important;}
+		.scalePad2						{width: 102px!important;}
+		.scalePad3						{width: 35px!important; background-color: ;}
+		.width1							{width: 1px!important;}
+		.BG								{background-color: #fafafa!important; width: 100%!important;}
+		.image1							{width: 280px!important; height: auto!important; border-radius: 4px!important;}
+		.image1MC						{width: 280px!important; height: auto!important; border-radius: 4px!important;}
+		.image1MC img					{width: 280px!important; height: auto!important; border-radius: 4px!important;}
+		.textForMobile					{width: 280px!important;}
+		.imageScale1					{width: 280px!important; height: auto!important;}
+		.imageScale2					{width: 280px!important; height: auto!important;}
+		.footerScale					{width: 92px!important;}	
+		.tableSponsors					{width: 280px; padding-left: 0px; padding-right: 0px;}
+		.sponsorScale1					{width: 100%!important; text-align: center!important;}
+		.footerScaleRight				{width: 100%!important; text-align: left; padding-left: 0px; padding-top: 10px; }
+		.FooterIconsScale1				{width: 33%!important; text-align: left!important; padding-top: 30px; padding-bottom: 30px; padding-left: 0px; padding-right: 0px;}
+		.footerLogo						{padding: 0px!important; text-align: center!important;}
+		}
+
+
+</style>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<!-- Wrapper -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td width="100%" valign="top" bgcolor="#fafafa">
+		
+			<!-- Nav Mobile Wrapper -->
+			<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td width="100%" bgcolor="fafafa">
+					
+						<!-- Start Nav -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580">
+									
+									<!-- Logo -->
+									<table border="0" cellpadding="0" cellspacing="0" align="left" class="mobileCenter">
+										<tr>
+											<td height="12"></td>
+										</tr>
+										<tr>
+											<td height="50">
+												<a href="#"><img src="images/logo.jpg" alt="" border="0"></a>
+											</td>
+										</tr>
+										<tr>
+											<td height="12" class="eraseForMobile"></td>
+										</tr>
+									</table>
+									
+									<!-- Nav -->
+									<table border="0" cellpadding="0" cellspacing="0" align="right">
+										<tr>
+											<td height="12" class="eraseForMobile"></td>
+										</tr>
+										<tr>
+											<td width="460" height="50" class="mobileCenter" style="font-size: 12px; color: #272727; font-weight: bold; text-align: right; font-family: Helvetica, Arial, sans-serif; line-height: 20px; vertical-align: middle;">
+												<a href="#" class="navPad" style="text-decoration: none; color: #272727;">Sign Up</a>
+												<span class="eraseForMobile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+												<a href="#" class="navPad" style="text-decoration: none; color: #272727;">Features</a>
+												<span class="eraseForMobile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+												<a href="#" class="navPad" style="text-decoration: none; color: #272727;">Subscribe</a>
+											</td>
+										</tr>
+										<tr>
+											<td height="12"></td>
+										</tr>
+									</table>
+																	
+								</td>
+							</tr>
+						</table><!-- End Nav -->
+						
+					</td>
+				</tr>
+			</table><!-- End Nav Mobile Wrapper -->
+			
+			<!-- Header -->
+			<table width="100%" class="fullWidth" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td width="100%" bgcolor="#2b2e3b" background="images/header_b.jpg" style="text-align: center; background-repeat: no-repeat; background-size: 100% 100%">
+					
+						<!-- Space -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580" height="40" class="pad1">									
+								</td>
+							</tr>
+						</table>
+					
+						<!-- Header Split -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="mobileCenter">
+							<tr>
+								<td valign="middle">
+								
+									<!-- Header Logo -->
+									<table width="155" border="0" cellpadding="0" cellspacing="0" align="right">
+										<tr>
+											<td width="155" style="text-align: left;" class="headerLogo">
+												<a href="#"><img src="images/logo_header.png" alt="" border="0"></a>									
+											</td>
+										</tr>
+									</table>
+									
+									<!-- Headline -->
+									<table border="0" cellpadding="0" cellspacing="0" align="left" class="crop1">
+										<tr>
+											<td width="345" style="font-size: 30px; color: #f1f1f1; text-align: left; font-weight: light; font-family: Helvetica, Arial, sans-serif; line-height: 38px; text-shadow: 1px 1px 2px #000;" class="crop1">
+												<a href="#" style="text-decoration: none; color: #f1f1f1; font-weight: bold;">Easily Edit Photos.</a>								
+											</td>
+										</tr>
+										<tr>
+											<td width="345" height="8"></td>
+										</tr>
+										<tr>
+											<td width="345" style="font-size: 14px; color: #cacaca; text-align: left; font-weight: light; font-family: Helvetica, Arial, sans-serif; line-height: 24px; text-shadow: 1px 1px 2px #000;" class="crop2">
+											The only tool you will ever need to decently edit and crop images through the web browser.<br/><br/>
+											
+											<a href="#"><img src="images/headerButton.png" border="0" alt="0"></a>
+																			
+											</td> 
+										</tr>
+									</table>
+									
+									<!-- Padding + (Outlook) -->
+									<table width="40" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;" class="eraseForMobile">
+									
+										<tr>
+											<td width="40" height="30" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+												<p style="padding-left: 80px;">
+													&nbsp;
+												</p>
+											</td>
+										</tr>
+									</table>
+								
+									
+									
+								</td>
+							</tr>
+						</table>
+						
+						<!-- Space -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580" height="40">									
+								</td>
+							</tr>
+						</table>						
+						
+						
+					</td>
+				</tr>
+			</table><!-- End Header -->
+			
+			<!-- Mobile Wrapper -->
+			<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td width="100%" bgcolor="fafafa">
+					
+						<!-- Start Headline + Text Top -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580">
+									
+									<!-- Headline -->
+									<table border="0" cellpadding="0" cellspacing="0" align="center">
+										<tr>
+											<td height="20"></td>
+										</tr>
+										<tr>
+											<td height="50" style="font-size: 30px; color: #2b2e3b; text-align: center; font-weight: light; font-family: Helvetica, Arial, sans-serif; line-height: 38px;" class="threeFeatures">
+												<a href="#" style="color: #f17366; font-weight: bold; text-decoration: none;">Three</a> important features.
+											</td>
+										</tr>
+										<tr>
+											<td height="15" class="pad2"></td>
+										</tr>
+									</table>
+									
+									<!-- Text -->
+									<table border="0" cellpadding="0" cellspacing="0" align="center">
+										<tr>
+											<td height="50" style="font-size: 21px; color: #505050; text-align: center; font-weight: 100; font-family: Helvetica, Arial, sans-serif; line-height: 30px;" class="crop3">
+												We believe in Software that is easy to use. That's why these three powerful features can't miss.
+											</td>
+										</tr>
+										<tr>
+											<td height="40"></td>
+										</tr>
+									</table>
+									
+									
+																	
+								</td>
+							</tr>
+						</table><!-- End Headline + Text Top -->
+						
+					</td>
+				</tr>
+			</table><!-- End Mobile Wrapper -->
+			
+			<!-- Start 3 Round Images -->
+			<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td width="580">
+					
+						<!-- Line -->
+						<table border="0" cellpadding="0" cellspacing="0" align="center" class="line1">
+							<tr>
+								<td width="507" height="1" bgcolor="#bdbdbd">									
+								</td>
+							</tr>
+						</table>
+						
+						<table border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="36" height="30" class="scalePad3"></td>
+								<td width="1" height="30" bgcolor="#bdbdbd" class="width1"></td>
+								<td width="252" height="30" bgcolor="#fafafa" class="scalePad2"></td>
+								<td width="1" height="30" bgcolor="#bdbdbd" class="width1"></td>
+								<td width="252" height="30" bgcolor="#fafafa" class="scalePad2"></td>
+								<td width="1" height="30" bgcolor="#bdbdbd" class="width1"></td>
+								<td width="37" height="30" class="scalePad3"></td>
+							</tr>
+							<tr>
+								<td width="36" height="10" class="scalePad3"></td>
+								<td width="1" height="10" bgcolor="#fafafa" class="width1"></td>
+								<td width="252" height="10" bgcolor="#fafafa" class="scalePad2"></td>
+								<td width="1" height="10" bgcolor="#fafafa" class="width1"></td>
+								<td width="252" height="10" bgcolor="#fafafa" class="scalePad2"></td>
+								<td width="1" height="10" bgcolor="#fafafa" class="width1"></td>
+								<td width="37" height="10" class="scalePad3"></td>
+							</tr>
+						</table>
+						
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="75" height="75" bgcolor="#2b2e3b" style="text-align: center; border-radius: 100%;" class="roundIcons">
+									<center><a href="#"><img src="images/icon_1.jpg" alt="" border="0" style="display: block;"></a></center>
+								</td>
+								<td width="175" bgcolor="#fafafa" class="scalePad"></td>
+								<td width="75" height="75" bgcolor="#2b2e3b" style="text-align: center; border-radius: 100%;">
+									<center><a href="#"><img src="images/icon_2.jpg" alt="" border="0" style="display: block;"></a></center>
+								</td>
+								<td width="175" bgcolor="#fafafa" class="scalePad"></td>
+								<td width="75" height="75" bgcolor="#2b2e3b" style="text-align: center; border-radius: 100%;">
+									<center><a href="#"><img src="images/icon_3.jpg" alt="" border="0" style="display: block;"></a></center>
+								</td>
+							</tr>
+						</table>
+															
+					</td>
+				</tr>
+			</table><!-- End Start 3 Round Images -->
+			
+			<!-- Space -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullWidth">
+				<tr>
+					<td width="100%" height="40">									
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" height="20" bgcolor="#fafafa">									
+					</td>
+				</tr>
+			</table>
+			
+			<!-- 2 Images BG Wrapper -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#fafafa" class="BG">
+				<tr>
+					<td>									
+					
+						<!-- Mobile Wrapper -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580" bgcolor="fafafa">
+									
+									<!-- Image 1 Width= 263px, Height= 149px!! -->
+									<table bgcolor="#fafafa" align="left" cellpadding="0" cellspacing="0" border="0" class="image1">
+										<tr>
+											<td valign="top" >
+											
+												<table border="0" cellpadding="0" cellspacing="0" class="image1MC">
+													<tr>
+														<td width="263">
+														
+															<a href="#"><img width="263" height="149" src="images/image_1.jpg" alt="" border="0" style="width: 263px; height: 149px; display: block; border-radius: 5px;" class="imageScale1"></a>
+														</td>
+													</tr>
+												</table>
+													
+												<table border="0" cellpadding="0" cellspacing="0" class="image1">	
+													<tr>
+														<td width="263" height="20">	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" style="font-size: 18px; color: #b8b9c1; text-align: left; font-weight: bold; font-family: Helvetica, Arial, sans-serif; line-height: 24px;" class="crop3">
+															<a href="#" style="text-decoration: none; color: #272727">Increase Views.</a>	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" height="4">	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" style="font-size: 14px; color: #787878; text-align: left; font-weight: 100; font-family: Helvetica, Arial, sans-serif; line-height: 24px;">
+															Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel <a href="#" style="text-decoration: none; color: #f17366; font-weight: bold;">augue laoreet</a> rutrum faucibus dolor auctor.
+															<br/><br/>
+															<a href="#"><img src="images/button1.jpg" alt="" border="0"></a> 
+														</td>
+													</tr>
+												</table>
+												
+												
+											</td>
+										</tr>
+									</table><!-- End Image 1 -->
+									
+									<!-- Padding + (Outlook) -->
+									<table class="eraseForMobile" width="8" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<tr>
+											<td width="8" height="20" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+												<p style="padding-left: 54px;">
+													&nbsp;
+												</p>
+											</td>
+										</tr>
+									</table>
+									
+									<!-- Image 2 Width= 263px, Height= 149px!! -->
+									<table bgcolor="#fafafa" align="right" cellpadding="0" cellspacing="0" border="0" class="image1">
+										<tr>
+											<td valign="top">
+											
+												<table border="0" cellpadding="0" cellspacing="0" class="image1MC">
+													<tr>
+														<td width="263" height="0" class="pad3">	
+														</td>
+													</tr>
+													<tr>
+														<td width="263">
+														
+															<a href="#"><img width="263" height="149" src="images/image_2.jpg" alt="" border="0" style="width: 263px; height: 149px; display: block; border-radius: 5px;" class="imageScale2"></a>
+														</td>
+													</tr>
+												</table>	
+													
+												<table border="0" cellpadding="0" cellspacing="0" class="image1">	
+													<tr>
+														<td width="263" height="20">	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" style="font-size: 18px; color: #b8b9c1; text-align: left; font-weight: bold; font-family: Helvetica, Arial, sans-serif; line-height: 24px;" class="crop3">
+															<a href="#" style="text-decoration: none; color: #272727">Detect Critical Spikes.</a>	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" height="4">	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" style="font-size: 14px; color: #787878; text-align: left; font-weight: 100; font-family: Helvetica, Arial, sans-serif; line-height: 24px;">
+															Curabitur blandit  <a href="#" style="text-decoration: none; color: #f17366; font-weight: bold;">tempus porttitor</a>. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+															<br/><br/>
+															<a href="#"><img src="images/button2.jpg" alt="" border="0"></a> 
+														</td>
+													</tr>
+												</table>
+												
+												
+											</td>
+										</tr>
+									</table><!-- End Image 2 -->
+									
+								</td>
+							</tr>
+						</table><!-- End Mobile Wrapper -->
+						
+			
+					</td>
+				</tr>
+			</table><!-- End 2 Images BG Wrapper -->
+			
+			<!-- Space -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullWidth">
+				<tr>
+					<td width="100%" height="50" bgcolor="#fafafa"></td>
+				</tr>
+			</table>
+			
+			<!-- Image 3 Left -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#fafafa">
+				<tr>
+					<td>									
+					
+						<!-- Mobile Wrapper -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580" bgcolor="fafafa">
+									
+									<!-- Image 3 Width= 263px, Height= 149px!! -->
+									<table bgcolor="#fafafa" align="left" cellpadding="0" cellspacing="0" border="0" class="image1">
+										<tr>
+											<td valign="top" >
+											
+												<table border="0" cellpadding="0" cellspacing="0" class="image1">
+													<tr>
+														<td width="263">
+														
+															<a href="#"><img width="263" height="149" src="images/image_3.jpg" alt="" border="0" style="width: 263px; height: 149px; display: block; border-radius: 5px;" class="imageScale1"></a>
+														</td>
+													</tr>
+													<tr>
+														<td width="263" height="10"></td>
+													</tr>
+												</table>
+												
+												
+											</td>
+										</tr>
+									</table><!-- End Image 3 -->
+									
+									<!-- Padding + (Outlook) -->
+									<table class="eraseForMobile" width="8" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<tr>
+											<td width="8" height="20" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+												<p style="padding-left: 54px;">
+													&nbsp;
+												</p>
+											</td>
+										</tr>
+									</table>
+									
+									<!-- Text 3 Text -->
+									<table bgcolor="#fafafa" align="right" cellpadding="0" cellspacing="0" border="0" class="image1">
+										<tr>
+											<td valign="top" >
+											
+											
+												<table border="0" cellpadding="0" cellspacing="0" class="textForMobile">
+													<tr>
+														<td width="263" style="font-size: 18px; color: #b8b9c1; text-align: left; font-weight: bold; font-family: Helvetica, Arial, sans-serif; line-height: 24px;" class="crop4">
+															<a href="#" style="text-decoration: none; color: #272727">Monthly Statistics.</a>	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" height="4">	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" style="font-size: 14px; color: #787878; text-align: left; font-weight: 100; font-family: Helvetica, Arial, sans-serif; line-height: 24px;">
+															Curabitur blandit  <a href="#" style="text-decoration: none; color: #f17366; font-weight: bold;">tempus porttitor</a>. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+															<br/><br/>
+															<a href="#"><img src="images/button3.jpg" alt="" border="0"></a>  
+														</td>
+													</tr>
+												</table>
+												
+												
+											</td>
+										</tr>
+									</table><!-- End Image 3 Text -->
+									
+								</td>
+							</tr>
+						</table><!-- End Mobile Wrapper -->
+						
+			
+					</td>
+				</tr>
+			</table><!-- End Image 3 Left -->
+			
+			<!-- Space -->
+			<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td width="580" height="50">									
+					</td>
+				</tr>
+			</table>
+			
+			<!-- Image 4 Right -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#fafafa">
+				<tr>
+					<td>									
+					
+						<!-- Mobile Wrapper -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580" bgcolor="fafafa">
+									
+									<!-- Image 4 Width= 263px, Height= 149px!! -->
+									<table bgcolor="#fafafa" align="right" cellpadding="0" cellspacing="0" border="0" class="image1">
+										<tr>
+											<td valign="top" >
+											
+												<table border="0" cellpadding="0" cellspacing="0" class="image1">
+													<tr>
+														<td width="263">
+														
+															<a href="#"><img width="263" height="149" src="images/image_4.jpg" alt="" border="0" style="width: 263px; height: 149px; display: block; border-radius: 5px;" class="imageScale1"></a>
+														</td>
+													</tr>
+													<tr>
+														<td width="263" height="10"></td>
+													</tr>
+												</table>
+												
+												
+											</td>
+										</tr>
+									</table><!-- End Image 4 -->
+									
+									<!-- Padding + (Outlook) -->
+									<table class="eraseForMobile" width="8" border="0" cellpadding="0" cellspacing="0" align="right" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<tr>
+											<td width="8" height="20" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+												<p style="padding-left: 54px;">
+													&nbsp;
+												</p>
+											</td>
+										</tr>
+									</table>
+									
+									<!-- Image 4 Text -->
+									<table bgcolor="#fafafa" align="left" cellpadding="0" cellspacing="0" border="0" class="image1">
+										<tr>
+											<td valign="top" >
+											
+											
+												<table border="0" cellpadding="0" cellspacing="0" class="textForMobile">
+													<tr>
+														<td width="263" style="font-size: 18px; color: #b8b9c1; text-align: left; font-weight: bold; font-family: Helvetica, Arial, sans-serif; line-height: 24px;" class="crop4">
+															<a href="#" style="text-decoration: none; color: #272727">Increase Clicks.</a>	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" height="4">	
+														</td>
+													</tr>
+													<tr>
+														<td width="263" style="font-size: 14px; color: #787878; text-align: left; font-weight: 100; font-family: Helvetica, Arial, sans-serif; line-height: 24px;">
+															Curabitur blandit  <a href="#" style="text-decoration: none; color: #f17366; font-weight: bold;">tempus porttitor</a>. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+															<br/><br/>
+															<a href="#"><img src="images/button4.jpg" alt="" border="0"></a> 
+														</td>
+													</tr>
+												</table>
+												
+												
+											</td>
+										</tr>
+									</table><!-- End Image 3 Text -->
+								
+								</td>
+							</tr>
+						</table><!-- End Mobile Wrapper -->
+						
+			
+					</td>
+				</tr>
+			</table><!-- End Image 4 Right -->
+			
+			<!-- Space -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullWidth" bgcolor="#ffffff">
+				<tr>
+					<td width="100%" height="40" bgcolor="#fafafa">									
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" height="1" bgcolor="#dcdcdc" class="eraseForMobile">									
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" height="10" class="eraseForMobile">									
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#ffffff" width="100%" style="font-size: 0;line-height: 0;border-collapse: collapse;" class="eraseForMobile">
+						<p style="height: 30px;">
+							&nbsp;
+						</p>
+					</td>
+				</tr>
+			</table>
+			
+			<table width="100%" bgcolor="#ffffff" class="eraseForMobile">
+				<tr>
+					<td>
+						
+						<!-- Sponsors -->
+						<table bgcolor="#ffffff" width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="eraseForMobile">
+							<tr>
+								<td width="130" style="text-align: center;">
+									<a href="#"><img src="images/sponsor1.jpg" alt="" border="0"></a>									
+								</td>
+								<td width="20"></td>
+								<td width="130" style="text-align: center;">
+									<a href="#"><img src="images/sponsor2.jpg" alt="" border="0"></a>									
+								</td>
+								<td width="20"></td>
+								<td width="130" style="text-align: center;">
+									<a href="#"><img src="images/sponsor3.jpg" alt="" border="0"></a>									
+								</td>
+								<td width="20"></td>
+								<td width="130" style="text-align: center;">
+									<a href="#"><img src="images/sponsor4.jpg" alt="" border="0"></a>									
+								</td>
+							</tr>
+						</table><!-- End Sponsors -->
+						
+					</td>
+				</tr>
+			</table>
+			
+			
+			<!-- Don't delete!! Padding (Outlook Fix) -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="font-size: 0;line-height: 0;border-collapse: collapse;" class="fullWidth">
+				<tr>
+					<td bgcolor="#ffffff" width="100%" style="font-size: 0;line-height: 0;border-collapse: collapse;" class="eraseForMobile">
+						<p style="height: 30px;">
+							&nbsp;
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#ffffff" width="100%" height="10" style="font-size: 0;line-height: 0;border-collapse: collapse;" class="eraseForMobile">
+					
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#2b2e3d" width="100%" style="font-size: 0;line-height: 0;border-collapse: collapse;" class="fullWidth">
+						<p style="height: 30px;">
+							&nbsp;
+						</p>
+					</td>
+				</tr>
+				<tr> 
+					<td bgcolor="#2b2e3d" width="100%" height="10" style="font-size: 0;line-height: 0;border-collapse: collapse;" class="fullWidth">
+					</td>
+				</tr>
+			</table>
+			
+						
+			<!-- Start 4 Columns -->
+			<table width="100%" class="fullWidth" border="0" cellpadding="0" cellspacing="0" align="center">
+				
+				<tr>
+					<td width="100%" bgcolor="#2b2e3d">
+					
+						
+						
+						<!-- Mobile Wrapper -->
+						<table align="center" width="580" cellpadding="0" cellspacing="0" bgcolor="#2b2e3d" border="0" class="scaleForMobile">
+						
+						<tr>
+							<td valign="top" bgcolor="#2b2e3d">
+							
+								<!-- 1st Column -->
+								<table width="177" border="0" cellpadding="0" cellspacing="0" align="left" class="footerScale">
+									<tr>
+										<td style="font-size: 16px; color: #cccccc; font-weight: light; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle; padding-bottom: 8px;" class="alignLeft">
+											<a href="#" style="text-decoration: none; color: #cccccc; font-weight: bold; font-size: 16px;">About</a>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-size: 12px; color: #c4c4c4; font-weight: light; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle;" class="alignLeft">
+											<a href="#" style="text-decoration: none; color: #c4c4c4;">Who We Are</a><br/>
+											<a href="#" style="text-decoration: none; color: #c4c4c4;">What We Do</a><br/>
+											<a href="#" style="text-decoration: none; color: #c4c4c4;">Company</a>													
+										</td>
+									</tr>
+								</table>
+								
+								<!-- Padding + (Outlook) -->
+								<table class="eraseForMobile" width="1" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+								
+								<tr>
+									<td width="1" height="1" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<p style="padding-left: 30px;">
+											&nbsp;
+										</p>
+									</td>
+								</tr>
+								
+								</table>
+								
+								<!-- 2nd Column -->
+								<table width="190" border="0" cellpadding="0" cellspacing="0" align="left" class="footerScale">
+									<tr>
+										<td style="font-size: 16px; color: #cccccc; font-weight: light; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle; padding-bottom: 8px;" class="alignLeft">
+											<a href="#" style="text-decoration: none; color: #cccccc; font-weight: bold; font-size: 16px;">Products</a>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-size: 12px; color: #c4c4c4; font-weight: light; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle;" class="alignLeft">
+											<a href="#" style="text-decoration: none; color: #c4c4c4;">Templates</a>																		<br/>
+											<a href="#" style="text-decoration: none; color: #c4c4c4;">Updates</a>
+												<br/>
+											<a href="#" style="text-decoration: none; color: #c4c4c4;">More Apps</a>													
+										</td>
+									</tr>
+								</table>
+								
+								<!-- Padding + (Outlook) -->
+								<table class="eraseForMobile" width="1" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+								
+								<tr>
+									<td width="1" height="1" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<p style="padding-left: 30px;">
+											&nbsp;
+										</p>
+									</td>
+								</tr>
+								
+								</table>
+								
+								<!-- 3th Column -->
+								<table width="147" border="0" cellpadding="0" cellspacing="0" align="left" class="footerScale">
+									<tr>
+										<td style="font-size: 16px; color: #cccccc; font-weight: light; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle; padding-bottom: 8px;" class="alignLeft">
+											<a href="#" style="text-decoration: none; color: #cccccc; font-weight: bold; font-size: 16px;">Register</a>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-size: 12px; color: #c4c4c4; font-weight: light; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle;" class="alignLeft">
+											<a href="#" style="text-decoration: none; color: #c4c4c4;">Sign Up</a>																		<br/>
+											<a href="#" style="text-decoration: none; color: #c4c4c4;">Subscribe</a>
+												<br/>
+											<a href="#" style="text-decoration: none; color: #c4c4c4;">Unsubscribe</a>													
+										</td>
+									</tr>
+								</table>
+								
+								
+							</td>
+						</tr>
+						
+						</table>
+						<!-- End Mobile Wrapper -->
+						
+						<!-- Space -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="scaleForMobile">
+						
+						<tr>
+							<td height="20" style="font-size: 1px; color: #363636; line-height: 1px;">
+								&nbsp;-
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#2b2e3d" width="100%" style="font-size: 0;line-height: 0;border-collapse: collapse;" class="fullWidth">
+								<p style="height: 20px;">
+									&nbsp;
+								</p>
+							</td>
+						</tr>
+						
+						</table>
+					</td>
+				</tr>
+			</table><!-- End 4 Columns -->
+			
+			<!-- Start Footer Icons -->
+				<table width="100%" class="fullWidth" border="0" cellpadding="0" cellspacing="0" align="center">
+				
+				<tr>
+					<td width="100%" bgcolor="#1f1f1f">
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="mobileCenter">
+						
+						<tr>
+							<td height="15">
+							</td>
+						</tr>
+						
+						</table>
+						
+						<!-- Mobile Wrapper -->
+						<table align="center" width="580" cellpadding="0" cellspacing="0" bgcolor="#1f1f1f" border="0" class="mobileCenter">
+						
+						<tr>
+							<td valign="top" bgcolor="#1f1f1f">
+							
+								<!-- Footer Logo -->
+								<table width="390" cellpadding="0" cellspacing="0" border="0" align="left" class="footerScaleRight">
+									<tr>
+										<td valign="middle" style="text-align: left;" class="footerLogo">
+											<a href="#" style="text-decoration: none; color: #747474; font-weight: bold; font-family: Helvetica, Arial, sans-serif;"><img src="images/footer_logo.jpg" alt="" border="0" style="vertical-align: middle;">&nbsp;&nbsp;Crop</a>
+										</td>
+									</tr>
+								</table>
+								
+								<!-- Padding + (Outlook) -->
+								<table width="1" class="eraseForMobile" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+								
+								<tr>
+									<td width="0" height="1" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<p style="padding-left: 80px;">
+											&nbsp;
+										</p>
+									</td>
+								</tr>
+								
+								</table>
+							
+								<!-- Icon 1 -->
+								<table class="FooterIconsScale1" width="16" border="0" cellpadding="0" cellspacing="0" align="left">
+								<tr>
+									<td height="5"></td>
+								</tr>
+								<tr>
+									<td valign="top" style="text-align: center;">
+										<a href="#" style="text-decoration: none;"><img src="images/footer_icon_1.jpg" alt="" border="0"></a>
+									</td>
+								</tr>
+							</table>
+								
+								<!-- Padding + (Outlook) -->
+								<table class="eraseForMobile" width="1" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+								
+								<tr>
+									<td width="0" height="1" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<p style="padding-left: 10px; padding-right: 5px;">
+											&nbsp;
+										</p>
+									</td>
+								</tr>
+								
+								</table>
+								
+								<!-- Icon 2 -->
+								<table class="FooterIconsScale1" width="16" border="0" cellpadding="0" cellspacing="0" align="left">
+								<tr>
+									<td height="5"></td>
+								</tr>
+								<tr>
+									<td valign="top" style="text-align: center;">
+										<a href="#" style="text-decoration: none;"><img src="images/footer_icon_2.jpg" alt="" border="0"></a>
+									</td>
+								</tr>
+							</table>
+								
+								<!-- Padding + (Outlook) -->
+								<table class="eraseForMobile" width="0" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+								
+								<tr>
+									<td width="0" height="1" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<p style="padding-left: 5px; padding-right: 10px;">
+											&nbsp;
+										</p>
+									</td>
+								</tr>
+								
+								</table>
+								
+								<!-- Icon 3 -->
+								<table class="FooterIconsScale1" width="16" border="0" cellpadding="0" cellspacing="0" align="left">
+									<tr>
+										<td height="5"></td>
+									</tr>
+									<tr>
+										<td width="16" valign="top" style="text-align: center;">
+											<a href="#" style="text-decoration: none;"><img src="images/footer_icon_3.jpg" alt="" border="0"></a>
+										</td>
+									</tr>
+								</table>
+								
+								
+								
+							</td>
+						</tr>
+						
+						</table>
+						
+						<!-- End Mobile Wrapper -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="scaleForMobile">
+						
+						<tr>
+							<td height="15" style="font-size: 1px; color: #272727;">
+								&nbsp;-
+							</td>
+						</tr>
+						
+						</table>
+					</td>
+				</tr>
+				
+				</table>
+				<!-- End Footer Icons -->
+	
+
+		</td>
+	</tr>
+</table><!-- End Wrapper -->
+
+<!-- Done -->
+
+</body>
+
+</html>

@@ -1,0 +1,433 @@
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+<title>Crop - Responsive E-mail Template</title>
+
+<!-- Hotmail ignores some valid styling, so we have to add this -->
+<style type="text/css">
+
+div, p, a, li, td { -webkit-text-size-adjust:none; }
+
+.ReadMsgBody {width: 100%; background-color: #fafafa;}
+.ExternalClass {width: 100%; background-color: #fafafa;}
+
+body {width: 100%; background-color: #fafafa; margin:0; padding:0; -webkit-font-smoothing: antialiased;}
+html {width: 100%; }
+
+.image1MC img {width: 263px!important; height: auto!important; border-radius: 4px!important;}
+
+@media only screen and (max-width: 640px) 
+		   {
+		body							{width:auto!important;}
+		table table               		{width:440px!important; }
+		.fullWidth						{width: 100%!important;}
+		.mobileCenter					{width: 440px !important; text-align: center!important; }
+		.eraseForMobile					{width:0; display:none !important;}
+		.navPad							{margin-right: 35px!important; margin-left: 35px; }
+		.crop1							{width: 100%!important; text-align: center!important; font-size: 28px!important;}
+		.crop2							{width: 100%!important; text-align: center!important;}
+		.crop3							{width: 100%!important; font-size: 17px!important;}
+		.crop4							{width: 100%!important; font-size: 17px!important; padding-top: 0px;}
+		.headerLogo						{text-align: center!important; padding-top: 30px!important; padding-bottom: 30px!important;}
+		.pad1							{height: 20px!important;}
+		.pad2							{height: 10px!important;}
+		.pad3							{height: 0px!important;}
+		.line1							{width: 367px!important;}
+		.roundIcons						{width: 75px!important; height: 75px!important; border-radius: 50px!important;}
+		.scalePad						{width: 107px!important;}
+		.scalePad2						{width: 182px!important;}
+		.scalePad3						{width: 36px!important; }
+		.width1							{width: 1px!important;}
+		.BG								{background-color: #fafafa!important; width: 100%!important;}
+		.text1							{width: 240px!important;}
+		.image1							{width: 200px!important; border-radius: 4px!important;}
+		.image1MC						{width: 200px!important; border-radius: 4px!important;}
+		.image1MC img					{width: 200px!important; border-radius: 4px!important;}
+		.textForMobile					{width: 200px!important;}
+		.imageScale1					{width: 200px!important; height: auto!important;}
+		.imageScale2					{width: 200px!important; height: auto!important; padding: 0px!important;}
+		.footerScale					{width: 146px!important;}
+		.tableSponsors					{width: 440px; }
+		.footerScaleRight				{width: 70%!important; }
+		.FooterIconsScale1				{width: 8%!important; text-align: left!important; padding-right: 15px;}
+		}
+		
+@media only screen and (max-width: 479px) 
+		   {
+		body							{width:auto!important;}
+		table table 					{width: 280px!important; }
+		.fullWidth						{width: 100%!important;}
+		.mobileCenter					{width:280px !important; text-align: center!important; }
+		.eraseForMobile					{width:0; display:none !important;}
+		.navPad							{margin-right: 9px!important; margin-left: 9px; font-size: 12px!important; }
+		.threeFeatures					{width: 280px!important; text-align: center!important; font-size: 26px!important; line-height: 32px!important;}
+		.crop1							{width: 280px!important; text-align: center!important; font-size: 26px!important; }
+		.crop2							{width: 100%!important; text-align: center!important;}
+		.crop3							{width: 100%!important; font-size: 16px!important; line-height: 26px!important;}
+		.crop4							{width: 100%!important; font-size: 16px!important; padding-top: 8px; }
+		.pad1							{height: 20px!important;}
+		.pad2							{height: 10px!important;}
+		.pad3							{height: 50px!important;}
+		.line1							{width: 209px!important;}
+		.roundIcons						{width: 75px!important; height: 75px!important; border-radius: 50px!important;}
+		.scalePad						{width: 28px!important;}
+		.scalePad2						{width: 102px!important;}
+		.scalePad3						{width: 35px!important; background-color: ;}
+		.width1							{width: 1px!important;}
+		.BG								{background-color: #fafafa!important; width: 100%!important;}
+		.image1							{width: 280px!important; height: auto!important; border-radius: 4px!important;}
+		.image1MC						{width: 280px!important; height: auto!important; border-radius: 4px!important;}
+		.image1MC img					{width: 280px!important; height: auto!important; border-radius: 4px!important;}
+		.textForMobile					{width: 280px!important;}
+		.imageScale1					{width: 280px!important; height: auto!important;}
+		.imageScale2					{width: 280px!important; height: auto!important;}
+		.footerScale					{width: 92px!important;}	
+		.tableSponsors					{width: 280px; padding-left: 0px; padding-right: 0px;}
+		.sponsorScale1					{width: 100%!important; text-align: center!important;}
+		.footerScaleRight				{width: 100%!important; text-align: left; padding-left: 0px; padding-top: 10px; }
+		.FooterIconsScale1				{width: 33%!important; text-align: left!important; padding-top: 30px; padding-bottom: 30px; padding-left: 0px; padding-right: 0px;}
+		.footerLogo						{padding: 0px!important; text-align: center!important;}
+		}
+
+
+</style>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<!-- Wrapper -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td width="100%" valign="top" bgcolor="#fafafa">
+		
+			<!-- Nav Mobile Wrapper -->
+			<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td width="100%" bgcolor="fafafa">
+					
+						<!-- Start Nav -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580">
+									
+									<!-- Logo -->
+									<table border="0" cellpadding="0" cellspacing="0" align="left" class="mobileCenter">
+										<tr>
+											<td height="12"></td>
+										</tr>
+										<tr>
+											<td height="50">
+												<a href="#"><img src="http://hellotraveler.co.id/css/email_tpl/crop_img/hellotraveler_black.png" alt="" border="0"></a>
+											</td>
+										</tr>
+										<tr>
+											<td height="12" class="eraseForMobile"></td>
+										</tr>
+									</table>
+									
+									<!-- Nav -->
+									<table border="0" cellpadding="0" cellspacing="0" align="right">
+										<tr>
+											<td height="12" class="eraseForMobile"></td>
+										</tr>
+										<tr>
+											<td width="460" height="50" class="mobileCenter" style="font-size: 12px; color: #272727; font-weight: bold; text-align: right; font-family: Helvetica, Arial, sans-serif; line-height: 20px; vertical-align: middle;">
+											</td>
+										</tr>
+										<tr>
+											<td height="12"></td>
+										</tr>
+									</table>
+																	
+								</td>
+							</tr>
+						</table><!-- End Nav -->
+						
+					</td>
+				</tr>
+			</table><!-- End Nav Mobile Wrapper -->
+			
+			<!-- Header -->
+			<table width="100%" class="fullWidth" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td width="100%" bgcolor="#2b2e3b" style="text-align: center; background-repeat: no-repeat; background-size: 100% 100%">
+					
+						<!-- Space -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580" height="40" class="pad1">									
+								</td>
+							</tr>
+						</table>
+					
+						<!-- Header Split -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="mobileCenter">
+							<tr>
+								<td valign="middle">
+								
+									<!-- Header Logo -->
+									<table width="10" border="0" cellpadding="0" cellspacing="0" align="right">
+										<tr>
+											<td width="155" style="text-align: left;" class="headerLogo">
+																				
+											</td>
+										</tr>
+									</table>
+									
+									<!-- Headline -->
+									<table border="0" cellpadding="0" cellspacing="0" align="left" class="crop1">
+										<tr>
+											<td width="445" style="font-size: 30px; color: #f1f1f1; text-align: left; font-weight: light; font-family: Helvetica, Arial, sans-serif; line-height: 38px; text-shadow: 1px 1px 2px #000;" class="crop1">
+												<a href="#" style="text-decoration: none; color: #f1f1f1; font-weight: bold;">Your Travelling Partner.</a>								
+											</td>
+										</tr>
+										<tr>
+											<td width="345" height="8"></td>
+										</tr>
+										<tr>
+											<td width="345" style="font-size: 14px; color: #cacaca; text-align: left; font-weight: light; font-family: Helvetica, Arial, sans-serif; line-height: 24px; text-shadow: 1px 1px 2px #000;" class="crop2">
+											Flight Ticketing, hotel booking, tour organizer, shuttle, rail, car rental professionalism.<br/><br/>
+											
+											<a href="http://www.hellotraveler.co.id/spage/register.html"><img src="http://hellotraveler.co.id/css/email_tpl/crop_img/headerButton.png" border="0" alt="0"></a>
+																			
+											</td> 
+										</tr>
+									</table>
+									
+									<!-- Padding + (Outlook) -->
+									<table width="40" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;" class="eraseForMobile">
+									
+										<tr>
+											<td width="40" height="30" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+												<p style="padding-left: 80px;">
+													&nbsp;
+												</p>
+											</td>
+										</tr>
+									</table>
+								
+									
+									
+								</td>
+							</tr>
+						</table>
+						
+						<!-- Space -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+							<tr>
+								<td width="580" height="40">									
+								</td>
+							</tr>
+						</table>						
+						
+						
+					</td>
+				</tr>
+			</table><!-- End Header -->
+			
+			<!-- Mobile Wrapper -->
+			<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td width="100%" bgcolor="fafafa">
+					
+						<!-- Start Headline + Text Top -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="">
+							<tr>
+								<td width="580">
+									<!-- Text -->
+									<table border="0" cellpadding="0" cellspacing="0" align="">
+									<tr><td height="40"></td></tr>
+										<tr>
+											<td height="50" style="font-size: 14px; color: #505050; font-weight: 50; font-family: Helvetica, Arial, sans-serif; line-height: 30px;" class="crop3">
+												{BODY}
+											</td>
+										</tr>
+									<tr><td height="40"></td></tr>
+									</table>
+									
+									
+																	
+								</td>
+							</tr>
+						</table><!-- End Headline + Text Top -->
+						
+					</td>
+				</tr>
+			</table><!-- End Mobile Wrapper -->
+			
+			
+			<!-- Space -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullWidth">
+				<tr>
+					<td width="100%" height="40">									
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" height="20" bgcolor="#fafafa">									
+					</td>
+				</tr>
+			</table>
+			
+			
+			<!-- Space -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullWidth">
+				<tr>
+					<td width="100%" height="50" bgcolor="#fafafa"></td>
+				</tr>
+			</table>
+			
+			
+			<!-- Space -->
+			<table width="580" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td width="580" height="50">									
+					</td>
+				</tr>
+			</table>
+			
+			
+			
+			
+			
+				
+			
+			<!-- Start Footer Icons -->
+				<table width="100%" class="fullWidth" border="0" cellpadding="0" cellspacing="0" align="center">
+				
+				<tr>
+					<td width="100%" bgcolor="#1f1f1f">
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="mobileCenter">
+						
+						<tr>
+							<td height="15">
+							</td>
+						</tr>
+						
+						</table>
+						
+						<!-- Mobile Wrapper -->
+						<table align="center" width="580" cellpadding="0" cellspacing="0" bgcolor="#1f1f1f" border="0" class="mobileCenter">
+						
+						<tr>
+							<td valign="top" bgcolor="#1f1f1f">
+							
+								<!-- Footer Logo -->
+								<table width="390" cellpadding="0" cellspacing="0" border="0" align="left" class="footerScaleRight">
+									<tr>
+										<td valign="middle" style="text-align: left;" class="footerLogo">
+											<a href="#" style="text-decoration: none; color: #747474; font-weight: bold; font-family: Helvetica, Arial, sans-serif;"><img src="http://hellotraveler.co.id/css/email_tpl/crop_img/hellotraveler.png" alt="" border="0" style="vertical-align: middle;"></a>
+										</td>
+									</tr>
+								</table>
+								
+								<!-- Padding + (Outlook) -->
+								<table width="1" class="eraseForMobile" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+								
+								<tr>
+									<td width="0" height="1" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<p style="padding-left: 80px;">
+											&nbsp;
+										</p>
+									</td>
+								</tr>
+								
+								</table>
+							
+								<!-- Icon 1 -->
+								<table class="FooterIconsScale1" width="16" border="0" cellpadding="0" cellspacing="0" align="left">
+								<tr>
+									<td height="5"></td>
+								</tr>
+								<tr>
+									<td valign="top" style="text-align: center;">
+										<a href="#" style="text-decoration: none;"><img src="http://hellotraveler.co.id/css/email_tpl/crop_img/footer_icon_1.jpg" alt="" border="0"></a>
+									</td>
+								</tr>
+							</table>
+								
+								<!-- Padding + (Outlook) -->
+								<table class="eraseForMobile" width="1" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+								
+								<tr>
+									<td width="0" height="1" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<p style="padding-left: 10px; padding-right: 5px;">
+											&nbsp;
+										</p>
+									</td>
+								</tr>
+								
+								</table>
+								
+								<!-- Icon 2 -->
+								<table class="FooterIconsScale1" width="16" border="0" cellpadding="0" cellspacing="0" align="left">
+								<tr>
+									<td height="5"></td>
+								</tr>
+								<tr>
+									<td valign="top" style="text-align: center;">
+										<a href="#" style="text-decoration: none;"><img src="http://hellotraveler.co.id/css/email_tpl/crop_img/footer_icon_2.jpg" alt="" border="0"></a>
+									</td>
+								</tr>
+							</table>
+								
+								<!-- Padding + (Outlook) -->
+								<table class="eraseForMobile" width="0" border="0" cellpadding="0" cellspacing="0" align="left" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+								
+								<tr>
+									<td width="0" height="1" style="font-size: 0;line-height: 0;border-collapse: collapse;">
+										<p style="padding-left: 5px; padding-right: 10px;">
+											&nbsp;
+										</p>
+									</td>
+								</tr>
+								
+								</table>
+								
+								<!-- Icon 3 -->
+								<table class="FooterIconsScale1" width="16" border="0" cellpadding="0" cellspacing="0" align="left">
+									<tr>
+										<td height="5"></td>
+									</tr>
+									<tr>
+										<td width="16" valign="top" style="text-align: center;">
+											<a href="#" style="text-decoration: none;"><img src="http://hellotraveler.co.id/css/email_tpl/crop_img/footer_icon_3.jpg" alt="" border="0"></a>
+										</td>
+									</tr>
+								</table>
+								
+								
+								
+							</td>
+						</tr>
+						
+						</table>
+						
+						<!-- End Mobile Wrapper -->
+						<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="scaleForMobile">
+						
+						<tr>
+							<td height="15" style="font-size: 1px; color: #272727;">
+								&nbsp;-
+							</td>
+						</tr>
+						
+						</table>
+					</td>
+				</tr>
+				
+				</table>
+				<!-- End Footer Icons -->
+	
+
+		</td>
+	</tr>
+</table><!-- End Wrapper -->
+
+<!-- Done -->
+
+</body>
+
+</html>

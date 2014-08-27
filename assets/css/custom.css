@@ -1,0 +1,515 @@
+/* CSS Document */
+.starsin1{
+	background:url(img/star.png) no-repeat 0 -60px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.starsin2{
+	background:url(img/star.png) no-repeat 0 -45px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.starsin3{
+	background:url(img/star.png) no-repeat 0 -30px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.starsin4{
+	background:url(img/star.png) no-repeat 0 -15px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.starsin5{
+	background:url(img/star.png) no-repeat 0 0px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.listhotel .redbox{
+	width:86px; border:2px solid #FC6;  height:17px; margin:2px 0; font-size:11px; line-height:17px; text-align:center; display:inline-block; background:#F60; color:#fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.boxhotel article{
+	background:#fff;
+	-webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+}
+.boxhotel h2, .boxhotel p{
+	margin:5px 0;	
+}
+
+.boxhotel .descript{
+	margin:5px 0;
+	text-align:center; display:block;
+}
+.boxhotel .price{
+	display:block;
+	margin:10px 0 10px 0;
+	font-size:16px;
+}
+.boxhotel .redbox{
+	width:120px; border:2px solid #FC6;  height:20px; margin:0 0 2px 0; font-size:14px; line-height:20px; text-align:center; display:inline-block; background:#F60; color:#fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.boxhotel .fimage{
+	height:240px;
+	background:#777;
+	display:block;
+	 overflow:hidden;	
+}
+.boxhotel img{
+	height:240px;
+}
+.payment img{
+	margin:0 10px;	
+}
+.paket-wisata .redbox{
+	width:90%; border:2px solid #FC6;  height:17px; margin:2px auto; font-size:11px; line-height:17px; text-align:center; display:inline-block; background:#F60; color:#fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.news-img-mini{float:left; margin:0 10px 0px 0;}
+.news-img-mini img{ border:0; max-height:100px; max-width:105px; }
+
+#listTiketMurah li{
+	padding:2px 0 2px 15px;
+	border-bottom:1px solid #ddd;
+}
+#listTiketMurah strong{
+	font-size:14px;
+	color:#555;
+	display:inline-block;
+	width:50%;
+	white-space:nowrap;
+	font-style:italic;
+}
+#listTiketMurah span{
+		white-space:nowrap;
+}
+#listTiketMurah span strong{
+	width:30%;
+	color:#777;
+	font-style:normal;
+}
+#listTiketMurah span em{
+	color:#e92; margin-right:4px;
+}
+.listhotel .boxfix{
+	float:left !important;
+	height:128px; width:96%;
+}
+.listhotel .portfolio-overlay{
+	background:#eeeeee !important;
+	z-index:-20;
+}
+.paket-wisata .portfolio-overlay{
+	background:#eeeeee !important;
+	z-index:-50 !important;
+}
+.paket-wisata .boxfix{
+	overflow:hidden;
+	height:400px;
+}
+.paket-wisata .title{
+	display:block;
+	margin:10px 0;
+	font-size:14px;
+}
+.calltoaction {
+	padding:10px;
+}
+.tab-content{
+	overflow:hidden;
+}
+.boxhotel{
+	padding-top:10px;	
+}
+.boxhotel .mask{ display:none !important;	}
+
+.boxhotel .portfolio-overlay{
+	height:422px !important;	
+	padding:0 20px;
+	text-shadow: 1px 1px 2px rgba(0,0,0, 0.25);
+}
+.boxhotel h4{
+	font-size:16px !important;	
+}
+.boxhotel .button{
+	margin-top:15px;	
+}
+.thum span{
+	width:90px; height:90px;
+	overflow:hidden;
+	display:block;
+	float:left;
+	line-height:90px;
+	margin:10px;
+	border:2px solid #fff;	
+}
+.thum { 
+	padding:10px 5px 0px 5px; 
+	overflow:hidden;
+}
+
+.thum span img{
+	max-width:120px;
+}
+.formcekin span{
+	color:#555;
+	display:inline-block;
+	border:0px solid #999;
+	padding:0 0 10px 0;
+	margin:-4px 5px 0 5px;
+	line-height:0px;
+}
+.starfilter .button{
+	font-size:12px;
+	color:#666 !important;
+	padding:2px 10px 2px 10px !important;
+	font-family:Arial, Verdana, Geneva, sans-serif;
+	margin:5px !important;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px
+}
+.tweet_list{
+	color:#AAA;	
+}
+/*.cari-btn{
+	clear:both;	
+}*/
+@media (min-width: 1200px) { 
+	.listhotel .boxfix{
+			height:128px; width:48%;
+	}
+	.paket-wisata .boxfix{
+		overflow:hidden;
+		height:390px;
+	}	
+	.calltoaction {
+		display:block;
+	}
+	.cari-btn{	clear:both;	margin-left:63px;	}
+	
+	.boxhotel .mask{ 
+		display:block !important;
+		background:rgba(200,70,0,0.8);
+		color:#fff;
+		font-size:14px;
+	}
+
+}
+@media (max-width: 979px) and (min-width: 768px) { 
+	.listhotel .boxfix{
+			height:128px; width:96%;
+	}
+	.paket-wisata .boxfix{
+		height:460px;
+	}
+	.boxhotel .mask{ display:none !important;	}
+}
+
+@media (max-width: 767px) { 
+	.listhotel .boxfix{
+		height:128px; width:96%;
+	}
+	.paket-wisata .boxfix{
+		overflow:hidden;
+		height:190px;
+	}
+	.paket-wisata .boxfix img{
+		float:left;
+		margin-right:10px;	
+	}
+	.paket-wisata .redbox{	width:140px; }
+	/*.calltoaction {	display:none;	}*/
+	.boxhotel .mask{ display:none !important;	}
+}
+@media (max-width: 480px) { 
+.button {
+	padding: 6px 9px;
+}
+	.listhotel .boxfix{
+		height:128px; width:95%;
+	}
+	.paket-wisata .boxfix{
+		overflow:hidden;
+		height:200px;
+	}
+	.paket-wisata .boxfix img{
+		width:90px;	
+	}
+		.boxhotel .mask{ display:none !important;	}
+}
+/*
+		Map canvas
+------------------------------------------------------------
+*/
+#map_canvas {
+	background-color:#e5e3df;
+	border: 1px solid #CCC;
+	border-bottom: 2px #ff5e3c solid;
+	height:400px;
+	position: relative;
+	width: 100%;
+}
+#map_canvas:before, #map_canvas:after {
+	background: none;
+	text-align:center;
+	position: absolute;
+	content: '';
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index:2;
+	-webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+}
+#map_canvas:after {
+	bottom: 0;
+	top: auto;
+}
+
+
+#map_canvas .captionMap {
+	background: black;
+	background: rgba(0,0,0,0.8);
+	background: -webkit-linear-gradient(rgba(0,0,0,0.6), black);
+	background: -moz-linear-gradient(rgba(0,0,0,0.6), black);
+	border-radius: 4px;
+	-webkit-box-shadow: rgba(0,0,0, 0.6) 0px 7px 20px, rgba(255,255,255, 0.6) 0px 1px 0px inset;
+	-moz-box-shadow: rgba(0,0,0, 0.6) 0px 7px 20px, rgba(255,255,255, 0.6) 0px 1px 0px inset;
+	box-shadow: rgba(0,0,0, 0.6) 0px 7px 20px, rgba(255,255,255, 0.6) 0px 1px 0px inset;
+	z-index: 1;
+	top:5px;
+	color: white;
+	padding: 12px;
+	font: 12px HelveticaNeue, Helvetica, Arial;
+	display: inline-block;
+	position: absolute;
+	text-shadow: black 0px 1px 1px;
+	border: 1px solid black;
+	width:254px;
+}
+#map_canvas  .captionMap span {
+	font-weight: bold;
+	display:block;
+	padding-top:5px;
+}
+#map_canvas  .captionMap:after {
+	content: '';
+	position: absolute;
+	top: -7px;
+	left: 50%;
+	margin-left: -7px;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-bottom: 7px solid black;
+	width:0px;
+	height:0px;
+}
+#map_canvas  .captionMap img{
+	width:60px;
+	margin-bottom:5px;
+	margin-right:13px;
+	border:1px #3c3c3c solid;
+	}
+.mapPerloading {
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-top:-15px;
+	margin-left:-25px;
+}
+.mapPerloading span {
+	display: block;
+	margin: 0 auto;
+}
+ .mapPerloading span[class*="l-"] {
+ display: inline-block;
+ background: #000;
+ width: 4px;
+ height: 4px;
+ -webkit-border-radius: 100%;
+ -moz-border-radius: 100%;
+ border-radius: 100%;
+ margin: 12px 2px;
+ position: relative;
+ -webkit-animation: loader 4s infinite;
+ -webkit-animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
+ -webkit-animation-fill-mode: both;
+ -moz-animation: loader 4s infinite;
+ -moz-animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
+ -moz-animation-fill-mode: both;
+ -ms-animation: loader 4s infinite;
+ -ms-animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
+ -ms-animation-fill-mode: both;
+ animation: loader 4s infinite;
+ animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
+ animation-fill-mode: both;
+}
+.mapPerloading span.l-1 {
+	-webkit-animation-delay: 1s;
+	-moz-animation-delay: 1s;
+	-ms-animation-delay: 1s;
+	animation-delay: 1s;
+}
+.mapPerloading span.l-2 {
+	-webkit-animation-delay: 0.8s;
+	-moz-animation-delay: 0.8s;
+	-ms-animation-delay: 0.8s;
+	animation-delay: 0.8s;
+}
+.mapPerloading span.l-3 {
+	-webkit-animation-delay: 0.6s;
+	-moz-animation-delay: 0.6s;
+	-ms-animation-delay: 0.6s;
+	animation-delay: 0.6s;
+}
+.mapPerloading span.l-4 {
+	-webkit-animation-delay: 0.4s;
+	-moz-animation-delay: 0.4s;
+	-ms-animation-delay: 0.4s;
+	animation-delay: 0.4s;
+}
+.mapPerloading span.l-5 {
+	-webkit-animation-delay: 0.2s;
+	-moz-animation-delay: 0.2s;
+	-ms-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+.mapPerloading span.l-6 {
+	-webkit-animation-delay: 0s;
+	-moz-animation-delay: 0s;
+	-ms-animation-delay: 0s;
+	animation-delay: 0s;
+}
+ @-webkit-keyframes loader {
+ 0% {
+-webkit-transform: translateX(-30px);
+opacity: 0;
+}
+ 25% {
+opacity: 1;
+}
+ 50% {
+-webkit-transform: translateX(30px);
+opacity: 0;
+}
+ 100% {
+opacity: 0;
+}
+}
+@-moz-keyframes loader {
+ 0% {
+-moz-transform: translateX(-30px);
+opacity: 0;
+}
+ 25% {
+opacity: 1;
+}
+ 50% {
+-moz-transform: translateX(30px);
+opacity: 0;
+}
+ 100% {
+opacity: 0;
+}
+}
+@-ms-keyframes loader {
+ 0% {
+-ms-transform: translateX(-30px);
+opacity: 0;
+}
+ 25% {
+opacity: 1;
+}
+ 50% {
+-ms-transform: translateX(30px);
+opacity: 0;
+}
+ 100% {
+opacity: 0;
+}
+}
+@keyframes loader {
+ 0% {
+transform: translateX(-30px);
+opacity: 0;
+}
+ 25% {
+opacity: 1;
+}
+ 50% {
+transform: translateX(30px);
+opacity: 0;
+}
+ 100% {
+opacity: 0;
+}
+}
+/*
+------------------------------------------------------------
+
+*/
+.price {
+float: left;
+width: 20%;
+position: relative;
+font-size: 22px;
+color: #000;
+}
+.airlineLogo {
+float: left;
+width: 20%;
+position: relative;
+}
+.wrapperPrice{
+position:absolute;
+width:160px;
+top:50%;
+margin-top:-33px;}
+.flightTimes {
+float: right;
+width: 60%;
+position: relative;
+}
+.isinya{
+float: left;
+width: 11%;
+position: relative;
+margin-top:20px;
+margin-left:10px;
+font-size: 14px !important;
+}
+.airlineLogo{float:left;width:85px;min-height:90px;position:relative;}
+.airlines__icon{background:url("/img/airlines.png") no-repeat left center;min-height:42px;}
+.airasia{background-position:16px 2px;}.bataviaair{background-position:-80px 3px;}.citilink{background-position:-250px 13px;}.garudaindonesia{background-position:-420px 0;}.merpati{background-position:-785px 3px;}.tiger{background-position:-1245px 11px;}.multiple{background-position:-871px 8px;}.kalstar{background-position:-507px 4px;}.lionair,.malindoair,.thailionair{background-position:-589px 0;}.mandalaair{background-position:-686px 14px;}.sriwijayaair{background-position:-1143px 2px;}.skyaviation{background-position:-1049px 7px;}.wingsair{background-position:-1420px 7px;}.batikair{background-position:-158px 6px;}.express{background-position:-340px 8px;}.namair{background-position:-956px 3px;}.transnusa-air{background-position:-1336px -2px;}@media (-webkit-min-device-pixel-ratio:1.3),(min-resolution:124.8dpi){.airlines__icon{background:url("/css/front/../../../images/airlines@2x.png") no-repeat left center;background-size:1471px 42px;}.airasia{background-position:16px 2px;}.bataviaair{background-position:-80px 3px;}.citilink{background-position:-250px 13px;}.garudaindonesia{background-position:-420px 0;}.merpati{background-position:-785px 3px;}.tiger{background-position:-1245px 11px;}.multiple{background-position:-871px 8px;}.kalstar{background-position:-507px 4px;}.lionair,.malindoair,.thailionair{background-position:-589px 0;}.mandalaair{background-position:-686px 14px;}.sriwijayaair{background-position:-1143px 2px;}.skyaviation{background-position:-1049px 7px;}.wingsair{background-position:-1420px 7px;}.batikair{background-position:-158px 6px;}.express{background-position:-340px 8px;}.namair{background-position:-956px 3px;}.transnusa-air{background-position:-1336px -2px;}}.bataviaair-color{color:#224754;}.citilink-color{color:#117515;}.garudaindonesia-color{color:#1f2b5b;}.kalstar-color{color:#c10202;}.lionair-color,.malindoair-color,.thailionair-color{color:#ce000c;}.batikair-color{color:#c02555;}.wingsair-color{color:#e93901;}.mandalaair-color{color:#444;}.merpati-color{color:#e87717;}.sriwijayaair-color{color:#d3a14b;}.airasia-color{color:#ee2d24;}.tiger-color{color:#444;}.skyaviation-color{color:#025388;}
+
+/*loader*/
+.loader {
+    display:    none;
+    position:   fixed;
+    z-index:    10000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('img/pIkfp.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .loader {
+    display: block;
+}

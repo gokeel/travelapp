@@ -1,0 +1,37 @@
+#vsim{
+    padding:20px;
+}
+
+#vsim_img{
+    position:relative;
+    width:460px;
+    margin:0 auto;
+}
+
+.sim_cover{
+    position:absolute;
+    cursor: pointer;
+}
+
+.sim_disabled{
+    cursor: default !important;
+}
+
+#sim_cover_3{top:112px;left:198px;}
+#sim_cover_5{top:112px;left:263px;}
+#sim_cover_7{top:112px;left:327px;}
+#sim_cover_9{top:112px;left:391px;}
+#sim_cover_2{top:34px;left:132px;}
+#sim_cover_4{top:34px;left:197px;}
+#sim_cover_6{top:34px;left:261px;}
+#sim_cover_8{top:34px;left:325px;}
+#sim_cover_10{top:34px;left:389px;}
+#sim_cover_1{top:75px;left:59px;}
+
+.sim_cover span{
+    position:absolute;
+    top:10px;
+    left:13px;
+    color:#fff;
+    font-size:16px;
+}

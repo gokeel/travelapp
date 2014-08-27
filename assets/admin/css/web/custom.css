@@ -1,0 +1,142 @@
+/* CSS Document */
+.starsin4,.starsin5,.starsin6,.starsin7,.starsin8{
+	text-indent:-200px;
+}
+.starsin4{
+	background:url(img/star.png) no-repeat 0 -60px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.starsin5{
+	background:url(img/star.png) no-repeat 0 -45px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.starsin6{
+	background:url(img/star.png) no-repeat 0 -30px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.starsin7{
+	background:url(img/star.png) no-repeat 0 -15px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.starsin8{
+	background:url(img/star.png) no-repeat 0 0px;width:72px;height:15px; margin:5px 5px 5px 0px; display:inline-block; 
+	color:rgba(255,255,255,0);
+	}
+.listhotel .redbox{
+	width:86px; border:2px solid #FC6;  height:17px; margin:2px 0; font-size:11px; line-height:17px; text-align:center; display:inline-block; background:#F60; color:#fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.detailbox{
+	display:none;
+	clear:both;
+	margin:10px -10px -10px -10px;
+	padding:10px;
+	background:#eee;
+	background:#777 url(img/textures/grid.png);
+}
+.detailbox .outbox{
+	max-width:332px;
+	float:left;
+	padding:0px;
+	clear:both;
+	/*background:#ddd;*/
+	border:0px solid #444;
+	margin:-5px 10px 10px -5px;
+}
+.hotel_thumb{
+	width:90px;
+	height:90px;
+	overflow:hidden;
+}
+.frame_thumb{
+	background:#fff;
+	padding:5px;
+	margin:5px;
+	float:left;
+}
+.detailbox img{
+	height:90px;	
+}
+  	.tabs-content p{
+		margin:8px 0;
+	}
+	.note{
+		font-size:11px;	
+		color:#999;
+	}
+	.bggrey{  border:1px dashed #ddd; margin:0 5px;}
+	.boxhotel{
+		padding:1%; border:1px solid #bbb; margin:1.6% 0.7%;
+		text-align:left;
+		-webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+		-moz-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+	}
+	.pricebox{ border:4px solid #222; margin-left:10px; margin-bottom:10px; }
+	
+	.pricebox, .frame_thumb{
+		-webkit-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+		-moz-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+	}
+	.confirm{ color:#F60; }
+	.issued{ color:#0A0; }
+	.rejected{ color:#bbb; }
+	
+	.pricebox td{
+		background:#fff;	
+	}
+	.pricebox {border:1px solid #ddd; }
+	.pricebox td{
+		padding:3px 8px;
+		border-bottom:1px solid #ddd;	
+	}
+	.pricebox th{
+		background:#eee;
+		padding:4px 8px;	
+	}
+	.boxhotel p,.boxhotel h3, .boxinpop p, .boxinpop h3{
+		margin:5px 0;
+	}
+	.imgbox{float:left; margin:0 10px 10px 0; padding:5px; border:1px solid #ddd;}
+	.imgbox img {max-width:200px; }
+    
+.long_detail{
+    min-height:120px;
+}
+.facility span{
+    font-size:14px;
+    font-weight:bold;
+}
+
+.facility{
+    margin-left:10px;
+    width:350px;
+}
+
+.facility li{
+    padding-top:6px !important;
+    padding-bottom:6px !important;
+    margin-left:20px;
+}
+
+
+.countdown{
+    color:#484;
+    font-size:50px;
+    margin-bottom:20px;
+    height:30px;
+    margin-top:10px;
+}
+
+.airlink{
+    list-style:none;
+}
+
+.airlink li{
+    float:left;
+    margin-right:20px;
+    height:80px;
+}

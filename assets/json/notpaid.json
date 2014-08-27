@@ -1,0 +1,25 @@
+{
+	"orders":[
+		{
+			"order_id" : "5637895123",
+			"order_time" : "01/13/2014",
+			"category" : "Pesawat",
+			"rute" : "CGK - DPS",
+			"status" : "Belum terbayar"
+		},
+		{
+			"order_id" : "3657490124", 
+			"order_time" : "04/19/2014",
+			"category" : "Pesawat",
+			"rute" : "CGK - SBY",
+			"status" : "Belum terbayar"
+		},
+		{
+			"order_id" : "7814532487",
+			"order_time" : "12/31/2013",
+			"category" : "Kereta Api",
+			"rute" : "Semarang - Bandung",
+			"status" : "Belum terbayar"
+		}
+	]
+}

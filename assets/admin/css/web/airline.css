@@ -1,0 +1,113 @@
+
+body {
+    background: none repeat scroll 0 0 #EEEEEE;
+    margin: 0;
+    padding: 0;
+}
+#wrapper {
+    margin: 0 auto;
+    padding: 0;
+}
+#header {
+    height: 50px;
+    background: #c20;
+}
+
+.header_content{
+    height:50px;
+    flo at:right;
+    min-width:700px;
+    padding-top:5px;
+}
+
+.reload_btn{
+    margin-left:50px;
+    width:240px;
+    float:left;
+    
+}
+
+.u_pass{
+    max-width:600px;
+    float:left;
+    font-size:20px;
+    margin-left:40px;
+}
+
+
+.form{
+    width:400px;
+    float:right;
+    text-align:right;
+    margin-right:10px;
+}
+
+.reload_btn button{
+    width:100px;
+    height:40px;
+    font-size:14px;
+}
+
+.form{
+    font-size:16px;
+}
+
+.form input[type=text]{
+    width:100px;
+    height:32px;
+    font-size:18px;
+    text-align:center;
+}
+
+.form input[type=button]{
+    width:80px;
+    height:40px;
+    font-size:14px;
+}
+
+
+.form label{
+    margin-right:10px;
+    font-family:arial;
+    color:#fff;
+    font-weight:bold;
+}
+
+
+.logo {
+    float:left;
+}
+.logo img {
+    width: 196px;
+}
+#konten {
+}
+#konten iframe {
+    border: medium none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#konten .info{
+    padding:40px 20px;
+    font-size:16px;
+}
+
+.headframe {
+    background: url("img/bg_headframex.jpg") no-repeat scroll left bottom #FFE1C3;
+    border-bottom: 1px solid #FF7700;
+}
+.headframe .upass {
+    color: #887766 !important;
+    font-family: arial;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 50px;
+    margin-left: 200px;
+}
+.headframe #reload {
+    margin-left: 30px;
+    padding: 3px 8px;
+}

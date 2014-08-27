@@ -1,0 +1,117 @@
+.memo{
+	width:450px;
+	height:40px;
+	padding:0px;
+	margin:15px auto -18px auto;
+
+}
+#memofill{
+	text-align:center;
+	padding:8px;
+	background:#F8F8E5;	
+	color:#750;
+}
+#warningfill{
+	text-align:center;
+	padding:8px;
+	background:#FFFFC5;	
+	color:#D40;
+}
+#m_navigator{
+	 background:#F5F5F5;
+	 border:1px solid #DDD;	
+	 border-top:0;
+	 height:36px;
+	 z-index:500;
+}
+.sub0 {
+	padding:0; margin:0; 	
+	list-style-type:none;
+	list-style-position:outside; 
+	position:absolute;  
+	height:30px; z-index:500; 
+	font-family:arial, verdana, sans-serif; 
+	color:#555;
+	}
+	
+.sub0 li{ 
+	margin:0px; 
+	float:left;
+	z-index:300;
+}
+
+.sub0 li a{
+			
+	 background:#EEE; 
+	 
+	 display:block; 
+	 height:30px; 
+	 line-height:30px; 
+	 text-decoration:none; 
+	 font-size:12px; 
+	 font-weight:bold; 
+	 padding:3px 20px 3px 20px;
+	 border:0px solid #999;	
+	 color:#555;
+	 overflow:hidden;
+}
+.sub0 li:hover a{
+	
+	background:#E3E3E3;
+	
+	color:#444; 
+	
+}
+
+.sub1,.sub2,.sub3,.sub4,.sub5{
+	display:none;	
+	position:absolute;
+	padding:0px;
+}
+
+.sub0 li:hover .sub1{
+	display:block;  
+	top:36px;	
+	list-style-type:none;
+	width:172px; 
+	border-top:1px solid #CCC;
+}
+.sub0 li:hover .sub1 li a{
+	
+	background:#E3E3E3;
+	
+	font-weight:normal;
+	height:30px; 
+	line-height:30px; 
+	color:#222; 
+	text-decoration:none; 
+	padding:0 10px 0 20px;	
+	list-style-position:outside; 
+	border:1px solid #CCC;
+	border-top:1px solid #F3F3F3;
+	width:140px; 
+}
+.sub0 li:hover .sub1 li a:hover{
+	background:#EEEEEE;
+}
+
+.sub1 li:hover .sub2,
+.sub2 li:hover .sub3,
+.sub3 li:hover .sub4,
+.sub4 li:hover .sub5{
+	display:block;  
+	list-style-type:none;
+	width:172px;
+	left:169px;
+	margin-top:-31px;
+	position:absolute;
+	border-top:1px solid #CCC;
+}
+
+.nextrow{
+	color:#888;
+	float:right;
+	margin:-32px 5px; 0px;
+	font-size:20px;
+}
+

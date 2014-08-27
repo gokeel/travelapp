@@ -1,0 +1,350 @@
+  #container_p {
+  margin: 0 auto;
+  width: 460px;
+  padding: 2em; 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.65, rgba(255,255,255,0.558)), color-stop(1, rgba(255,255,255,1)));
+  background: -moz-linear-gradient(rgba(255,255,255,0.558) 65%, rgba(255,255,255,1) 100%);
+}
+ul.red {
+  outline:10px solid red;
+}
+
+ul.simplePagerNav li{
+    display:block;
+    float: left;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: georgia;
+  font-size:14px;
+}
+
+ul.simplePagerNav li a{
+    color: #333;
+    text-decoration: none;
+}
+
+li.currentPage {
+  background: red;
+    background: #FF9500;  
+}
+
+ul.simplePagerNav li.currentPage a {
+  color: #fff;  
+}
+
+ul.pagination3 li {
+  list-style:none;
+}
+
+table.pageme {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}  
+
+table.pageme td {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+.result_class {
+  float: left;
+  position: relative;
+  margin-top: 7px;
+}
+.airport-divider{
+  float: left; padding:7px;
+}
+.result_pickup {
+  float:left;
+  background:url(../img/rental/icon-plane-sml.png) no-repeat left center;
+  margin-right:5px;
+  padding:4px 0 0 20px;
+}
+.result_kursi {
+  background:url(../img/rental/bookingProcessSprite.png);
+  background-position: -10px -141px;
+  margin-right:5px;
+  padding:4px 0 0 20px;
+}
+.result_pintu {
+  background:url(../img/rental/bookingProcessSprite.png);
+  background-position: -10px -168px;
+  margin-right:5px;
+  padding:4px 0 0 20px;
+}
+.result_ase {
+  background:url(../img/rental/bookingProcessSprite.png);
+  background-position: -10px -195px;
+  margin-right:5px;
+  padding:4px 0 0 20px;
+}
+.result_transm {
+  background:url(../img/rental/bookingProcessSprite.png);
+  background-position: -10px -223px;
+  margin-right:5px;
+  padding:4px 0 0 20px;
+}
+.result_pickup_f{ 
+  white-space: nowrap;
+  float:left;
+  background:url(../img/rental/icon_fuelpolicy.gif) no-repeat left center;margin-right:5px;
+  line-height:20px;
+  padding:4px 0 0 20px;
+}
+
+.result_info ul li {
+  background-image: url(../img/rental/bookingProcessSprite.png);
+  background-repeat: no-repeat;
+}
+h3.result_name {
+  font-weight: normal;
+  margin-bottom: 0;
+  width: 384px;
+  float: left;
+  font-size: 14px;
+}
+.result_class {
+  float: left;
+  font-size: 12px;
+  position: relative;
+  margin-top: 7px;
+}
+.selling-out {
+  float: left;
+  clear: both;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 7px 0 0;
+  color: #970000;
+  width: 278px;
+  padding-right: 90px;
+}
+.result_info .result_spec {
+  width: 100%;
+  float: left;
+  font-size: 11px;
+  clear: both;
+  margin-top: 7px;
+}
+.result_spec ul {
+  float: left;
+}
+.result_spec li {
+  display: block;
+  float: left;
+  padding-left: 20px;
+  line-height: 20px;
+  margin-right: 5px;
+}
+.result_seats {
+  background-position: -10px -141px;
+}
+.result_doors {
+  background-position: -10px -168px;
+}
+.result_ac {
+  background-position: -10px -195px;
+}
+.result_trans {
+  background-position: -10px -223px;
+}
+.result_included {
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: #FF7300;
+  font-weight: bold;
+  background-image: none;
+}
+.result_info ul li.result_included_title {
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: #FF7300;
+  font-weight: bold;
+  background-image: none;
+}
+.result_pack {
+  padding: 0;
+  padding-left: 22px;
+  margin: 0 0 4px 0;
+  float: left;
+  position: relative;
+  background-position: -10px -285px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #E3A31E;
+  line-height: 16px;
+  width: 362px;
+}
+.result_includes {
+  float: left;
+  background-image: url(../img/rental/bookingProcessSprite.png);
+  background-position: -10px -342px;
+  padding-left: 22px;
+  line-height: 16px;
+  margin: 0 10px 4px 0;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.result_inner_left {
+  width: 75%;
+  background: white;
+  padding: 7px 0 7px 6px;
+  border-radius: 8px 0 0 8px;
+  -moz-border-radius: 8px 0 0 8px;
+  -khtml-border-radius: 8px 0 0 8px;
+  -webkit-border-radius: 8px 0 0 8px;
+  border-right: 1px solid #EEE;
+  min-height: 125px;
+  height: auto !important;
+  height: 125px;
+}
+.result_inner_right {
+  width: 164px;
+  float: right;
+  display: inline;
+  padding: 10px;
+}
+.btn-wrap {
+  /*position: absolute;
+  */
+  width: 164px;
+       padding: 10px;
+  bottom: 0;
+  right: 0;
+}
+.result_mail{
+  width: 152px;
+  line-height: 22px;
+  padding-left: 20px;
+  background: url(../img/rental/bookingProcessSprite.png) no-repeat -4px -406px #DDD;
+  border: 1px solid #C4C4C4;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #444;
+  text-decoration: none;
+  cursor: pointer;
+  clear: both;
+  margin-top: 8px;
+  float: left;
+  text-align: center;
+  text-shadow: 0 1px 1px white;
+}
+.baggage_4{
+  width: 152px;
+  line-height: 22px;
+  padding-left: 20px;
+  background: url(../img/flightSearch-20068.png) -85px -105px no-repeat scroll;
+  border: 1px solid #C4C4C4;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #444;
+  text-decoration: none;
+  cursor: pointer;
+  clear: both;
+  margin-top: 8px;
+  float: left;
+  text-align: center;
+  text-shadow: 0 1px 1px white;
+}
+.bagasi_1{
+  background: url(../img/flightSearch-20068.png) -85px -105px no-repeat scroll;
+}
+label.radio_besar {
+  width: 200px;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4
+}
+
+/* hide input */
+input.radio_besar:empty {
+  margin-left: -999px;
+}
+
+/* style label */
+input.radio_besar:empty ~ label {
+  position: relative;
+  float: left;
+  line-height: 2.5em;
+  text-indent: 3.25em;
+  margin-top: 2em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input.radio_besar:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 2.5em;
+  background: #D1D3D4;
+  border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio_besar:hover:not(:checked) ~ label:before {
+  content:'\2714';
+  text-indent: .9em;
+  color: #FF7500;
+}
+
+input.radio_besar:hover:not(:checked) ~ label {
+  color: #888;
+}
+
+/* toggle on */
+input.radio_besar:checked ~ label:before {
+  content:'\2714';
+  text-indent: .9em;
+  color: #000000;
+  background-color: #FF7500;
+}
+
+input.radio_besar:checked ~ label {
+  color: #777;
+}
+
+/* radio_besar focus */
+input.radio_besar:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999;
+}
+/* ribon korner */ 
+  .side-corner-tag {
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    font-weight: 900;
+  } 
+  .side-corner-tag p {
+    display: inline;  
+  }
+  
+  .side-corner-tag p span {
+    position: absolute;
+    display: inline-block;
+    right: -25px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2), inset 0px 5px 30px rgba(255,255,255,0.2);
+    text-align: center;
+    text-transform: uppercase;
+    top: 22px;
+    background: #60D931;
+    width: 100px;
+    padding: 3px 10px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+  }
