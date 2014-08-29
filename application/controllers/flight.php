@@ -6,6 +6,8 @@ class Flight extends CI_Controller {
 		$getdata = file_get_contents($this->config->item('api_server').'/apiv1/payexpress?method=getToken&secretkey=' . $this->config->item('api_key').'&output=json');
 		$json = json_decode($getdata);
 		$token = $json->token;
+		// set session token
+		$this->session->set_userdata('active_token', $token);
 		return $token;
 	}
 	
@@ -16,7 +18,7 @@ class Flight extends CI_Controller {
 			'sub_title' => 'Pencarian cepat pesawat sesuai dengan kebutuhan anda.'
 			);
 		$this->load->view('header');
-		$this->load->view('search_page_header', $data);
+		$this->load->view('page_nav_header', $data);
 		$this->load->view('search_flight');
 		$this->load->view('footer');
 		
@@ -75,13 +77,31 @@ class Flight extends CI_Controller {
 		$adult = $this->input->get('dewasa', TRUE);
 		$child = $this->input->get('anak', TRUE);
 		$infant = $this->input->get('bayi', TRUE);
-		
-		$Data = file_get_contents($this->config->item('api_server').'/search/flight?d='.$asal.'&a='.$tujuan.'&date='.$date.'&ret_date='.$ret_date.'&adult='.$adult.'&child='.$child.'&infant='.$infant.'&sort=priceasc&token='.$this->get_token().'&output=json');
+		$token = $this->get_token();
+		$this->session->set_userdata('token', $token);
+		$Data = file_get_contents($this->config->item('api_server').'/search/flight?d='.$asal.'&a='.$tujuan.'&date='.$date.'&ret_date='.$ret_date.'&adult='.$adult.'&child='.$child.'&infant='.$infant.'&sort=priceasc&token='.$token.'&output=json');
 		 
 		$Proses2 = json_decode($Data);
 		 
 		$array = array();
 		$array[] = (object)$Proses2;
+		 
+		if (isset($_GET['callback'])) {
+				echo $_GET['callback'] . '('.json_encode($array).')';
+			}else{
+				echo '{"items":'. json_encode($array) .'}';
+			}
+	}
+	
+	public function get_flight_data()
+	{
+		$flight_id = $this->uri->segment(3);
+		$date = $this->uri->segment(4);
+		$getdata = file_get_contents($this->config->item('api_server').'/flight_api/get_flight_data?flight_id='.$flight_id.'&date='.$date.'&token='.$this->get_token().'&output=json');
+		
+		$json = json_decode($getdata);
+		$array = array();
+		$array[] = (object)$json;
 		 
 		if (isset($_GET['callback'])) {
 				echo $_GET['callback'] . '('.json_encode($array).')';

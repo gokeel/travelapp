@@ -35,10 +35,10 @@
 <!--<script src="<?php echo JS_DIR;?>/jquery.datePicker-2.1.2"></script>-->
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="<?php echo JS_DIR;?>/functions.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<!--<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>-->
 <!--<link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>-->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-<link href='http://www.local.com/bebasterbang/theme/css/datepicker/datepicker.css' rel='stylesheet' type='text/css'>
+<!--<link href='http://www.local.com/bebasterbang/theme/css/datepicker/datepicker.css' rel='stylesheet' type='text/css'>-->
 
 <style>
 .post-share .social-icons-pinterest-icon a, 
@@ -206,7 +206,7 @@
               <li> <a href="pages/tour.html">Paket Wisata</a> </li>
               <!--<li> <a href="pages/about.html">Tentang Kami</a></li>-->
               <!--<li> <a href="pages/news.html">Berita</a></li>-->
-			  <li> <a href="pages/news.html">Halaman Agen</a></li>
+			  <!--<li> <a href="pages/news.html">Halaman Agen</a></li>-->
 			  <li> <a href="<?php echo base_url('');?>index.php/admin">Login</a></li>
 			  <!--<li> <a href="pages/news.html">Register</a></li>-->
               <!--<li> <a href="pages/contact.html">Kontak</a> </li>-->

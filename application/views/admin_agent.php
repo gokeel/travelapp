@@ -23,9 +23,14 @@
 	});
 	function load_agents(){
 		var data = [];
-		$.getJSON('<?php echo base_url();?>index.php/admin/get_all_agents', function(datajson) {
-			for (var i in datajson) {
-				data[i] = {number_row: datajson[i].number_row, agent_type:datajson[i].agent_type, agent_name:datajson[i].agent_name, join_date: datajson[i].join_date, agent_phone: datajson[i].agent_phone, agent_city: toTitleCase(datajson[i].agent_city), agent_email: datajson[i].agent_email, parent_agent: datajson[i].parent_agent, deposit_amount: datajson[i].deposit_amount, voucher: datajson[i].voucher, approved: datajson[i].approved, agent_id: datajson[i].agent_id};
+		$.ajax({
+			type : "GET",
+			async: false,
+			url: '<?php echo base_url();?>index.php/admin/get_all_agents',
+			dataType: "json",
+			success:function(datajson){
+				for(var i=0; i<datajson.length;i++)
+					data[i] = {number_row: datajson[i].number_row, agent_type:datajson[i].agent_type, agent_name:datajson[i].agent_name, join_date: datajson[i].join_date, agent_phone: datajson[i].agent_phone, agent_city: toTitleCase(datajson[i].agent_city), agent_email: datajson[i].agent_email, parent_agent: datajson[i].parent_agent, deposit_amount: datajson[i].deposit_amount, voucher: datajson[i].voucher, approved: datajson[i].approved, agent_id: datajson[i].agent_id};
 			}
 		});
 		

@@ -10,7 +10,7 @@ class Admin extends CI_Controller {
         $this->load->model('users');
 		$this->load->model('agents');
 		$this->load->model('bank');
-		
+		$this->load->model('orders');
 	}
 	
 	public function index() {
@@ -62,8 +62,10 @@ class Admin extends CI_Controller {
 			$this->load->view('admin_agent_header');
 		if (strpos($page_request, 'admin_setting') !== false)
 			$this->load->view('admin_setting_header');
-		$this->load->view($page_request, $data);
-		$this->load->view('admin_page_footer', $data);
+		if (strpos($page_request, 'admin_booking') !== false)
+			$this->load->view('admin_booking_header');
+		$this->load->view($page_request);
+		$this->load->view('admin_page_footer');
 	}
 	
 	public function admin_page(){
@@ -86,6 +88,10 @@ class Admin extends CI_Controller {
 	public function setting_bank_page(){
 		//$status = $this->uri->segment(3);
 		$this->page('admin_setting_bank');
+	}
+	
+	public function booking_page(){
+		$this->page('admin_booking_page');
 	}
 	
 	public function setting_user_page(){
@@ -112,8 +118,25 @@ class Admin extends CI_Controller {
 	}
 	
 	public function detail_agent(){
-		$this->page('admin_agent_data_detail');
+		$data = array(
+			'user_name' => $this->session->userdata('user_name'),
+			'ip_address' => $this->session->userdata('ip_address')
+		);
+		$this->load->view('admin_page_header', $data);
+		$this->load->view('admin_agent_data_detail');
+		$this->load->view('admin_page_footer');
 	}
+	
+	public function proceed_order(){
+		$data = array(
+			'user_name' => $this->session->userdata('user_name'),
+			'ip_address' => $this->session->userdata('ip_address')
+		);
+		$this->load->view('admin_page_header', $data);
+		$this->load->view('admin_booking_checkout');
+		$this->load->view('admin_page_footer');
+	}
+
 	
 	public function agent_add(){
 		$config['upload_path'] = './assets/uploads/agent_license_files';
@@ -553,5 +576,116 @@ class Admin extends CI_Controller {
 			'via_code' => $this->input->get('via_code',TRUE)
 		);
 		$upd = $this->bank->upd_bank('bank_via', 'id', $id, $data);
+	}
+	
+	public function get_registered_order(){
+		$category = $this->uri->segment(3);
+		$query = $this->orders->get_registered_order($category);
+		$number_row = 0;
+		foreach ($query->result_array() as $row){
+			$number_row ++;
+			$data[] = array(
+				'number_row' => $number_row,
+				'order_id' => $row['order_id'],
+				'agent_name' => $row['agent_name'],
+				'airline_name' => $row['airline_name'],
+				'flight_id' => $row['flight_id'],
+				'route' => $row['route'],
+				'departing_date' => $row['departing_date'],
+				'time_travel' => $row['time_travel'],
+				'total_price' => $row['total_price'],
+				'adult' => $row['adult'],
+				'price_adult' => $row['price_adult'],
+				'child' => $row['child'],
+				'price_child' => $row['price_child'],
+				'infant' => $row['infant'],
+				'price_infant' => $row['price_infant']
+			);
+		}
+		echo json_encode($data);
+	}
+	
+	public function get_flight_order_by_id(){
+		$id = $this->uri->segment(3);
+		$query = $this->orders->get_order_by_id($id);
+		$response = array();
+		$response['responses'] = array();
+		$response['responses']['general'] = array();
+		// generate response general info
+		foreach ($query->result_array() as $row){
+			$general = array(
+				'order_id' => $row['order_id'],
+				'agent_name' => $row['agent_name'],
+				'airline_name' => $row['airline_name'],
+				'flight_id' => array('name' => 'flight_id', 'value' => $row['flight_id']),
+				'token' => array('name' => 'token', 'value' => $row['token']),
+				'lion_captcha' => array('name' => 'lioncaptcha', 'value' => $row['lion_captcha']),
+				'lion_session_id' => array('name' => 'lionsessionid', 'value' => $row['lion_session_id']),
+				'route' => $row['route'],
+				'departing_date' => $row['departing_date'],
+				'time_travel' => $row['time_travel'],
+				'total_price' => $row['total_price'],
+				'adult' => $row['adult'],
+				'price_adult' => $row['price_adult'],
+				'child' => $row['child'],
+				'price_child' => $row['price_child'],
+				'infant' => $row['infant'],
+				'price_infant' => $row['price_infant']
+			);
+			array_push($response['responses']['general'], $general);
+		}
+		//fetch & generate contact person
+		$con = $this->orders->get_passenger($id, 'contact');
+		$response['responses']['contact'] = array();
+		foreach ($con->result_array() as $row){
+			$contact = array(
+				'title' => array('name' => 'conSalutation', 'value' => $row['title']),
+				'firstname' => array('name' => 'conFirstName', 'value' => $row['first_name']),
+				'lastname' => array('name' => 'conLastName', 'value' => $row['last_name']),
+				'email' => array('name' => 'conEmailAddress', 'value' => $row['email']),
+				'phone' => array('name' => 'conPhone', 'value' => $row['phone_1'])
+			);
+			array_push($response['responses']['contact'], $contact);
+		}
+		//fetch & generate adult
+		$con = $this->orders->get_passenger($id, 'adult');
+		$response['responses']['adult'] = array();
+		foreach ($con->result_array() as $row){
+			$adult = array(
+				'title' => array('name' => 'titlea'.$row['order_list'], 'value' => $row['title']),
+				'firstname' => array('name' => 'firstnamea'.$row['order_list'], 'value' => $row['first_name']),
+				'lastname' => array('name' => 'lastnamea'.$row['order_list'], 'value' => $row['last_name']),
+				'birthdate' => array('name' => 'birthdatea'.$row['order_list'], 'value' => $row['birthday']),
+				'id' => array('name' => 'ida'.$row['order_list'], 'value' => $row['identity_number'])
+			);
+			array_push($response['responses']['adult'], $adult);
+		}
+		//fetch & generate child
+		$con = $this->orders->get_passenger($id, 'child');
+		$response['responses']['child'] = array();
+		foreach ($con->result_array() as $row){
+			$child = array(
+				'title' => array('name' => 'titlec'.$row['order_list'], 'value' => $row['title']),
+				'firstname' => array('name' => 'firstnamec'.$row['order_list'], 'value' => $row['first_name']),
+				'lastname' => array('name' => 'lastnamec'.$row['order_list'], 'value' => $row['last_name']),
+				'birthdate' => array('name' => 'birthdatec'.$row['order_list'], 'value' => $row['birthday']),
+				'id' => array('name' => 'idc'.$row['order_list'], 'value' => $row['identity_number'])
+			);
+			array_push($response['responses']['child'], $child);
+		}
+		//fetch & generate infant
+		$con = $this->orders->get_passenger($id, 'infant');
+		$response['responses']['infant'] = array();
+		foreach ($con->result_array() as $row){
+			$infant = array(
+				'title' => array('name' => 'titlei'.$row['order_list'], 'value' => $row['title']),
+				'firstname' => array('name' => 'firstnamei'.$row['order_list'], 'value' => $row['first_name']),
+				'lastname' => array('name' => 'lastnamei'.$row['order_list'], 'value' => $row['last_name']),
+				'birthdate' => array('name' => 'birthdatei'.$row['order_list'], 'value' => $row['birthday']),
+				'parent' => array('name' => 'parenti'.$row['order_list'], 'value' => $row['parent'])
+			);
+			array_push($response['responses']['infant'], $infant);
+		}
+		echo json_encode($response);
 	}
 }

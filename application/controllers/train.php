@@ -16,7 +16,7 @@ class Train extends CI_Controller {
 			'sub_title' => 'Pencarian cepat tiket kereta api sesuai dengan kebutuhan anda.'
 			);
 		$this->load->view('header');
-		$this->load->view('search_page_header', $data);
+		$this->load->view('page_nav_header', $data);
 		$this->load->view('search_train');
 		$this->load->view('footer');
 		

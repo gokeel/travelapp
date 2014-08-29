@@ -11,8 +11,18 @@ class Agent extends CI_Controller {
 	}
 	
 	public function home(){
-		$this->load->view('agent_home');
+		$this->page('agent_home');
+		
+	}
+	
+	function page($page_request){
+		$this->load->view('agent_header');
+		$this->load->view($page_request);
 		$this->load->view('agent_navigation');
+	}
+	
+	public function order_page(){
+		$this->page('agent_add_order');
 	}
 }
 ?>
