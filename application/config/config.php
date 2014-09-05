@@ -8,7 +8,7 @@
 $config['api_server'] = 'https://api.master18.tiket.com';
 $config['api_key'] = '2a7fd22b735fa89586cc4c8067c82c9a';
 $config['api_token'] = '0ebbf60e5813d152d079bea444c90238c42e3628';
-$config['account_id'] = '1';
+$config['account_id'] = '2';
 
 /*
 |--------------------------------------------------------------------------

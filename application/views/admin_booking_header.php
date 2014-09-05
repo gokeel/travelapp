@@ -10,11 +10,14 @@
 			<?php echo ($uri2=='booking_page' ? '<li id="grp_5" class="selected">' : '<li id="grp_5">');?>
 				<a href="<?php echo base_url();?>index.php/admin/booking_page" >Pesanan Terbaru</a>
 			</li>
-			<?php echo ($uri3=='done' ? '<li id="grp_4" class="selected">' : '<li id="grp_4">');?>
-				<a href="<?php echo base_url();?>index.php/admin/booking_by_status/done" >Pesanan Terproses</a>
+			<?php echo ($uri2=='validate_payment' ? '<li id="grp_6" class="selected">' : '<li id="grp_6">');?>
+				<a href="<?php echo base_url();?>index.php/admin/validate_payment" >Validasi Pembayaran Pelanggan</a>
 			</li>
-			<?php echo ($uri3=='cancel' ? '<li id="grp_12" class="selected">' : '<li id="grp_12">');?>
-				<a href="<?php echo base_url();?>index.php/admin/booking_by_status/cancel" >Pesanan Batal</a>
+			<?php echo ($uri2=='booking_processed' ? '<li id="grp_4" class="selected">' : '<li id="grp_4">');?>
+				<a href="<?php echo base_url();?>index.php/admin/booking_processed" >Pesanan Terproses</a>
+			</li>
+			<?php echo ($uri2=='booking_cancel' ? '<li id="grp_12" class="selected">' : '<li id="grp_12">');?>
+				<a href="<?php echo base_url();?>index.php/admin/booking_cancelled" >Pesanan Batal</a>
 			</li>
 			<?php //echo ($uri3=='Trial' ? '<li id="grp_401" class="selected">' : '<li id="grp_401">');?>
 			<!--	<a href="<?php echo base_url();?>index.php/admin/agent_page_by_status/Trial" >Agen Trial</a>

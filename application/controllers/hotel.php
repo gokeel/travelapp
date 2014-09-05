@@ -16,7 +16,7 @@ class Hotel extends CI_Controller {
 			'sub_title' => 'Pencarian cepat pesawat sesuai dengan kebutuhan anda.'
 			);
 		$this->load->view('header');
-		$this->load->view('search_page_header', $data);
+		$this->load->view('page_nav_header', $data);
 		$this->load->view('search_flight');
 		$this->load->view('footer');
 		
@@ -42,9 +42,12 @@ class Hotel extends CI_Controller {
 		$checkin = $this->input->get('checkin', TRUE);
 		$checkout = $this->input->get('checkout', TRUE);
 		$room = $this->input->get('room', TRUE);
+		$night = $this->input->post('night', TRUE);
 		$adult = $this->input->get('adult', TRUE);
 		$child = $this->input->get('child', TRUE);
-		$getdata = file_get_contents($this->config->item('api_server').'/search/hotel?q='.$query.'&startdate='.$checkin.'&enddata='.$checkout.'&room='.$room.'&adult='.$adult.'&child='.$child.'&token='.$this->get_token().'&output=json');
+		$token = $this->get_token();
+		$this->session->set_userdata('token', $token);
+		$getdata = file_get_contents($this->config->item('api_server').'/search/hotel?q='.$query.'&startdate='.$checkin.'&enddata='.$checkout.'&room='.$room.'&night='.$night.'&adult='.$adult.'&child='.$child.'&token='.$token.'&output=json');
 		$json = json_decode($getdata);
 		
 		$array = array();

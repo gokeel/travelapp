@@ -71,8 +71,10 @@ class Train extends CI_Controller {
 		$adult = $this->input->get('dewasa', TRUE);
 		$child = $this->input->get('anak', TRUE);
 		$infant = $this->input->get('bayi', TRUE);
+		$token = $this->get_token();
+		$this->session->set_userdata('token', $token);
 		
-		$Data = file_get_contents($this->config->item('api_server').'/search/train?d='.$asal.'&a='.$tujuan.'&date='.$date.'&ret_date='.$ret_date.'&adult='.$adult.'&child='.$child.'&infant='.$infant.'&class=all&token='.$this->get_token().'&output=json');
+		$Data = file_get_contents($this->config->item('api_server').'/search/train?d='.$asal.'&a='.$tujuan.'&date='.$date.'&ret_date='.$ret_date.'&adult='.$adult.'&child='.$child.'&infant='.$infant.'&class=all&token='.$token.'&output=json');
 		 
 		$Proses2 = json_decode($Data);
 		 

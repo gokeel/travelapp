@@ -38,7 +38,7 @@ class Agents extends CI_Model {
 	}
 	
 	function get_all_agents(){
-		$query = 'select a.agent_id, a.agent_name, b.name as agent_type, a.join_date, a.agent_phone, c.city as agent_city, a.agent_email, d.agent_name as parent_agent, a.deposit_amount, a.voucher, a.approved from agents a join agent_types b on a.agent_type_id = b.id join cities c on a.agent_city = c.id join agents d on a.parent_agent_id = d.agent_id order by agent_id';
+		$query = 'select a.agent_id, a.agent_username, a.agent_name, b.name as agent_type, a.join_date, a.agent_phone, c.city as agent_city, a.agent_email, d.agent_name as parent_agent, a.deposit_amount, a.voucher, a.approved from agents a join agent_types b on a.agent_type_id = b.id join cities c on a.agent_city = c.id join agents d on a.parent_agent_id = d.agent_id order by agent_id desc';
 		$sql = $this->db->query($query);
 		return $sql;
 	}

@@ -7,6 +7,9 @@
 	define('JS_2_DIR', base_url('assets/js'));
 	define('FONTS_DIR', base_url('assets/admin/fonts'));
 	define('LIB_YUI_DIR', base_url('assets/libraries/yui3-3.17.2'));
+	
+	if ($this->session->userdata('user_level')=='agent')
+		redirect(base_url('index.php/agent/home'));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -14,7 +17,7 @@
 
 <head>
 
-<title>CMS | WEB</title>
+<title>Halaman Administrasi</title>
 
 <script type="text/javascript">
 

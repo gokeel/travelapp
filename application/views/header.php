@@ -15,7 +15,7 @@
 <head>
 <meta charset="utf-8">
 <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
-<title>BEBASTERBANG.COM | Stop working it's leisure time!</title>
+<title>Hellotraveler | one stop travelling solution</title>
 <meta name="description" content="Verendus - A HTML5 / CSS3 Multipurpose Business Template">
 <meta name="keywords" content="Bootstrap, Verendus, HTML5, CSS3, Business, Multipurpose, Template">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,14 +202,14 @@
             <span class="menu-slider hidden-phone"></span> <!-- Menu Slider -->
             <ul id="header-menu" class="menu">
               <li class="active current-menu-item"> <a href="<?php echo base_url();?>">Home</a> </li>
-              <!--<li> <a href="pages/hotel.html">Hotel</a> </li>-->
-              <li> <a href="pages/tour.html">Paket Wisata</a> </li>
-              <!--<li> <a href="pages/about.html">Tentang Kami</a></li>-->
-              <!--<li> <a href="pages/news.html">Berita</a></li>-->
-			  <!--<li> <a href="pages/news.html">Halaman Agen</a></li>-->
-			  <li> <a href="<?php echo base_url('');?>index.php/admin">Login</a></li>
-			  <!--<li> <a href="pages/news.html">Register</a></li>-->
-              <!--<li> <a href="pages/contact.html">Kontak</a> </li>-->
+              <li> <a href="<?php echo base_url();?>index.php/webfront/promo">Promo</a></li>
+              <li> <a href="<?php echo base_url();?>index.php/webfront/hotel">Hotel</a> </li>
+              <li> <a href="<?php echo base_url();?>index.php/webfront/paketwisata">Paket Wisata</a> </li>
+              <li> <a href="<?php echo base_url();?>index.php/webfront/tentang">Tentang Kami</a></li>
+              <li> <a href="<?php echo base_url();?>index.php/webfront/agen">Keagenan</a></li>
+              <li> <a href="<?php echo base_url();?>index.php/webfront/registrasi">Registrasi agen</a></li>
+              <li> <a href="<?php echo base_url('');?>index.php/admin">Login</a></li>
+			  <li><a href="<?php echo base_url();?>index.php/webfront/kontak">Kontak</a> </li>
             </ul>
           </nav>
           <!-- Menu Search Form 
@@ -236,8 +236,8 @@
             <div class="span4 logo"> <a href="<?php echo base_url();?>"> <img src="<?php echo IMG_DIR;?>//verendus-logo.png" alt="Verendus Logo" title="Verendus Logo" /> </a> </div>
             <div class="header-contact button"> <a href="#">
               <ul class="clearfix">
-                <li class="phone-number"> <i class="icon-phone"></i>+62(24) - 45678910 </li>
-                <li class="mailto-email"> <i class="icon-envelope"></i>info@bebasterbang.com </li>
+                <li class="phone-number"> <a href="<?php echo base_url();?>index.php/webfront/kontak"><i class="icon-phone"></i> +62(21) - 86603475 </li>
+                <li class="mailto-email"> <i class="icon-envelope"></i>info@hellotraveler.co.id </li></a>
               </ul>
               </a> </div>
           </div>

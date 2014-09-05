@@ -7,7 +7,6 @@ class Flight extends CI_Controller {
 		$json = json_decode($getdata);
 		$token = $json->token;
 		// set session token
-		$this->session->set_userdata('active_token', $token);
 		return $token;
 	}
 	
@@ -45,7 +44,6 @@ class Flight extends CI_Controller {
 	public function sync_all_airport()
 	{
 		$getdata = file_get_contents($this->config->item('api_server').'/flight_api/all_airport?token='.$this->get_token().'&output=json');
-		print_r($getdata);
 		$json = json_decode($getdata);
 		$airports = $json->all_airport->airport;
 		
@@ -97,7 +95,7 @@ class Flight extends CI_Controller {
 	{
 		$flight_id = $this->uri->segment(3);
 		$date = $this->uri->segment(4);
-		$getdata = file_get_contents($this->config->item('api_server').'/flight_api/get_flight_data?flight_id='.$flight_id.'&date='.$date.'&token='.$this->get_token().'&output=json');
+		$getdata = file_get_contents($this->config->item('api_server').'/flight_api/get_flight_data?flight_id='.$flight_id.'&date='.$date.'&token='.$this->session->userdata('token').'&output=json');
 		
 		$json = json_decode($getdata);
 		$array = array();

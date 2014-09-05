@@ -31,6 +31,10 @@
 					</td>
 				</tr>
 				<tr id="trcompany_name" class="editTR" >
+					<td class="tdTitle">Username</td>
+					<td><input name="username" id="username" type="text" value="" size="60" <?php if($editable) echo 'readonly';?>></td>
+				</tr>
+				<tr id="trcompany_name" class="editTR" >
 					<td class="tdTitle">Nama Agen</td>
 					<td><input name="company_name" id="company_name" type="text" value="" size="60"></td>
 				</tr>
@@ -82,7 +86,7 @@
 					<td class="tdTitle">Email</td>
 					<td><input name="email" id="email" type="text" value="" size="60"></td>
 				</tr>
-				<tr id="trlisensi_number" class="editTR" >
+				<!--<tr id="trlisensi_number" class="editTR" >
 					<td class="tdTitle">No KTP/SIM/Identitas lain</td>
 					<td><input name="lisensi_number" id="lisensi_number" type="text" value="" size="60">
 					</td>
@@ -96,7 +100,7 @@
 						?>
 						<input name="lisensi_file" type="file" id="lisensi_file" size="40" class="fileupload" />
 					</td>
-				</tr>
+				</tr>-->
 				<tr id="trmanager_name" class="editTR" >
 					<td class="tdTitle">Nama Manager</td>
 					<td><input name="manager_name" id="manager_name" type="text" value="" size="60"></td>
@@ -116,10 +120,14 @@
 						</select>
 					</td>
 				</tr>
-				<tr id="trpassword" class="editTR" >
-					<td class="tdTitle">Password</td>
-					<td><input name="password" id="password" type="text" value="" size="60"></td>
-				</tr>
+				<?php
+					if (!$editable){
+						echo '<tr id="trpassword" class="editTR" >';
+						echo '<td class="tdTitle">Password</td>';
+						echo '<td><input name="password" id="password" type="password" value="" size="60"></td>';
+						echo '</tr>';
+					}					
+				?>
 				<tr id="trdeposit_amount" class="editTR" >
 					<td class="tdTitle">Jumlah Deposit</td>
 					<td><input name="deposit_amount" id="deposit_amount" type="text" value="" size="60"></td>
@@ -278,6 +286,7 @@
 			success:function(data){
 				for(var i=0; i<data.length;i++){
 					//document.getElementById('member-type').innerHTML = replace_undefined(data[i].agent_type) ;
+					$('#username').val(replace_undefined(data[i].username));
 					$('#company_name').val(replace_undefined(data[i].agent_name));
 					$('#join_date').val(replace_undefined(data[i].join_date));
 					$('#address').val(replace_undefined(data[i].address));
@@ -296,13 +305,13 @@
 					$('#voucher').val(replace_undefined(data[i].voucher));
 					$('#approved').val(replace_undefined(data[i].approved));
 					// buat image lisensi file
-					var img = document.createElement('img');
+					/*var img = document.createElement('img');
 					img.setAttribute('src', '<?php echo base_url();?>/assets/uploads/agent_license_files/'+data[i].license_file);
 					img.setAttribute('height', '350');
 					img.setAttribute('width', '400');
 					img.setAttribute('alt', data[i].license_file)
 					var el = document.getElementById('license-file');
-					el.appendChild(img);
+					el.appendChild(img);*/
 				}
 			}
 		})

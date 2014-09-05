@@ -30,7 +30,7 @@
 			dataType: "json",
 			success:function(datajson){
 				for(var i=0; i<datajson.length;i++)
-					data[i] = {number_row: datajson[i].number_row, agent_type:datajson[i].agent_type, agent_name:datajson[i].agent_name, join_date: datajson[i].join_date, agent_phone: datajson[i].agent_phone, agent_city: toTitleCase(datajson[i].agent_city), agent_email: datajson[i].agent_email, parent_agent: datajson[i].parent_agent, deposit_amount: datajson[i].deposit_amount, voucher: datajson[i].voucher, approved: datajson[i].approved, agent_id: datajson[i].agent_id};
+					data[i] = {number_row: datajson[i].number_row, username:datajson[i].username, agent_type:datajson[i].agent_type, agent_name:datajson[i].agent_name, join_date: datajson[i].join_date, agent_phone: datajson[i].agent_phone, agent_city: toTitleCase(datajson[i].agent_city), agent_email: datajson[i].agent_email, parent_agent: datajson[i].parent_agent, deposit_amount: datajson[i].deposit_amount, voucher: datajson[i].voucher, approved: datajson[i].approved, agent_id: datajson[i].agent_id};
 			}
 		});
 		
@@ -54,8 +54,9 @@
 			var data_agent = data;
 			var table = new Y.DataTable({
 				columns: [
-					{key:"number_row", label:"No.", width:"60px"},
+					{key:"number_row", label:"No.", width:"10px"},
 					{key:"agent_type", label:"Tipe Member"},
+					{key:"username", label:"Username"},
 					{key:"agent_name", label:"Nama Agen"},
 					{key:"join_date", label:"Tanggal Bergabung"},
 					{key:"agent_phone", label:"Telepon"},
@@ -67,8 +68,14 @@
 					{key:"approved", label:"Approved"},
 					{
 						key:"agent_id", 
-						label: "Action",
-						formatter:'<a href="<?php echo base_url();?>index.php/admin/detail_agent/{value}"><img src="<?php echo IMAGES_DIR;?>/look.ico"/ class="crud-btn" /></a><a href="<?php echo base_url();?>index.php/admin/edit_agent/{value}"><img src="<?php echo IMAGES_DIR;?>/edit.ico"/ class="crud-btn"></a><a href="<?php echo base_url();?>index.php/admin/delete_agent/{value}"><img src="<?php echo IMAGES_DIR;?>/delete.ico"/ class="crud-btn"></a>',
+						label: "Detil/Ubah",
+						formatter:'<a href="<?php echo base_url();?>index.php/admin/detail_agent/{value}"><img src="<?php echo IMAGES_DIR;?>/look.ico"/ class="crud-btn" /></a>&nbsp;&nbsp;<a href="<?php echo base_url();?>index.php/admin/edit_agent/{value}"><img src="<?php echo IMAGES_DIR;?>/edit.ico"/ class="crud-btn"></a>',
+						allowHTML: true
+					},
+					{
+						key:"agent_id", 
+						label: "Delete",
+						formatter:'<a href="<?php echo base_url();?>index.php/admin/delete_agent/{value}"><img src="<?php echo IMAGES_DIR;?>/delete.ico"/ class="crud-btn"></a>',
 						allowHTML: true
 					}
 				],

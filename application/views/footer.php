@@ -17,12 +17,17 @@
 				<p><a href="#">Berita</a></p>
 			</div>
 			<div class="widget-box widget-text span3" style="color:#aaa;">
-				<h4 class="widget-title">Produk dan Layanan</h4>
+				<h4 class="widget-title">Produk</h4>
 				<p><a href="<?php echo base_url();?>index.php/flight/page">Pesawat</a></p>
 				<p><a href="<?php echo base_url();?>index.php/train/page">Kereta Api</a></p>
-				<p><a href="#">Hotel</a></p>
+				<p><a href="<?php echo base_url();?>index.php/hotel/page">Hotel</a></p>
 				<!--<p><a href="#">Tour</a></p>
 				<p><a href="#">Travel</a></p>-->
+			</div>
+			<div class="widget-box widget-text span3" style="color:#aaa;">
+				<h4 class="widget-title">Layanan</h4>
+				<p><a href="<?php echo base_url();?>index.php/order/confirm_payment">Konfirmasi Pembayaran</a></p>
+				
 			</div>
             <!--<div class="widget-box widget-text span3" style="color:#aaa;">
               <h4 class="widget-title">Tentang Kami</h4>
@@ -134,7 +139,7 @@
           <div class="row-fluid">
             <div class="sitemap-holder span7">
               <ul class="sitemap-menu clearfix">
-                <li> <a href="#">Home</a> </li>
+                <li> <a href="<?php echo base_url();?>">Home</a> </li>
                 <li> <a href="#">Hotel</a> </li>
                 <li> <a href="#">Paket Wisata</a> </li>
                 <li> <a href="#">Berita</a> </li>

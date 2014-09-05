@@ -4,7 +4,11 @@
 	$uri5 = $this->uri->segment(5);
 ?>
 <div class="main fullwidth">
-	<form id="form-order" name="form-order" method="post" action="<?php echo base_url();?>index.php/order/add_flight_order">
+	<form id="form-order" name="form-order" method="post" action="<?php 
+	if ($uri3=='flight') echo base_url('index.php/order/add_flight_order');
+	else if ($uri3=='train') echo base_url('index.php/order/add_train_order');
+	else if ($uri3=='hotel') echo base_url('index.php/order/add_hotel_order');
+	?>">
 		<input type="hidden" name="id" value="<?php echo $uri4;?>">
 		<input type="hidden" name="departing_date" value="<?php echo $uri5;?>">
 		
@@ -111,7 +115,149 @@
 			}
 		});
 	};
-		
+	function get_detail_train(){
+		<?php
+			$train_id = $this->uri->segment(4);
+			echo 'var train_id = "'.$train_id.'";';
+			$departure_date = $this->uri->segment(5);
+			echo 'var departure = "'.$departure_date.'";';
+			$from = $this->uri->segment(6);
+			echo 'var from = "'.$from.'";';
+			$to = $this->uri->segment(7);
+			echo 'var to = "'.$to.'";';
+			$adult = $this->uri->segment(8);
+			echo 'var adult = "'.$adult.'";';
+			$child = $this->uri->segment(9);
+			echo 'var child = "'.$child.'";';
+			$infant = $this->uri->segment(10);
+			echo 'var infant = "'.$infant.'";';
+			$request = 'dari='.$from.'&ke='.$to.'&train-pergi='.$departure_date.'&dewasa='.$adult.'&anak='.$child.'&bayi='.$infant;
+			echo 'var train_id = "'.$train_id.'";';
+		?>
+		$.ajax({
+			type : "GET",
+			url: "<?php echo base_url('index.php/train/search_trains');?>",
+			data: "<?php echo $request;?>",
+			cache: false,
+			dataType: "json",
+			success:function(data){
+				for(var i=0; i<data.items[0].departures.result.length;i++){
+					if (train_id == data.items[0].departures.result[i].schedule_id){
+						var total_price_adult = adult * data.items[0].departures.result[i].price_adult;
+						var total_price_child = child * data.items[0].departures.result[i].price_child;
+						var total_price_infant = infant * data.items[0].departures.result[i].price_infant;
+						var total_price = total_price_adult + total_price_child + total_price_infant;
+						$('#detail').empty();
+						/*create input contains data*/
+						$('#detail').append('\
+						<input type="hidden" name="train_id" value="'+data.items[0].departures.result[i].train_id+'">\
+						<input type="hidden" name="train_name" value="'+data.items[0].departures.result[i].train_name+'">\
+						<input type="hidden" name="class" value="'+data.items[0].departures.result[i].class_name+'">\
+						<input type="hidden" name="subclass" value="'+data.items[0].departures.result[i].subclass_name+'">\
+						<input type="hidden" name="time_travel" value="'+data.items[0].departures.result[i].departure_time+'-'+data.items[0].departures.result[i].arrival_time+'">\
+						<input type="hidden" name="route" value="'+data.items[0].search_queries.dep_station+'-'+data.items[0].search_queries.arr_station+'">\
+						<input type="hidden" name="total_price" value="'+total_price+'">\
+						<input type="hidden" name="price_adult" value="'+data.items[0].departures.result[i].price_adult+'">\
+						<input type="hidden" name="price_child" value="'+data.items[0].departures.result[i].price_child+'">\
+						<input type="hidden" name="price_infant" value="'+data.items[0].departures.result[i].price_infant+'">\
+						<input type="hidden" name="tot_adult" value="'+adult+'">\
+						<input type="hidden" name="tot_child" value="'+child+'">\
+						<input type="hidden" name="tot_infant" value="'+infant+'">\
+						');
+						/*fetch data*/
+						$('#detail').append('\
+							<table>\
+								<tr>\
+									<td><p><strong>'+data.items[0].departures.result[i].train_name+' (subclass: '+data.items[0].departures.result[i].subclass_name+')</strong></p>\
+										<p>Tanggal: <?php echo $uri5;?></p>\
+										<p>Departure-Arrival: '+data.items[0].departures.result[i].departure_time+'-'+data.items[0].departures.result[i].arrival_time+'</p>\
+									</td>\
+									<td>\
+									<p>Rincian Harga:</p>\
+										<ul style="list-style-type:square; margin-left: 20px;">\
+										<li>Dewasa: '+adult+' x '+data.items[0].departures.result[i].price_adult+' = '+total_price_adult+'</li>\
+										<li>Anak: '+child+' x '+data.items[0].departures.result[i].price_child+' = '+total_price_child+'</li>\
+										<li>Bayi: '+infant+' x '+data.items[0].departures.result[i].price_infant+' = '+total_price_infant+'</li>\
+										</ul>\
+									<p>Total harus dibayar: IDR <strong>'+total_price+'</strong></p>\
+									</td>\
+								</tr>\
+							</table>');
+						create_form('#pemesan', 1, 'con', 0);
+						create_form('#passenger-adult', adult, 'a', 0);
+						create_form('#passenger-child', child, 'c', 0);
+						create_form('#passenger-infant', infant, 'i', adult);
+					}
+				}
+			}
+		});
+	};
+	function get_detail_hotel(){
+		<?php
+			$hotel_id = $this->uri->segment(4);
+			echo 'var hotel_id = "'.$hotel_id.'";';
+			$query = $this->uri->segment(5);
+			echo 'var query = "'.$query.'";';
+			$checkin = $this->uri->segment(6);
+			echo 'var checkin = "'.$checkin.'";';
+			$checkout = $this->uri->segment(7);
+			echo 'var checkout = "'.$checkout.'";';
+			$room = $this->uri->segment(8);
+			echo 'var room = "'.$room.'";';
+			$adult = $this->uri->segment(9);
+			echo 'var adult = "'.$adult.'";';
+			$child = $this->uri->segment(10);
+			echo 'var child = "'.$child.'";';
+			$night = $this->uri->segment(11);
+			echo 'var night = "'.$night.'";';
+			$request = 'id='.$hotel_id.'&query='.$query.'&checkin='.$checkin.'&checkout='.$checkout.'&room='.$room.'&dewasa='.$adult.'&anak='.$child.'&night='.$night;
+		?>
+		$.ajax({
+			type : "GET",
+			url: "<?php echo base_url('index.php/hotel/search_hotels');?>",
+			data: "<?php echo $request;?>",
+			cache: false,
+			dataType: "json",
+			success:function(data){
+				for(var i=0; i<data.items[0].results.result.length;i++){
+					if (hotel_id == data.items[0].results.result[i].id){
+						$('#detail').empty();
+						/*create input contains data*/
+						$('#detail').append('\
+						<input type="hidden" name="hotel_id" value="'+data.items[0].results.result[i].id+'">\
+						<input type="hidden" name="hotel_name" value="'+data.items[0].results.result[i].name+'">\
+						<input type="hidden" name="hotel_address" value="'+data.items[0].results.result[i].address+'">\
+						<input type="hidden" name="regional" value="'+data.items[0].results.result[i].regional+'">\
+						<input type="hidden" name="checkin" value="'+checkin+'">\
+						<input type="hidden" name="checkout" value="'+checkout+'">\
+						<input type="hidden" name="room" value="'+room+'">\
+						<input type="hidden" name="price" value="'+data.items[0].results.result[i].price+'">\
+						<input type="hidden" name="tot_adult" value="'+adult+'">\
+						<input type="hidden" name="night" value="'+night+'">\
+						');
+						/*fetch data*/
+						$('#detail').append('\
+							<table>\
+								<tr>\
+									<td><p><strong>'+data.items[0].results.result[i].name+'</strong></p>\
+										<p>Checkin - Checkout: '+checkin+' - '+checkout+'</p>\
+									</td>\
+									<td>\
+									<p>Kamar: '+room+'</p>\
+									<p>Dewasa: '+adult+'</p>\
+									<p>Anak: '+child+'</p>\
+									<p>Total harus dibayar: IDR <strong>'+data.items[0].results.result[i].price+'</strong></p>\
+									</td>\
+								</tr>\
+							</table>');
+						create_form('#pemesan', 1, 'con', 0);
+						create_form('#passenger-adult', 1, 'a', 0);
+					}
+				}
+			}
+		});
+	};
+	
 	function create_form(el_div, n, who, tot_adult){
 		var div = $(el_div);
 		if (n>0){
@@ -161,8 +307,8 @@
 							<tr>\
 								<td>Tanggal Lahir (Format: YYYY-MM-DD)</td>\
 								<td><input type="text" name="birthdatea'+idx+'" id="birthdatea'+idx+'"></td>\
-								<td></td>\
-								<td></td>\
+								<td>Telepon/HP 1</td>\
+								<td><input type="text" name="phonea'+idx+'"></td>\
 							</tr>\
 						</table>\
 						\
@@ -235,7 +381,14 @@
 	}
 	
 	$( window ).load(function() {
-		get_detail_flight();
+		<?php
+			if ($uri3=='flight')
+				echo 'get_detail_flight()';
+			else if ($uri3 == 'train')
+				echo 'get_detail_train()';
+			else if ($uri3 == 'hotel')
+				echo 'get_detail_hotel()';
+		?>
 	});
 	
 	function create_opt_parents(tot_adult){
@@ -246,29 +399,5 @@
 		}
 		return str;
 	}
-	$(document).ready(function() {
-		$('#sdfubmit-flight').click(function(event) {
-			var form = $('#form-order').serialize();
-			//event.preventDefault();
-			$.ajax({
-				type : "POST",
-				url: "<?php echo base_url();?>index.php/order/add_flight_order",
-				data: form,
-				async: false,
-				cache: false,
-				dataType: "json",
-				success:function(response){
-					if(response.redirect){
-						alert('hai');
-						
-					}
-					else
-						window.location.assign("<?php echo base_url('index.php/order/success');?>");
-				},
-				error: function(xhr, textStatus, errorThrown) {
-					alert('Error!  Status = ' + xhr.status);
-				 }
-			});
-		});
-	})
+	
 </script>

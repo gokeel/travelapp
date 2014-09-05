@@ -1,49 +1,15 @@
-<!--slidemenu--> 
-<div class="navigator">
-	<div class="pagetitle"></div>
-	<div id="top_menu">
-		<ul class="sub0 sortleftmenu" id="ul_0" >
-			<li id="grp_5" class="selected">
-				<a href="<?php echo base_url();?>index.php/admin/agent_page" >Agen Request</a>
-			</li>
-			<li id="grp_4">
-				<a href="http://www.hellotraveler.co.id/cms/tb/1/nav/4" > Agen Actived</a>
-			</li>
-			<li id="grp_12">
-				<a href="http://www.hellotraveler.co.id/cms/tb/1/nav/12" >Agen Rejected</a>
-			</li>
-			<li id="grp_426">
-				<a href="http://www.hellotraveler.co.id/cms/tb/1/nav/426" >Agen Tree</a>
-			</li>
-			<li id="grp_401">
-				<a href="http://www.hellotraveler.co.id/cms/tb/1/nav/401" >Agen Trial</a>
-			</li>
-			<li id="grp_394">
-				<span >Supplier
-					<div class="nextrow">&nbsp;</div>
-				</span>
-				<ul class="sub1 sortleftmenu" id="ul_394" >
-					<li id="grp_423">
-						<a href="http://www.hellotraveler.co.id/cms/tb/1/nav/423" >Supplier Request</a>
-					</li>
-					<li id="grp_424">
-						<a href="http://www.hellotraveler.co.id/cms/tb/1/nav/424" >Supplier Accept</a>
-					</li>
-					<li id="grp_425">
-						<a href="http://www.hellotraveler.co.id/cms/tb/1/nav/425" >Supplier Reject</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-</div>
-
 <div id="content"  style="min-height:400px;"> 
   <!--content--> 
 	
 	<div class="frametab">
 		<div id="data-detail">
 			<table>
+				<tr>
+					<td><b>Username</b></td>
+					<td><div id="username"></div></td>
+					<td></td>
+					<td></td>
+				</tr>
 				<tr>
 					<td><b>Tipe Agen</b></td>
 					<td><div id="member-type"></div></td>
@@ -73,12 +39,6 @@
 					<td><div id="agent-email"></div></td>
 					<td><b>Website</b></td>
 					<td><div id="website"></div></td>
-				</tr>
-				<tr>
-					<td><b>No. KTP/SIM/Identitas Lain</b></td>
-					<td><div id="license-number"></div></td>
-					<td><b>Berkas Identitas</b></td>
-					<td><div id="license-file"></div></td>
 				</tr>
 				<tr>
 					<td><b>Nama Manager</b></td>
@@ -131,6 +91,7 @@
 		success:function(data){
 			for(var i=0; i<data.length;i++){
 				document.getElementById('member-type').innerHTML = replace_undefined(data[i].agent_type) ;
+				document.getElementById('username').innerHTML = replace_undefined(data[i].username);
 				document.getElementById('agent-name').innerHTML = replace_undefined(data[i].agent_name);
 				document.getElementById('join-date').innerHTML = replace_undefined(data[i].join_date);
 				document.getElementById('address').innerHTML = replace_undefined(data[i].address);

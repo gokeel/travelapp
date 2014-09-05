@@ -94,6 +94,18 @@ class Admin extends CI_Controller {
 		$this->page('admin_booking_page');
 	}
 	
+	public function booking_processed(){
+		$this->page('admin_booking_page_processed');
+	}
+	
+	public function booking_cancelled(){
+		$this->page('admin_booking_page_cancelled');
+	}
+	
+	public function validate_payment(){
+		$this->page('admin_booking_validate_payment');
+	}
+	
 	public function setting_user_page(){
 		$uri3= $this->uri->segment(3);
 		if ($uri3=='office')
@@ -103,7 +115,18 @@ class Admin extends CI_Controller {
 		else if ($uri3=='uas')
 			$this->page('admin_setting_user_uas');
 	}
-	
+	public function any_message(){
+		$data = array(
+				'user_name' => $this->session->userdata('user_name'),
+				'ip_address' => $this->session->userdata('ip_address'),
+				'title' => 'Pesan Kesalahan',
+				'subtitle' => 'Terjadi kesalahan pada saat memproses masukan anda',
+				'message' => 'Ono error jeh'
+			);
+			$this->load->view('admin_page_header', $data);
+			$this->load->view('admin_any_message', $data);
+			$this->load->view('admin_page_footer');
+	}
 	public function agent_data_page(){
 		$this->page('admin_agent_data_modify');
 	}
@@ -113,7 +136,10 @@ class Admin extends CI_Controller {
 	
 	public function delete_agent(){
 		$id = $this->uri->segment(3);
+		//delete on table agents
 		$query = $this->agents->del_agent($id);
+		//also delete the user on table users
+		$del_user = $this->users->del_user($id);
 		redirect(base_url('index.php/admin/agent_page'));
 	}
 	
@@ -139,9 +165,10 @@ class Admin extends CI_Controller {
 
 	
 	public function agent_add(){
-		$config['upload_path'] = './assets/uploads/agent_license_files';
+		/*$config['upload_path'] = './assets/uploads/agent_license_files';
 		$config['file_name'] = $this->input->post('lisensi_number',TRUE);
 		$config['allowed_types'] = 'gif|jpg|png';
+		$config['overwrite']	= TRUE;
 		$config['max_size']	= '1000';
 		$config['max_width']  = '1024';
 		$config['max_height']  = '768';
@@ -149,14 +176,26 @@ class Admin extends CI_Controller {
 		
 		$this->load->library('upload', $config);
 		if ( ! $this->upload->do_upload('lisensi_file'))
-			print_r($this->upload->display_errors());
+			$this->show_message_page('mengunggah foto',$this->upload->display_errors());
 		else {
 			$upload_data = $this->upload->data(); 
 			$file_name =   $upload_data['file_name'];
 		}
+		*/
+		$data_user = array(
+			'user_name' => $this->input->post('username', TRUE),
+			'email_login' => $this->input->post('email',TRUE),
+			'password' => md5($this->input->post('password',TRUE)),
+			'user_level' => 'agent',
+			'registered_date' => date('Y-m-d')
+		);
+		$this->load->model('users');
+		$insert_id = $this->users->add_user($data_user);
 		
 		$data = array(
+			'agent_id' => $insert_id,
 			'agent_name' => $this->input->post('company_name', TRUE),
+			'agent_username' => $this->input->post('username', TRUE),
 			'agent_type_id' => $this->input->post('member_type',TRUE),
 			'join_date' => $this->input->post('join_date',TRUE),
 			'agent_address' => $this->input->post('address',TRUE),
@@ -166,28 +205,85 @@ class Admin extends CI_Controller {
 			'agent_yahoo' => $this->input->post('yahoo_account',TRUE),
 			'agent_website' => $this->input->post('website',TRUE),
 			'agent_email' => $this->input->post('email',TRUE),
-			'license_number' => $this->input->post('lisensi_number',TRUE),
-			'license_file' => $file_name,
+			//'license_number' => $this->input->post('lisensi_number',TRUE),
+			//'license_file' => $file_name,
 			'agent_manager_name' => $this->input->post('manager_name',TRUE),
 			'agent_manager_phone' => $this->input->post('manager_phone',TRUE),
 			'agent_manager_email' => $this->input->post('manager_email',TRUE),
 			'parent_agent_id' => $this->input->post('id_agen_upline',TRUE),
-			'password' => $this->input->post('password',TRUE),
+			'password' => md5($this->input->post('password',TRUE)),
 			'deposit_amount' => $this->input->post('deposit_amount',TRUE),
 			'voucher' => $this->input->post('voucher',TRUE),
 			'approved' => $this->input->post('approve',TRUE),
 			'point_reward' => $this->input->post('point_reward',TRUE)
 		);
 		$add = $this->agents->add_agent($data);
+		
+		
 		//$response[] = array('response' => $add);
 		//echo json_encode($response);
 		redirect(base_url('index.php/admin/agent_page'));
 	}
 	
+	public function agent_register(){
+		$data_user = array(
+			'user_name' => $this->input->post('username', TRUE),
+			'email_login' => $this->input->post('email',TRUE),
+			'password' => md5($this->input->post('password',TRUE)),
+			'user_level' => 'agent',
+			'registered_date' => date('Y-m-d')
+		);
+		$this->load->model('users');
+		$insert_id = $this->users->add_user($data_user);
+		
+		$data = array(
+			'agent_id' => $insert_id,
+			'agent_name' => $this->input->post('company_name', TRUE),
+			'agent_username' => $this->input->post('username', TRUE),
+			'agent_type_id' => $this->input->post('member_type',TRUE),
+			'join_date' => date('Y-m-d'),
+			'agent_address' => $this->input->post('address',TRUE),
+			'agent_phone' => $this->input->post('telp_no',TRUE),
+			'agent_city' => $this->input->post('id_kota',TRUE),
+			'agent_yahoo' => $this->input->post('yahoo_account',TRUE),
+			'agent_email' => $this->input->post('email',TRUE),
+			//'license_number' => $this->input->post('lisensi_number',TRUE),
+			//'license_file' => $file_name,
+			'agent_manager_name' => $this->input->post('company_name',TRUE),
+			'agent_manager_phone' => $this->input->post('telp_no',TRUE),
+			'agent_manager_email' => $this->input->post('email',TRUE),
+			'parent_agent_id' => $this->input->post('id_agen_upline',TRUE),
+			'password' => md5($this->input->post('password',TRUE)),
+			'approved' => 'Trial'
+		);
+		$add = $this->agents->add_agent($data);
+		
+		//sending email
+		$email_config['mailtype'] = 'html';
+		$data_email = array(
+			'name' => $this->input->post('company_name', TRUE),
+			'username' => $this->input->post('username', TRUE),
+			'password' => $this->input->post('password', TRUE)
+		);
+		$this->load->library('email', $email_config);
+
+		$this->email->from('intest@hellotraveler.co.id', 'Info Agen Hellotraveler.co.id');
+		$this->email->to($this->input->post('email',TRUE));
+		
+		$this->email->subject('Registrasi Agen Berhasil');
+		$messages = $this->load->view('email_tpl/registrasi_agen_berhasil', $data_email, TRUE);
+		$this->email->message($messages);
+
+		$this->email->send();
+
+		
+		redirect(base_url('index.php/webfront/registrasi/success'));
+	}
+	
 	public function agent_edit(){
 		$id = $this->uri->segment(3);
 		
-		$config['upload_path'] = './assets/uploads/agent_license_files';
+		/*$config['upload_path'] = './assets/uploads/agent_license_files';
 		$config['file_name'] = $this->input->post('lisensi_number',TRUE);
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '1000';
@@ -198,13 +294,13 @@ class Admin extends CI_Controller {
 		if (isset($_FILES['lisensi_file'])){
 			$this->load->library('upload', $config);
 			if ( ! $this->upload->do_upload('lisensi_file'))
-				print_r($this->upload->display_errors());
+				$this->show_message_page('mengunggah foto',$this->upload->display_errors());
 			else {
 				$upload_data = $this->upload->data(); 
 				$file_name =   $upload_data['file_name'];
 			}
 		}
-		
+		*/
 		$data = array(
 			'agent_name' => $this->input->post('company_name', TRUE),
 			'agent_type_id' => $this->input->post('member_type',TRUE),
@@ -216,19 +312,19 @@ class Admin extends CI_Controller {
 			'agent_yahoo' => $this->input->post('yahoo_account',TRUE),
 			'agent_website' => $this->input->post('website',TRUE),
 			'agent_email' => $this->input->post('email',TRUE),
-			'license_number' => $this->input->post('lisensi_number',TRUE),
+			//'license_number' => $this->input->post('lisensi_number',TRUE),
 			'agent_manager_name' => $this->input->post('manager_name',TRUE),
 			'agent_manager_phone' => $this->input->post('manager_phone',TRUE),
 			'agent_manager_email' => $this->input->post('manager_email',TRUE),
 			'parent_agent_id' => $this->input->post('id_agen_upline',TRUE),
-			'password' => $this->input->post('password',TRUE),
+			//'password' => $this->input->post('password',TRUE),
 			'deposit_amount' => $this->input->post('deposit_amount',TRUE),
 			'voucher' => $this->input->post('voucher',TRUE),
 			'approved' => $this->input->post('approve',TRUE),
 			'point_reward' => $this->input->post('point_reward',TRUE)
 		);
-		if ($file_name <> '')
-			$data['license_file'] = $file_name;
+		//if ($file_name <> '')
+		//	$data['license_file'] = $file_name;
 			
 		$edit = $this->agents->edit_agent($id, $data);
 		//$response[0]['response'] = $edit;
@@ -301,6 +397,7 @@ class Admin extends CI_Controller {
 			$number_row++;
 			$data[] = array(
 				'number_row' => $number_row,
+				'username' => $row['agent_username'],
 				'agent_id' => $row['agent_id'],
 				'agent_name' => $row['agent_name'],
 				'agent_type' => $row['agent_type'],
@@ -324,6 +421,7 @@ class Admin extends CI_Controller {
 		foreach ($query->result_array() as $row){
 			$data[] = array(
 				'agent_id' => $row['agent_id'],
+				'username' => $row['agent_username'],
 				'agent_name' => $row['agent_name'],
 				'agent_type' => $row['agent_type'],
 				'join_date' => $row['join_date'],
@@ -584,108 +682,238 @@ class Admin extends CI_Controller {
 		$number_row = 0;
 		foreach ($query->result_array() as $row){
 			$number_row ++;
-			$data[] = array(
-				'number_row' => $number_row,
-				'order_id' => $row['order_id'],
-				'agent_name' => $row['agent_name'],
-				'airline_name' => $row['airline_name'],
-				'flight_id' => $row['flight_id'],
-				'route' => $row['route'],
-				'departing_date' => $row['departing_date'],
-				'time_travel' => $row['time_travel'],
-				'total_price' => $row['total_price'],
-				'adult' => $row['adult'],
-				'price_adult' => $row['price_adult'],
-				'child' => $row['child'],
-				'price_child' => $row['price_child'],
-				'infant' => $row['infant'],
-				'price_infant' => $row['price_infant']
-			);
+			if ($category=='flight')
+				$data[] = array(
+					'number_row' => $number_row,
+					'order_id' => $row['order_id'],
+					'agent_name' => $row['agent_name'],
+					'airline_name' => $row['airline_name'],
+					'flight_id' => $row['flight_id'],
+					'route' => $row['route'],
+					'departing_date' => $row['departing_date'],
+					'time_travel' => $row['time_travel'],
+					'total_price' => $row['total_price'],
+					'adult' => $row['adult'],
+					'price_adult' => $row['price_adult'],
+					'child' => $row['child'],
+					'price_child' => $row['price_child'],
+					'infant' => $row['infant'],
+					'price_infant' => $row['price_infant'],
+					'payment_status' => $row['status']
+				);
+			else if ($category=='train')
+				$data[] = array(
+					'number_row' => $number_row,
+					'order_id' => $row['order_id'],
+					'agent_name' => $row['agent_name'],
+					'name' => $row['train_name'],
+					'id' => $row['train_id'],
+					'subclass' => $row['train_class'],
+					'route' => $row['route'],
+					'departing_date' => $row['departing_date'],
+					'time_travel' => $row['time_travel'],
+					'total_price' => $row['total_price'],
+					'adult' => $row['adult'],
+					'price_adult' => $row['price_adult'],
+					'child' => $row['child'],
+					'price_child' => $row['price_child'],
+					'infant' => $row['infant'],
+					'price_infant' => $row['price_infant'],
+					'payment_status' => $row['status']
+				);
+				else if ($category=='hotel')
+				$data[] = array(
+					'number_row' => $number_row,
+					'order_id' => $row['order_id'],
+					'agent_name' => $row['agent_name'],
+					'name' => $row['hotel_name'],
+					'id' => $row['hotel_id'],
+					'address' => $row['hotel_address'],
+					'regional' => $row['hotel_regional'],
+					'checkin' => $row['departing_date'],
+					'checkout' => $row['returning_date'],
+					'night' => $row['time_travel'],
+					'room' => $row['hotel_room'],
+					'total_price' => $row['total_price'],
+					'adult' => $row['adult'],
+					'child' => $row['child'],
+					'payment_status' => $row['status']
+				);
 		}
 		echo json_encode($data);
 	}
 	
-	public function get_flight_order_by_id(){
-		$id = $this->uri->segment(3);
-		$query = $this->orders->get_order_by_id($id);
-		$response = array();
-		$response['responses'] = array();
-		$response['responses']['general'] = array();
-		// generate response general info
+	public function get_processed_order(){
+		$category = $this->uri->segment(3);
+		$query = $this->orders->get_processed_order($category);
+		$number_row = 0;
 		foreach ($query->result_array() as $row){
-			$general = array(
-				'order_id' => $row['order_id'],
-				'agent_name' => $row['agent_name'],
-				'airline_name' => $row['airline_name'],
-				'flight_id' => array('name' => 'flight_id', 'value' => $row['flight_id']),
-				'token' => array('name' => 'token', 'value' => $row['token']),
-				'lion_captcha' => array('name' => 'lioncaptcha', 'value' => $row['lion_captcha']),
-				'lion_session_id' => array('name' => 'lionsessionid', 'value' => $row['lion_session_id']),
-				'route' => $row['route'],
-				'departing_date' => $row['departing_date'],
-				'time_travel' => $row['time_travel'],
-				'total_price' => $row['total_price'],
-				'adult' => $row['adult'],
-				'price_adult' => $row['price_adult'],
-				'child' => $row['child'],
-				'price_child' => $row['price_child'],
-				'infant' => $row['infant'],
-				'price_infant' => $row['price_infant']
-			);
-			array_push($response['responses']['general'], $general);
+			$number_row ++;
+			if ($category=='flight')
+				$data[] = array(
+					'number_row' => $number_row,
+					'order_id' => $row['order_id'],
+					'agent_name' => $row['agent_name'],
+					'airline_name' => $row['airline_name'],
+					'flight_id' => $row['flight_id'],
+					'route' => $row['route'],
+					'departing_date' => $row['departing_date'],
+					'time_travel' => $row['time_travel'],
+					'total_price' => $row['total_price'],
+					'adult' => $row['adult'],
+					'price_adult' => $row['price_adult'],
+					'child' => $row['child'],
+					'price_child' => $row['price_child'],
+					'infant' => $row['infant'],
+					'price_infant' => $row['price_infant'],
+					'payment_status' => $row['status'],
+					'order_status' => $row['order_status']
+				);
+			else if ($category=='train')
+				$data[] = array(
+					'number_row' => $number_row,
+					'order_id' => $row['order_id'],
+					'agent_name' => $row['agent_name'],
+					'name' => $row['train_name'],
+					'id' => $row['train_id'],
+					'subclass' => $row['train_class'],
+					'route' => $row['route'],
+					'departing_date' => $row['departing_date'],
+					'time_travel' => $row['time_travel'],
+					'total_price' => $row['total_price'],
+					'adult' => $row['adult'],
+					'price_adult' => $row['price_adult'],
+					'child' => $row['child'],
+					'price_child' => $row['price_child'],
+					'infant' => $row['infant'],
+					'price_infant' => $row['price_infant'],
+					'payment_status' => $row['status'],
+					'order_status' => $row['order_status']
+				);
+				else if ($category=='hotel')
+				$data[] = array(
+					'number_row' => $number_row,
+					'order_id' => $row['order_id'],
+					'agent_name' => $row['agent_name'],
+					'name' => $row['hotel_name'],
+					'id' => $row['hotel_id'],
+					'address' => $row['hotel_address'],
+					'regional' => $row['hotel_regional'],
+					'checkin' => $row['departing_date'],
+					'checkout' => $row['returning_date'],
+					'night' => $row['time_travel'],
+					'room' => $row['hotel_room'],
+					'total_price' => $row['total_price'],
+					'adult' => $row['adult'],
+					'child' => $row['child'],
+					'payment_status' => $row['status'],
+					'order_status' => $row['order_status']
+				);
 		}
-		//fetch & generate contact person
-		$con = $this->orders->get_passenger($id, 'contact');
-		$response['responses']['contact'] = array();
-		foreach ($con->result_array() as $row){
-			$contact = array(
-				'title' => array('name' => 'conSalutation', 'value' => $row['title']),
-				'firstname' => array('name' => 'conFirstName', 'value' => $row['first_name']),
-				'lastname' => array('name' => 'conLastName', 'value' => $row['last_name']),
-				'email' => array('name' => 'conEmailAddress', 'value' => $row['email']),
-				'phone' => array('name' => 'conPhone', 'value' => $row['phone_1'])
-			);
-			array_push($response['responses']['contact'], $contact);
+		echo json_encode($data);
+	}
+	
+	public function get_rejected_order(){
+		$category = $this->uri->segment(3);
+		$query = $this->orders->get_cancelled_order($category);
+		$number_row = 0;
+		foreach ($query->result_array() as $row){
+			$number_row ++;
+			if ($category=='flight')
+				$data[] = array(
+					'number_row' => $number_row,
+					'order_id' => $row['order_id'],
+					'agent_name' => $row['agent_name'],
+					'airline_name' => $row['airline_name'],
+					'flight_id' => $row['flight_id'],
+					'route' => $row['route'],
+					'departing_date' => $row['departing_date'],
+					'time_travel' => $row['time_travel'],
+					'total_price' => $row['total_price'],
+					'adult' => $row['adult'],
+					'price_adult' => $row['price_adult'],
+					'child' => $row['child'],
+					'price_child' => $row['price_child'],
+					'infant' => $row['infant'],
+					'price_infant' => $row['price_infant'],
+					'payment_status' => $row['status'],
+					'order_status' => $row['order_status'],
+					'reason' => $row['reason']
+				);
+			else if ($category=='train')
+				$data[] = array(
+					'number_row' => $number_row,
+					'order_id' => $row['order_id'],
+					'agent_name' => $row['agent_name'],
+					'name' => $row['train_name'],
+					'id' => $row['train_id'],
+					'subclass' => $row['train_class'],
+					'route' => $row['route'],
+					'departing_date' => $row['departing_date'],
+					'time_travel' => $row['time_travel'],
+					'total_price' => $row['total_price'],
+					'adult' => $row['adult'],
+					'price_adult' => $row['price_adult'],
+					'child' => $row['child'],
+					'price_child' => $row['price_child'],
+					'infant' => $row['infant'],
+					'price_infant' => $row['price_infant'],
+					'payment_status' => $row['status'],
+					'order_status' => $row['order_status'],
+					'reason' => $row['reason']
+				);
+				else if ($category=='hotel')
+				$data[] = array(
+					'number_row' => $number_row,
+					'order_id' => $row['order_id'],
+					'agent_name' => $row['agent_name'],
+					'name' => $row['hotel_name'],
+					'id' => $row['hotel_id'],
+					'address' => $row['hotel_address'],
+					'regional' => $row['hotel_regional'],
+					'checkin' => $row['departing_date'],
+					'checkout' => $row['returning_date'],
+					'night' => $row['time_travel'],
+					'room' => $row['hotel_room'],
+					'total_price' => $row['total_price'],
+					'adult' => $row['adult'],
+					'child' => $row['child'],
+					'payment_status' => $row['status'],
+					'order_status' => $row['order_status'],
+					'reason' => $row['reason']
+				);
 		}
-		//fetch & generate adult
-		$con = $this->orders->get_passenger($id, 'adult');
-		$response['responses']['adult'] = array();
-		foreach ($con->result_array() as $row){
-			$adult = array(
-				'title' => array('name' => 'titlea'.$row['order_list'], 'value' => $row['title']),
-				'firstname' => array('name' => 'firstnamea'.$row['order_list'], 'value' => $row['first_name']),
-				'lastname' => array('name' => 'lastnamea'.$row['order_list'], 'value' => $row['last_name']),
-				'birthdate' => array('name' => 'birthdatea'.$row['order_list'], 'value' => $row['birthday']),
-				'id' => array('name' => 'ida'.$row['order_list'], 'value' => $row['identity_number'])
+		echo json_encode($data);
+	}
+	
+	function show_message_page($in, $message){
+		$data = array(
+				'user_name' => $this->session->userdata('user_name'),
+				'ip_address' => $this->session->userdata('ip_address'),
+				'title' => 'Pesan Kesalahan',
+				'subtitle' => 'Terjadi kesalahan pada saat '.$in,
+				'message' => $message
 			);
-			array_push($response['responses']['adult'], $adult);
-		}
-		//fetch & generate child
-		$con = $this->orders->get_passenger($id, 'child');
-		$response['responses']['child'] = array();
-		foreach ($con->result_array() as $row){
-			$child = array(
-				'title' => array('name' => 'titlec'.$row['order_list'], 'value' => $row['title']),
-				'firstname' => array('name' => 'firstnamec'.$row['order_list'], 'value' => $row['first_name']),
-				'lastname' => array('name' => 'lastnamec'.$row['order_list'], 'value' => $row['last_name']),
-				'birthdate' => array('name' => 'birthdatec'.$row['order_list'], 'value' => $row['birthday']),
-				'id' => array('name' => 'idc'.$row['order_list'], 'value' => $row['identity_number'])
-			);
-			array_push($response['responses']['child'], $child);
-		}
-		//fetch & generate infant
-		$con = $this->orders->get_passenger($id, 'infant');
-		$response['responses']['infant'] = array();
-		foreach ($con->result_array() as $row){
-			$infant = array(
-				'title' => array('name' => 'titlei'.$row['order_list'], 'value' => $row['title']),
-				'firstname' => array('name' => 'firstnamei'.$row['order_list'], 'value' => $row['first_name']),
-				'lastname' => array('name' => 'lastnamei'.$row['order_list'], 'value' => $row['last_name']),
-				'birthdate' => array('name' => 'birthdatei'.$row['order_list'], 'value' => $row['birthday']),
-				'parent' => array('name' => 'parenti'.$row['order_list'], 'value' => $row['parent'])
-			);
-			array_push($response['responses']['infant'], $infant);
-		}
-		echo json_encode($response);
+			$this->load->view('admin_page_header', $data);
+			$this->load->view('admin_any_message', $data);
+			$this->load->view('admin_page_footer');
+	}
+	
+	function reject_order(){
+		$id = $this->uri->segment(3);
+		$reject = $this->orders->update_order_status($id, 'Rejected');
+		redirect(base_url('index.php/admin/booking_page'));
+	}
+	
+	function cancel_order(){
+		$id = $this->uri->segment(3);
+		$reject = $this->orders->update_order_status($id, 'Cancelled');
+		redirect(base_url('index.php/admin/booking_page'));
+	}
+	
+	function add_reason(){
+		$id = $this->input->get('order-id');
+		$reason = $this->input->get('reason');
+		$this->orders->add_edit_reason($id, $reason);
 	}
 }

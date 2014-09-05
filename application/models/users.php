@@ -44,6 +44,31 @@ class Users extends CI_Model {
 		
 		return true;
 	}
+	
+	function add_user($data){
+		$this->db->insert('users', $data);
+		if ($this->db->affected_rows() > 0)
+			return $this->db->insert_id();
+		else return false;
+	}
+	
+	function del_user($id){
+		$this->db->delete('users', array('account_id' => $id));
+		if ($this->db->affected_rows() > 0)
+			return true;
+		else return false;
+	}
+	
+	function get_account_id_by_username($username){
+		$this->db->select('account_id');
+		$this->db->from('users');
+		$this->db->where('user_name', $username);
+		$get = $this->db->get();
+		if ($get->num_rows() > 0)
+		   foreach ($get->result() as $row)
+			$result = $row->account_id;
+		return $result;
+	}
 }
 
 ?>
