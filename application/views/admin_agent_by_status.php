@@ -1,7 +1,14 @@
 <div id="content"  style="min-height:400px;"> 
   <div class="frametab">
-		<input type="button" onclick="document.location='<?php echo base_url('index.php/admin/agent_data_page');?>'" value="ADD NEW DATA" name="Add Data" style="margin:10px; float:right;">
-		<h3 style="margin:5px 0 5px 5px;">Agen Request</h3>
+		<h3 style="margin:5px 0 5px 5px;">Agen 
+		<?php
+			if ($by_status=='Yes')
+				echo 'Sudah Disetujui';
+			else if ($by_status=='Rejected')
+				echo 'Ditolak';
+			else if ($by_status=='Trial')
+				echo 'Sedang Trial';	
+		?></h3>
 		<div id="data-agents"></div>
 	</div>
 	<div id="end"></div>
@@ -13,11 +20,21 @@
 	});
 	function load_agents(){
 		var data = [];
-		$.getJSON("<?php echo base_url();?>index.php/admin/get_agents_by_status/<?php echo $by_status;?>", function(datajson) {
+		$.ajax({
+			type : "GET",
+			async: false,
+			url: '<?php echo base_url();?>index.php/admin/get_agents_by_status/<?php echo $by_status;?>',
+			dataType: "json",
+			success:function(datajson){
+				for(var i=0; i<datajson.length;i++)
+					data[i] = {number_row: datajson[i].number_row, agent_type:datajson[i].agent_type, agent_name:datajson[i].agent_name, join_date: datajson[i].join_date, agent_phone: datajson[i].agent_phone, agent_city: toTitleCase(datajson[i].agent_city), agent_email: datajson[i].agent_email, parent_agent: datajson[i].parent_agent, deposit_amount: datajson[i].deposit_amount, voucher: datajson[i].voucher, approved: datajson[i].approved, agent_id: datajson[i].agent_id};
+			}
+		});
+		/*$.getJSON("<?php echo base_url();?>index.php/admin/get_agents_by_status/<?php echo $by_status;?>", function(datajson) {
 			for (var i in datajson) {
 				data[i] = {number_row: datajson[i].number_row, agent_type:datajson[i].agent_type, agent_name:datajson[i].agent_name, join_date: datajson[i].join_date, agent_phone: datajson[i].agent_phone, agent_city: toTitleCase(datajson[i].agent_city), agent_email: datajson[i].agent_email, parent_agent: datajson[i].parent_agent, deposit_amount: datajson[i].deposit_amount, voucher: datajson[i].voucher, approved: datajson[i].approved, agent_id: datajson[i].agent_id};
 			}
-		});
+		});*/
 		
 		YUI({gallery: 'gallery-2013.01.09-23-24'}).use('datatable','datatable-sort','datatype-number','datatype-date','datatable-paginator', function (Y) {
 			/*------------------------------------*/

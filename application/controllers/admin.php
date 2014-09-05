@@ -251,6 +251,24 @@ class Admin extends CI_Controller {
 		);
 		$add = $this->agents->add_agent($data);
 		
+		//sending email
+		$email_config['mailtype'] = 'html';
+		$data_email = array(
+			'name' => $this->input->post('company_name', TRUE),
+			'username' => $this->input->post('username', TRUE),
+			'password' => $this->input->post('password', TRUE)
+		);
+		$this->load->library('email', $email_config);
+
+		$this->email->from('intest@hellotraveler.co.id', 'Info Agen Hellotraveler.co.id');
+		$this->email->to($this->input->post('email',TRUE));
+		
+		$this->email->subject('Registrasi Agen Berhasil');
+		$messages = $this->load->view('email_tpl/registrasi_agen_berhasil', $data_email, TRUE);
+		$this->email->message($messages);
+
+		$this->email->send();
+
 		
 		//$response[] = array('response' => $add);
 		//echo json_encode($response);
