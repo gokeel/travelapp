@@ -68,6 +68,8 @@ class Admin extends CI_Controller {
 			$this->load->view('admin_setting_header');
 		if (strpos($page_request, 'admin_booking') !== false)
 			$this->load->view('admin_booking_header');
+		if (strpos($page_request, 'admin_deposit') !== false)
+			$this->load->view('admin_deposit_header');
 		$this->load->view($page_request);
 		$this->load->view('admin_page_footer');
 	}
@@ -82,6 +84,10 @@ class Admin extends CI_Controller {
 	
 	public function setting_page(){
 		$this->page('admin_setting');
+	}
+	
+	public function deposit_page(){
+		$this->page('admin_deposit');
 	}
 	
 	public function agent_page_by_status(){
