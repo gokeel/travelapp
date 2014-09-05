@@ -7,6 +7,9 @@
             <li> <img src="<?php echo IMG_DIR;?>/slides/flex-slider/flex-slide-1.jpg" alt="Carousel Item 1" /> </li>
             <li> <img src="<?php echo IMG_DIR;?>/slides/flex-slider/flex-slide-2.jpg" alt="Carousel Item 1" />  </li>
             <li> <img src="<?php echo IMG_DIR;?>/slides/flex-slider/flex-slide-3.jpg" alt="Carousel Item 1" />  </li>
+            <li> <img src="<?php echo IMG_DIR;?>/slides/flex-slider/flex-slide-4.jpg" alt="Carousel Item 1" />  </li>
+            <li> <img src="<?php echo IMG_DIR;?>/slides/flex-slider/flex-slide-5.jpg" alt="Carousel Item 1" />  </li>
+            <li> <img src="<?php echo IMG_DIR;?>/slides/flex-slider/flex-slide-6.jpg" alt="Carousel Item 1" />  </li>
           </ul>
         </div>
       </div>
@@ -42,13 +45,13 @@
                  <script>
 					$(function() {
 						$( "#departing" ).datepicker({"dateFormat": "yy-mm-dd"});
-						$( "#returning" ).datepicker({"dateFormat": "yy-mm-dd"});
+						//$( "#returning" ).datepicker({"dateFormat": "yy-mm-dd"});
 					});
 				</script>
                   <label style="width:60px; float:left">Pergi</label>
                   <input type="text"  id="departing" name="flight-pergi" value="" style="width:85px; float:left; margin-right:10px;"/>
-                  <label style="width:54px; float:left; padding-left:5px;">Pulang</label>
-                  <input type="text"  id="returning" name="flight-pulang" value="" style="width:85px; float:left;"/>
+                  <!--<label style="width:54px; float:left; padding-left:5px;">Pulang</label>
+                  <input type="text"  id="returning" name="flight-pulang" value="" style="width:85px; float:left;"/>-->
                 </div>
                 <div style="float:left; width:340px; border:0px solid #999;">
                   <label style="width:60px; float:left">Dewasa</label>
@@ -64,6 +67,7 @@
                
               </form>
             </div>
+			<!-- HOTEL -->
             <div class="tab-pane" id="tab2">
 			<script>
 					$(function() {
@@ -73,15 +77,16 @@
 				</script>
              <form id="hotel-form" name="hotel-form" style="position:relative; z-index:1110; margin-left:20px;">
              <div style="float:left; width:320px; border:0px solid #999;">
-             	Nama Kota atau hotel <br/><input type="text"  id="kota" name="kota" value="" style="width:220px; "/></div>
+             	Nama Kota atau Hotel <br/><input type="text"  id="query" name="query" value="" style="width:220px; "/></div>
              <div style="float:left; width:320px; border:0px solid #999;">
              	<span style="float:left;">Check In <br/><input type="text"  id="checkin" name="checkin" value="" style="width:100px; margin-right:10px;"/></span>
              	<span style="float:left;">Check out <br/><input type="text"  id="checkout" name="checkout" value="" style="width:100px; margin-right:10px;"/></span>
              </div>
              <div style="float:left; width:320px; border:0px solid #999;">
-             	<span style="float:left;">Kamar <br/><input type="text"  id="kamar" name="kamar" value="" style="width:60px; margin-right:10px;"/></span>
-             	<span style="float:left;">Dewasa <br/><input type="text"  id="dewasa" name="dewasa" value="" style="width:60px; margin-right:10px;"/></span>
-             	<span style="float:left;">Anak <br/><input type="text"  id="anak" name="anak" value="" style="width:60px; margin-right:10px;"/></span>
+             	<span style="float:left;">Kamar <br/><input type="text"  id="kamar" name="room" value="" style="width:60px; margin-right:10px;"/></span>
+             	<span style="float:left;">Malam <br/><input type="text"  id="malam" name="night" value="" style="width:60px; margin-right:10px;"/></span>
+             	<span style="float:left;">Dewasa <br/><input type="text"  id="hotel-dewasa" name="dewasa" value="" style="width:60px; margin-right:10px;"/></span>
+             	<span style="float:left;">Anak <br/><input type="text"  id="hotel-anak" name="anak" value="" style="width:60px; margin-right:10px;"/></span>
              </div>
              <div style="float:left; width:320px; border:0px solid #999;">
              <input type="submit" class="button cari-hotel" id="submit-hotel" value="CARI HOTEL" tabindex="8" style="float:left;">
@@ -89,6 +94,7 @@
              </form>
               
             </div>
+			<!-- KERETA API -->
             <div class="tab-pane" id="tab3">
               <form id="train-form" name="train-form" style="position:relative; z-index:1100;">
                 <!--<div style="font-size:12px; padding:4px 0 10px;"><input type="radio" class="radio" name="trip" value="oneway"> Sekali Jalan &nbsp;&nbsp;<input type="radio" name="trip" value="twooway"> Pulang Pergi</div>
@@ -107,13 +113,13 @@
                  <script>
 					$(function() {
 						$( "#train-pergi" ).datepicker({"dateFormat": "yy-mm-dd"});
-						$( "#train-pulang" ).datepicker({"dateFormat": "yy-mm-dd"});
+						//$( "#train-pulang" ).datepicker({"dateFormat": "yy-mm-dd"});
 					});
 				</script>
                   <label style="width:60px; float:left">Pergi</label>
                   <input type="text"  id="train-pergi" name="train-pergi" value="" style="width:85px; float:left; margin-right:10px;"/>
-                  <label style="width:54px; float:left; padding-left:5px;">Pulang</label>
-                  <input type="text"  id="train-pulang" name="train-pulang" value="" style="width:85px; float:left;"/>
+                  <!--<label style="width:54px; float:left; padding-left:5px;">Pulang</label>
+                  <input type="text"  id="train-pulang" name="train-pulang" value="" style="width:85px; float:left;"/>-->
                 </div>
                 <div style="float:left; width:340px; border:0px solid #999;">
                   <label style="width:60px; float:left">Dewasa</label>
@@ -147,7 +153,7 @@
         <div class="calltoaction clearfix">
           <div class="row-fluid">
             <div class="cta-text-holder clearfix">
-              <h5>Dapatkan kemudahan transaksi melalui hellotraveler.co.id.</h5>
+              <h5>Dapatkan kemudahan transaksi melalui hellotraveler.co.id</h5>
               <p style="font-size:14px">Kami hadir untuk memberi solusi yang efektif untuk perjalanan dan liburan Anda.</p>
               
             </div>
@@ -253,6 +259,7 @@
           </div> -->
         </div>
         
+		<!-- QUERY RESULTS -->
 		<div id="result"> </div>
 			
         <div>
@@ -295,10 +302,10 @@
                     <div class="span2 hoverdir ecofriendly isotope-item boxfix">
                     	<div class="portfolio-overlay">test</div>
                         <span class="portfolio-single-link" >
-                            <img src="<?php echo IMAGES_DIR;?>/tour4_l.jpg" alt="The Sunset Bali Hotel">
-                            <strong><a href="#" class="title">Tur Eropa</a></strong>
+                            <a href="<?php echo base_url();?>index.php/webfront/paketdetaileropa" class="title"><img src="<?php echo IMAGES_DIR;?>/tour4_l.jpg" alt="The Sunset Bali Hotel"></a>
+                            <strong><a href="<?php echo base_url();?>index.php/webfront/paketdetaileropa" class="title">Tur Eropa</a></strong>
                             <p>London - Paris - Barcelona. Segitiga surga wisata eropa, nikmati dalam satu paket perjalanan satu minggu yang amat berkesan.</p>
-                            <span class="redbox">Mulai dari USD1500</span> <br/>
+                            <span class="redbox"><a href="<?php echo base_url();?>index.php/webfront/paketdetaileropa">Mulai dari USD1500</a></span> <br/>
                         </span>
                     </div>
                     
@@ -343,7 +350,6 @@
             <img src="<?php echo IMAGES_DIR;?>/logomaskapai/sriwijaya.jpg"/>
             <img src="<?php echo IMAGES_DIR;?>/logomaskapai/trigana.jpg"/>
             <img src="<?php echo IMAGES_DIR;?>/logomaskapai/lion.jpg"/>
-            <img src="<?php echo IMAGES_DIR;?>/logomaskapai/airfast.jpg"/>
           </div>
           <div class="heading_border"></div>
           
@@ -466,68 +472,147 @@
 							$('#result').append('<p>Maaf, data tidak ada untuk rute ini.<p>');
 						}
 						else{
-							var div = $("#result");
-							var table = document.createElement('table');
-							var thead = document.createElement('thead');
-							var tr_head = document.createElement('tr');
-							tr_head.appendChild(set_td_data('th', 'Kereta Api (Kelas)'));
-							tr_head.appendChild(set_td_data('th', 'Pergi'));
-							tr_head.appendChild(set_td_data('th', 'Tiba'));
-							tr_head.appendChild(set_td_data('th', 'Durasi'));
-							tr_head.appendChild(set_td_data('th', 'Harga'));
-							tr_head.appendChild(set_td_data('th', 'Pesan'));
-							table.appendChild(tr_head);
-							
-							var tbody = document.createElement('tbody');
-							
-							
-							for(var i=0; i<data.items[0].departures.result.length;i++){
-								var kelas = data.items[0].departures.result[i].class_name;
+							if(data.items[0].diagnostic.status=="200"){
+								var div = $("#result");
+								var table = document.createElement('table');
+								var thead = document.createElement('thead');
+								var tr_head = document.createElement('tr');
+								tr_head.appendChild(set_td_data('th', 'Kereta Api (Kelas)'));
+								tr_head.appendChild(set_td_data('th', 'Kursi Tersedia'));
+								tr_head.appendChild(set_td_data('th', 'Pergi'));
+								tr_head.appendChild(set_td_data('th', 'Tiba'));
+								tr_head.appendChild(set_td_data('th', 'Durasi'));
+								tr_head.appendChild(set_td_data('th', 'Harga'));
+								tr_head.appendChild(set_td_data('th', 'Pesan'));
+								table.appendChild(tr_head);
 								
-								var tr_body = document.createElement('tr');
-								tr_body.appendChild(set_td_data('td', data.items[0].departures.result[i].train_name+' ('+kelas.toUpperCase()+')'));
-								tr_body.appendChild(set_td_data('td', data.items[0].departures.result[i].departure_time));
-								tr_body.appendChild(set_td_data('td', data.items[0].departures.result[i].arrival_time));
-								tr_body.appendChild(set_td_data('td', data.items[0].departures.result[i].duration));
+								var tbody = document.createElement('tbody');
 								
-								var td1 = document.createElement('td');
-								var p1 = document.createElement('p');
-								p1.appendChild(document.createTextNode('Dewasa: '+data.items[0].departures.result[i].price_adult));
-								td1.appendChild(p1);
 								
-								var p2 = document.createElement('p');
-								p2.appendChild(document.createTextNode('Anak(3-9thn): '+data.items[0].departures.result[i].price_child));
-								td1.appendChild(p2);
+								for(var i=0; i<data.items[0].departures.result.length;i++){
+									var kelas = data.items[0].departures.result[i].class_name;
+									
+									var tr_body = document.createElement('tr');
+									tr_body.appendChild(set_td_data('td', data.items[0].departures.result[i].train_name+' ('+kelas.toUpperCase()+', subclass: '+data.items[0].departures.result[i].subclass_name+')'));
+									tr_body.appendChild(set_td_data('td', data.items[0].departures.result[i].detail_availability));
+									tr_body.appendChild(set_td_data('td', data.items[0].departures.result[i].departure_time));
+									tr_body.appendChild(set_td_data('td', data.items[0].departures.result[i].arrival_time));
+									tr_body.appendChild(set_td_data('td', data.items[0].departures.result[i].duration));
+									
+									var td1 = document.createElement('td');
+									var p1 = document.createElement('p');
+									p1.appendChild(document.createTextNode('Dewasa: '+data.items[0].departures.result[i].price_adult));
+									td1.appendChild(p1);
+									
+									var p2 = document.createElement('p');
+									p2.appendChild(document.createTextNode('Anak(3-9thn): '+data.items[0].departures.result[i].price_child));
+									td1.appendChild(p2);
+									
+									var p3 = document.createElement('p');
+									p3.appendChild(document.createTextNode('Bayi: '+data.items[0].departures.result[i].price_infant));
+									td1.appendChild(p3);
+									
+									tr_body.appendChild(td1);
+									
+									var el_td = document.createElement('td');
+									var link_order = document.createElement('a');
+									var str = document.createTextNode('Pesan');
+									link_order.appendChild(str);
+									link_order.setAttribute('href', '<?php echo base_url();?>index.php/order/order_page/train/'+data.items[0].departures.result[i].schedule_id+'/'+data.items[0].search_queries.date+'/'+document.getElementById('train-from').value+'/'+document.getElementById('train-to').value+'/'+document.getElementById('adult').value+'/'+document.getElementById('child').value+'/'+document.getElementById('infant').value);
+									link_order.setAttribute('class', 'border-order');
+									el_td.appendChild(link_order);
+									tr_body.appendChild(el_td);
+									
+									table.appendChild(tr_body);
+								}
 								
-								var p3 = document.createElement('p');
-								p3.appendChild(document.createTextNode('Bayi: '+data.items[0].departures.result[i].price_infant));
-								td1.appendChild(p3);
-								/*td1.appendChild(document.createTextNode('Dewasa: '+data.items[0].departures.result[i].price_adult));
-								var br = document.createElement('br');
-								td1.appendChild(br);
-								td1.appendChild(document.createTextNode('Anak(3-9thn): '+data.items[0].departures.result[i].price_child));
-								td1.appendChild(br);
-								td1.appendChild(document.createTextNode('Bayi: '+data.items[0].departures.result[i].price_infant));
-								*/
-								tr_body.appendChild(td1);
-								
-								var el_td = document.createElement('td');
-								var link_order = document.createElement('a');
-								var str = document.createTextNode('Pesan');
-								link_order.appendChild(str);
-								link_order.setAttribute('href', '<?php echo base_url();?>index.php/order/order_page/train/'+data.items[0].departures.result[i].schedule_id+'/'+data.items[0].search_queries.date);
-								link_order.setAttribute('class', 'border-order');
-								el_td.appendChild(link_order);
-								tr_body.appendChild(el_td);
-								
-								table.appendChild(tr_body);
+								div.append(table);
 							}
-							
-							div.append(table);
+							else {
+								$('#result').append('<p style="color:red">'+data.items[0].diagnostic.error_msgs+'</p>');
+							}
 						}
 					}
 			})
 		});
+		
+		$('#submit-hotel').click(function(event) {
+				$('#result').empty();
+				$('#result').append('<h3 class="thin underline">Hasil Pencarian Data Hotel, '+document.getElementById('checkin').value+'-'+document.getElementById('checkout').value+' Kamar:'+document.getElementById('kamar').value+' Dewasa:'+document.getElementById('hotel-dewasa').value+' Anak:'+document.getElementById('hotel-anak').value+'</h3>');
+				var form = $('#hotel-form').serialize();
+				event.preventDefault();
+				$.ajax({
+					type : "GET",
+					url: '<?php echo base_url();?>index.php/hotel/search_hotels',
+					data: form,
+					cache: false,
+					dataType: "json",
+					success:function(data){
+							if(data==''){
+								$('#result').append('<p>Maaf, data tidak ada untuk rute ini.<p>');
+							}
+							else{
+								if(data.items[0].diagnostic.status=="200"){
+									var div = $("#result");
+									var table = document.createElement('table');
+									var tbody = document.createElement('tbody');
+									for(var i=0; i<data.items[0].results.result.length;i++){
+										var tr_body = document.createElement('tr');
+										
+										var td1 = document.createElement('td');
+										var img = document.createElement('img');
+										var path = data.items[0].results.result[i].photo_primary;
+										img.src = path.replace(/\\/g, '')
+										img.setAttribute('width', '120px');
+										img.setAttribute('height', '100px');
+										td1.appendChild(img);
+										var p1 = document.createElement('p');
+										p1.appendChild(document.createTextNode(data.items[0].results.result[i].name));
+										td1.appendChild(p1);
+										var p2 = document.createElement('p');
+										p2.appendChild(document.createTextNode(data.items[0].results.result[i].address));
+										td1.appendChild(p2);
+										
+										var td2 = document.createElement('td');
+										td2.setAttribute('width', '250px');
+										var p3 = document.createElement('p');
+										p3.appendChild(document.createTextNode('Harga: '+data.items[0].results.result[i].price));
+										td2.appendChild(p3);
+										var p4 = document.createElement('p');
+										p4.appendChild(document.createTextNode('Kamar Tersedia: '+data.items[0].results.result[i].room_available));
+										td2.appendChild(p4);
+										var p6 = document.createElement('p');
+										p6.appendChild(document.createTextNode('Bintang : '+data.items[0].results.result[i].star_rating));
+										td2.appendChild(p6);
+										var p7 = document.createElement('p');
+										p7.appendChild(document.createTextNode('Rating Pelanggan: '+data.items[0].results.result[i].rating+'/10'));
+										td2.appendChild(p7);
+										var p5 = document.createElement('p');
+										p5.appendChild(document.createTextNode('Fasilitas: '+data.items[0].results.result[i].room_facility_name));
+										td2.appendChild(p5);
+										
+										tr_body.appendChild(td1);
+										tr_body.appendChild(td2);
+										
+										var el_td = document.createElement('td');
+										var link_order = document.createElement('a');
+										var str = document.createTextNode('Pesan');
+										link_order.appendChild(str);
+										link_order.setAttribute('href', '<?php echo base_url();?>index.php/order/order_page/hotel/'+data.items[0].results.result[i].id+'/'+document.getElementById('query').value+'/'+document.getElementById('checkin').value+'/'+document.getElementById('checkout').value+'/'+document.getElementById('kamar').value+'/'+document.getElementById('hotel-dewasa').value+'/'+document.getElementById('hotel-anak').value+'/'+document.getElementById('malam').value);
+										link_order.setAttribute('class', 'border-order');
+										el_td.appendChild(link_order);
+										tr_body.appendChild(el_td);
+										
+										table.appendChild(tr_body);
+									}
+									
+									div.append(table);
+								}
+								
+							}
+						}
+				})
+			});
 	});
 </script>
 

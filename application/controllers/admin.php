@@ -49,7 +49,11 @@ class Admin extends CI_Controller {
 		}
 		$this->load->view('admin_login',$data);
 	}
+	/*******************************************/
 	
+	/**				Any page will be here	  **/
+	
+	/*******************************************/
 	function page($page_request, $additional=null){
 		$data = array(
 			'user_name' => $this->session->userdata('user_name'),
@@ -115,6 +119,27 @@ class Admin extends CI_Controller {
 		else if ($uri3=='uas')
 			$this->page('admin_setting_user_uas');
 	}
+	
+	public function setting_commission_page(){
+		$this->page('admin_setting_commission');
+	}
+	
+	public function setting_city_page(){
+		$this->page('admin_setting_city');
+	}
+	
+	public function setting_yahoo_page(){
+		$this->page('admin_setting_yahoo');
+	}
+	
+	public function setting_agent_news_page(){
+		$this->page('admin_setting_news_agent');
+	}
+	
+	public function setting_kurs_page(){
+		$this->page('admin_setting_kurs');
+	}
+	
 	public function any_message(){
 		$data = array(
 				'user_name' => $this->session->userdata('user_name'),
@@ -133,6 +158,13 @@ class Admin extends CI_Controller {
 	public function edit_agent(){
 		$this->page('admin_agent_data_modify');
 	}
+	
+	
+	/******************************/
+	
+	/**		PAGES END			 **/
+	
+	/******************************/
 	
 	public function delete_agent(){
 		$id = $this->uri->segment(3);
@@ -345,9 +377,12 @@ class Admin extends CI_Controller {
 	}
 	
 	public function get_cities(){
+		$number_row = 0;
 		$query = $this->agents->get_cities();;
 		foreach ($query->result_array() as $row){
+			$number_row++;
 			$data[] = array(
+				'number_row' => $number_row,
 				'value' => $row['id'],
 				'name' => $row['city']
 			);
@@ -915,5 +950,9 @@ class Admin extends CI_Controller {
 		$id = $this->input->get('order-id');
 		$reason = $this->input->get('reason');
 		$this->orders->add_edit_reason($id, $reason);
+	}
+	
+	function get_agent_news(){
+	
 	}
 }
