@@ -56,6 +56,12 @@ class Agents extends CI_Model {
 		return $sql;
 	}
 	
+	function get_agent_by_id_no_join($id){
+		$this->db->where('agent_id', $id);
+		$sql = $this->db->get('agents');
+		return $sql;
+	}
+	
 	function get_agent_by_name($name){
 		$query = 'select a.*, b.name as agent_type, a.join_date, c.city as agent_city, d.agent_name as parent_agent from agents a join agent_types b on a.agent_type_id = b.id join cities c on a.agent_city = c.id join agents d on a.parent_agent_id = d.agent_id where a.agent_name like "%'.$name.'%" order by agent_id';
 		$sql = $this->db->query($query);
@@ -74,23 +80,57 @@ class Agents extends CI_Model {
 		return $query;
 	}
 	
-	/*function get_city_by_agent_id($id){
-		$this->db->select('agent_city')->from('agents')->where('agent_id', $id);
-		$query = $this->db->get();
-		return $query;
+	function add_deposit_request($data){
+		$this->db->insert('deposit_requests', $data);
+		if ($this->db->affected_rows() > 0)
+			return true;
+		else return false;
 	}
 	
-	function get_upline_by_agent_id($id){
-		$this->db->select('parent_agent_id')->from('agents')->where('agent_id', $id);
-		$query = $this->db->get();
-		return $query;
+	function add_withdraw_request($data){
+		$this->db->insert('withdraw_requests', $data);
+		if ($this->db->affected_rows() > 0)
+			return true;
+		else return false;
 	}
 	
-	function get_agent_type_by_agent_id($id){
-		$this->db->select('agent_type_id')->from('agents')->where('agent_id', $id);
-		$query = $this->db->get();
-		return $query;
-	}*/
+	function get_topup_by_status($status){
+		$this->db->select('deposit_requests.*, agents.agent_name, bank_accounts.bank_name');
+		$this->db->from('deposit_requests');
+		$this->db->join('agents', 'deposit_requests.agent_id = agents.agent_id');
+		$this->db->join('bank_accounts', 'deposit_requests.bank_receiver_id = bank_accounts.bank_id');
+		$this->db->where('deposit_requests.status', $status);
+		$this->db->order_by('deposit_requests.id desc');
+		$get = $this->db->get();
+		return $get;
+	}
+	
+	function set_toptup_status($id, $status){
+		$data = array('status' => $status);
+		$this->db->where('id', $id);
+		$this->db->update('deposit_requests', $data);
+		if ($this->db->affected_rows() > 0)
+			return true;
+		else return false;
+	}
+	
+	function get_afield_in_topup($id, $field){
+		$this->db->select($field);
+		$this->db->from('deposit_requests');
+		$this->db->where('id', $id);
+		$get = $this->db->get();
+		foreach ($get->result_array() as $row)
+			$result = $row[$field];
+			
+		return $result;
+	}
+	
+	function add_nominal_into_account($agent_id, $nominal){
+		$update = $this->db->query('update agents set deposit_amount = deposit_amount + '.$nominal.' where agent_id = '.$agent_id);
+		if ($this->db->affected_rows() > 0)
+			return true;
+		else return false;
+	}
 }
 
 ?>

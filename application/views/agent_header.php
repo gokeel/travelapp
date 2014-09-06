@@ -6,7 +6,6 @@
 	define('JS_DIR', base_url('assets/admin/js'));
 	define('JS_2_DIR', base_url('assets/js'));
 	define('FONTS_DIR', base_url('assets/admin/fonts'));
-	define('LIB_YUI_DIR', base_url('assets/libraries/yui3-3.17.2'));
 ?>
 <!DOCTYPE html>
 
@@ -102,7 +101,7 @@
 	<meta name="msapplication-tooltip" content="Cross-platform admin template.">
 	<!--<meta name="msapplication-starturl" content="http://www.hellotraveler.co.id/">-->
 	<!-- These custom tasks are examples, you need to edit them to show actual pages -->
-	<meta charset="UTF-8"></head>
+	<meta charset="UTF-8">
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR;?>/web/styles/pager_custom.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIR;?>/web/styles/tooltipster.css" />
@@ -111,18 +110,20 @@
 	<link rel="stylesheet" media="all" type="text/css" href="<?php echo CSS_DIR;?>/jquery-ui.css" />
 	<script src="<?php echo JS_DIR;?>/web/progress.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="http://www.jquery4u.com/demos/jquery-quick-pagination/js/jquery.quick.pagination.min.js"></script>
-	<!--<script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 	<script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
-	<script src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>-->
+	<script src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>
 	<script src="<?php echo JS_DIR;?>/jquery-ui.min.js"></script>
 	<script src="<?php echo JS_DIR;?>/jquery.datePicker-2.1.2.js"></script>
 	<script src="<?php echo JS_DIR;?>/jquery-ui-timepicker-addon.js"></script>
+	
 	<!-- Tambahanku -->
 	<script src="<?php echo JS_2_DIR;?>/functions.js"></script>
 	<link rel="stylesheet" href="<?php echo CSS_2_DIR;?>/style.css">
 	<script src="http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js"></script>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/3.17.2/build/cssgrids/cssgrids-min.css">
-	
+
+</head>
 <body class="clearfix with-menu with-shortcuts reversed yui3-skin-sam">
 
 	<!-- Prompt IE 6 users to install Chrome Frame -->
@@ -130,7 +131,7 @@
 
 	<!-- Title bar -->
 	<header role="banner" id="title-bar">
-		<h2>Hello Agent</h2>
+		<h2>Hello <?php echo $this->session->userdata('user_name');?></h2>
 	</header>
 
 	<!-- Button to open/hide menu -->

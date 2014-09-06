@@ -10,7 +10,7 @@
 		Your browser does not support JavaScript! Some features won't work as expected...
 	</noscript>
 	<hgroup id="main-title" class="thin">
-		<h1>Form Pemesanan Tiket</h1>
+		<h1 style="color:white">Form Pemesanan Tiket</h1>
 	</hgroup>
 	<form id="form-order" name="form-order">
 		<div class="with-padding">

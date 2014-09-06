@@ -146,6 +146,9 @@ class Admin extends CI_Controller {
 		$this->page('admin_setting_kurs');
 	}
 	
+	public function setting_deposit_topup(){
+		$this->page('admin_deposit_topup_page');
+	}
 	public function any_message(){
 		$data = array(
 				'user_name' => $this->session->userdata('user_name'),
@@ -976,7 +979,48 @@ class Admin extends CI_Controller {
 		$this->orders->add_edit_reason($id, $reason);
 	}
 	
-	function get_agent_news(){
+	function get_topup_by_status(){
+		$status = $this->uri->segment(3);
+		$topup = $this->agents->get_topup_by_status($status);
+		$number_row=0;
+		foreach ($topup->result_array() as $row){
+			$number_row++;
+			$data[] = array(
+				'number_row' => $number_row,
+				'id' => $row['id'],
+				'agent_name' => $row['agent_name'],
+				'bank_from' => $row['bank_from'],
+				'sender_number' => $row['sender_account_number'],
+				'sender_name' => $row['sender_account_name'],
+				'bank_name' => $row['bank_name'],
+				'transfer_date' => $row['transfer_date'],
+				'nominal' => $row['nominal']
+			);
+		}
+		echo json_encode($data);
+	}
 	
+	function topup_issued(){
+		$id = $this->uri->segment(3);
+		//get the nominal requested
+		$nominal = $this->agents->get_afield_in_topup($id, 'nominal');
+		$agent_id = $this->agents->get_afield_in_topup($id, 'agent_id');
+		$issued = $this->agents->set_toptup_status($id, 'Issued');
+		if ($issued){
+			// add deposit into account
+			$upd = $this->agents->add_nominal_into_account($agent_id, $nominal);
+			redirect(base_url('index.php/admin/setting_deposit_topup'));
+		}
+		else
+			$this->show_message_page('issued top up', $this->db->_error_message());
+	}
+	
+	function topup_reject(){
+		$id = $this->uri->segment(3);
+		$reject = $this->agents->set_toptup_status($id, 'Rejected');
+		if ($reject)
+			redirect(base_url('index.php/admin/setting_deposit_topup'));
+		else
+			$this->show_message_page('reject top up', $this->db->_error_message());
 	}
 }
