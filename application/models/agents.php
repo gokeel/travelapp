@@ -105,10 +105,29 @@ class Agents extends CI_Model {
 		return $get;
 	}
 	
+	function get_withdraw_by_status($status){
+		$this->db->select('withdraw_requests.*, agents.agent_name');
+		$this->db->from('withdraw_requests');
+		$this->db->join('agents', 'withdraw_requests.agent_id = agents.agent_id');
+		$this->db->where('withdraw_requests.status', $status);
+		$this->db->order_by('withdraw_requests.id desc');
+		$get = $this->db->get();
+		return $get;
+	}
+	
 	function set_toptup_status($id, $status){
 		$data = array('status' => $status);
 		$this->db->where('id', $id);
 		$this->db->update('deposit_requests', $data);
+		if ($this->db->affected_rows() > 0)
+			return true;
+		else return false;
+	}
+	
+	function set_withdraw_status($id, $status){
+		$data = array('status' => $status);
+		$this->db->where('id', $id);
+		$this->db->update('withdraw_requests', $data);
 		if ($this->db->affected_rows() > 0)
 			return true;
 		else return false;
@@ -125,8 +144,26 @@ class Agents extends CI_Model {
 		return $result;
 	}
 	
+	function get_afield_in_withdraw($id, $field){
+		$this->db->select($field);
+		$this->db->from('withdraw_requests');
+		$this->db->where('id', $id);
+		$get = $this->db->get();
+		foreach ($get->result_array() as $row)
+			$result = $row[$field];
+			
+		return $result;
+	}
+	
 	function add_nominal_into_account($agent_id, $nominal){
 		$update = $this->db->query('update agents set deposit_amount = deposit_amount + '.$nominal.' where agent_id = '.$agent_id);
+		if ($this->db->affected_rows() > 0)
+			return true;
+		else return false;
+	}
+	
+	function substract_nominal_into_account($agent_id, $nominal){
+		$update = $this->db->query('update agents set deposit_amount = deposit_amount - '.$nominal.' where agent_id = '.$agent_id);
 		if ($this->db->affected_rows() > 0)
 			return true;
 		else return false;

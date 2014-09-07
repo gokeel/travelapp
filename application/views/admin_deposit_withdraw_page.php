@@ -7,12 +7,12 @@ YUI().use('tabview', function(Y) {
 <div id="content"  style="min-height:400px;"> 
   <div class="frametab">
 		
-		<h3 style="margin:5px 0 5px 5px;">Halaman Top Up</h3>
+		<h3 style="margin:5px 0 5px 5px;">Halaman Withdraw</h3>
 		<div id="tabs">
 			<ul>
 				<li><a href="#tab-1">Request From Agent</a></li>
-				<li><a href="#tab-2">Issued Top-Up</a></li>
-				<li><a href="#tab-3">Rejected Top-Up</a></li>
+				<li><a href="#tab-2">Issued Withdraw</a></li>
+				<li><a href="#tab-3">Rejected Withdraw</a></li>
 			</ul>
 			<div>
 				<div id="tab-1">
@@ -45,11 +45,11 @@ YUI().use('tabview', function(Y) {
 		$.ajax({
 			type : "GET",
 			async: false,
-			url: '<?php echo base_url();?>index.php/admin/get_topup_by_status/Requested',
+			url: '<?php echo base_url();?>index.php/admin/get_withdraw_by_status/Requested',
 			dataType: "json",
 			success:function(datajson){
 				for(var i=0; i<datajson.length;i++)
-					data[i] = {number_row:datajson[i].number_row ,id: datajson[i].id, agent_name:datajson[i].agent_name, bank_from: datajson[i].bank_from, sender_number: datajson[i].sender_account_number, sender_name: datajson[i].sender_account_name, bank_name: datajson[i].bank_name, transfer_date: datajson[i].transfer_date, nominal: datajson[i].nominal};
+					data[i] = {number_row:datajson[i].number_row ,id: datajson[i].id, agent_name:datajson[i].agent_name, bank_to: datajson[i].bank_to, receiver_number: datajson[i].receiver_number, receiver_name: datajson[i].receiver_name, message: datajson[i].message, nominal: datajson[i].nominal};
 			}
 		});
 		
@@ -75,27 +75,26 @@ YUI().use('tabview', function(Y) {
 				columns: [
 					{key:"number_row", label:"No.", width:"10px"},
 					{key:"agent_name", label:"Nama Agen"},
-					{key:"bank_from", label:"Bank Pengirim"},
-					{key:"sender_name", label:"Nama Pengirim"},
-					{key:"sender_number", label:"No Rekening Pengirim"},
-					{key:"bank_name", label:"Bank Penerima"},
-					{key:"transfer_date", label:"Tanggal Pengiriman"},
+					{key:"bank_to", label:"Bank Tujuan"},
+					{key:"receiver_name", label:"Nama Penerima"},
+					{key:"receiver_number", label:"No Rekening Penerima"},
 					{key:"nominal", label:"Nominal", formatter:formatCurrency},
+					{key:"message", label:"Catatan"},
 					{
 						key:"id", 
 						label: "Issued",
-						formatter:'<a href="<?php echo base_url();?>index.php/admin/topup_issued/{value}" style="color:red"><button>Issued</button></a>',
+						formatter:'<a href="<?php echo base_url();?>index.php/admin/withdraw_issued/{value}" style="color:red"><button>Issued</button></a>',
 						allowHTML: true
 					},
 					{
 						key:"id", 
 						label: "Reject",
-						formatter:'<a href="<?php echo base_url();?>index.php/admin/topup_reject/{value}" style="color:red"><button>Reject</button></a>',
+						formatter:'<a href="<?php echo base_url();?>index.php/admin/withdraw_reject/{value}" style="color:red"><button>Reject</button></a>',
 						allowHTML: true
 					}
 				],
 				data: data_order,
-				caption: "Daftar Permintaan Top-Up",
+				caption: "Daftar Permintaan Withdraw",
 				rowsPerPage: 10
 			});
 			table.render("#data-request");
@@ -106,11 +105,11 @@ YUI().use('tabview', function(Y) {
 		$.ajax({
 			type : "GET",
 			async: false,
-			url: '<?php echo base_url();?>index.php/admin/get_topup_by_status/Issued',
+			url: '<?php echo base_url();?>index.php/admin/get_withdraw_by_status/Issued',
 			dataType: "json",
 			success:function(datajson){
 				for(var i=0; i<datajson.length;i++)
-					data[i] = {number_row:datajson[i].number_row ,id: datajson[i].id, agent_name:datajson[i].agent_name, bank_from: datajson[i].bank_from, sender_number: datajson[i].sender_account_number, sender_name: datajson[i].sender_account_name, bank_name: datajson[i].bank_name, transfer_date: datajson[i].transfer_date, nominal: datajson[i].nominal};
+					data[i] = {number_row:datajson[i].number_row ,id: datajson[i].id, agent_name:datajson[i].agent_name, bank_to: datajson[i].bank_to, receiver_number: datajson[i].receiver_number, receiver_name: datajson[i].receiver_name, message: datajson[i].message, nominal: datajson[i].nominal};
 			}
 		});
 		
@@ -136,15 +135,14 @@ YUI().use('tabview', function(Y) {
 				columns: [
 					{key:"number_row", label:"No.", width:"10px"},
 					{key:"agent_name", label:"Nama Agen"},
-					{key:"bank_from", label:"Bank Pengirim"},
-					{key:"sender_name", label:"Nama Pengirim"},
-					{key:"sender_number", label:"No Rekening Pengirim"},
-					{key:"bank_name", label:"Bank Penerima"},
-					{key:"transfer_date", label:"Tanggal Pengiriman"},
-					{key:"nominal", label:"Nominal", formatter:formatCurrency}
+					{key:"bank_to", label:"Bank Tujuan"},
+					{key:"receiver_name", label:"Nama Penerima"},
+					{key:"receiver_number", label:"No Rekening Penerima"},
+					{key:"nominal", label:"Nominal", formatter:formatCurrency},
+					{key:"message", label:"Catatan"}
 				],
 				data: data_order,
-				caption: "Daftar Top-Up yang Di-Issued",
+				caption: "Daftar Withdraw yang Di-Issued",
 				rowsPerPage: 10
 			});
 			table.render("#data-issued");
@@ -155,11 +153,11 @@ YUI().use('tabview', function(Y) {
 		$.ajax({
 			type : "GET",
 			async: false,
-			url: '<?php echo base_url();?>index.php/admin/get_topup_by_status/Rejected',
+			url: '<?php echo base_url();?>index.php/admin/get_withdraw_by_status/Rejected',
 			dataType: "json",
 			success:function(datajson){
 				for(var i=0; i<datajson.length;i++)
-					data[i] = {number_row:datajson[i].number_row ,id: datajson[i].id, agent_name:datajson[i].agent_name, bank_from: datajson[i].bank_from, sender_number: datajson[i].sender_account_number, sender_name: datajson[i].sender_account_name, bank_name: datajson[i].bank_name, transfer_date: datajson[i].transfer_date, nominal: datajson[i].nominal};
+					data[i] = {number_row:datajson[i].number_row ,id: datajson[i].id, agent_name:datajson[i].agent_name, bank_to: datajson[i].bank_to, receiver_number: datajson[i].receiver_number, receiver_name: datajson[i].receiver_name, message: datajson[i].message, nominal: datajson[i].nominal};
 			}
 		});
 		
@@ -185,15 +183,14 @@ YUI().use('tabview', function(Y) {
 				columns: [
 					{key:"number_row", label:"No.", width:"10px"},
 					{key:"agent_name", label:"Nama Agen"},
-					{key:"bank_from", label:"Bank Pengirim"},
-					{key:"sender_name", label:"Nama Pengirim"},
-					{key:"sender_number", label:"No Rekening Pengirim"},
-					{key:"bank_name", label:"Bank Penerima"},
-					{key:"transfer_date", label:"Tanggal Pengiriman"},
-					{key:"nominal", label:"Nominal", formatter:formatCurrency}
+					{key:"bank_to", label:"Bank Tujuan"},
+					{key:"receiver_name", label:"Nama Penerima"},
+					{key:"receiver_number", label:"No Rekening Penerima"},
+					{key:"nominal", label:"Nominal", formatter:formatCurrency},
+					{key:"message", label:"Catatan"}
 				],
 				data: data_order,
-				caption: "Daftar Top-Up Rejected",
+				caption: "Daftar Withdraw Rejected",
 				rowsPerPage: 10
 			});
 			table.render("#data-rejected");
