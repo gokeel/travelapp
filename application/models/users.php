@@ -52,6 +52,14 @@ class Users extends CI_Model {
 		else return false;
 	}
 	
+	function edit_user($id, $data){
+		$this->db->where('account_id', $id);
+		$upd = $this->db->update('users', $data);
+		if ($this->db->affected_rows() > 0)
+			return true;
+		else return false;
+	}
+	
 	function del_user($id){
 		$this->db->delete('users', array('account_id' => $id));
 		if ($this->db->affected_rows() > 0)
@@ -68,6 +76,39 @@ class Users extends CI_Model {
 		   foreach ($get->result() as $row)
 			$result = $row->account_id;
 		return $result;
+	}
+	
+	function get_accounts_by_level($level){
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->join('cities', 'users.city_id = cities.id');
+		$this->db->where('user_level', $level);
+		$this->db->order_by('user_name asc');
+		$get = $this->db->get();
+		if ($get->num_rows() > 0)
+			return $get;
+		else
+			return false;
+	}
+	
+	function get_account_by_id($id){
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->join('cities', 'users.city_id = cities.id', 'left');
+		$this->db->where('account_id', $id);
+		$select = $this->db->get();
+		if ($select->num_rows() > 0)
+			return $select;
+		else
+			return false;
+	}
+	
+	function get_password_by_id($id, $pass){
+		$get = $this->db->get_where('users', array('account_id' => $id, 'password' => md5($pass)));
+		if ($get->num_rows() > 0)
+			return true;
+		else
+			return false;
 	}
 }
 

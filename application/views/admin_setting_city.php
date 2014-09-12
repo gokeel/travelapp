@@ -46,8 +46,23 @@ YUI().use('tabview', function(Y) {
 	</div>
 	<div id="end"></div>
 	
+	<div id="panel-add-city">
+		<div class="yui3-widget-bd">
+			<form id="form-add-city" name="form-add-city">
+				<fieldset>
+					<p>
+						<label for="namakota">Nama Kota</label><br/>
+						<input type="text" name="namakota" id="namakota" value="" placeholder="">
+					</p>
+				</fieldset>
+			</form>
+		</div>
+	</div>		
+	
   <!--&content--> 
 </div>
+	
+	
 <script>
 	$( window ).load(function() {
 		load_city();
@@ -84,7 +99,7 @@ YUI().use('tabview', function(Y) {
 						key:"id", 
 						label: "Ubah",
 						width: "30px",
-						formatter:'<a href="<?php echo base_url();?>index.php/admin/city_edit/{value}"><img src="<?php echo IMAGES_DIR;?>/edit.ico"/ class="crud-btn"></a>',
+						formatter:'<a href="<?php echo base_url();?>index.php/admin/city_edit_page/{value}"><img src="<?php echo IMAGES_DIR;?>/edit.ico"/ class="crud-btn"></a>',
 						allowHTML: true
 					},
 					{
@@ -94,6 +109,7 @@ YUI().use('tabview', function(Y) {
 						formatter:'<a href="<?php echo base_url();?>index.php/admin/city_delete/{value}"><img src="<?php echo IMAGES_DIR;?>/delete.ico"/ class="crud-btn"></a>',
 						allowHTML: true
 					}
+					
 				],
 				data: data_bank_via,
 				caption: "Kota Terdaftar",
@@ -103,26 +119,38 @@ YUI().use('tabview', function(Y) {
 		});
 	}
 	
+	// $('.formAnchor').on('click', function(e) {
+		// e.preventDefault(); // prevents a window.location change to the href
+		// $('#bar').val( $(this).data('val') );  // sets to 123 or abc, respectively
+		// $('#editcity').submit();
+	// });
+	
+	// $('#editcity').on('submit', function(){ 
+		// alert($('#bar').val()); 
+		// return false;
+	// });
+	
 	YUI().use('panel', 'dd-plugin', function (Y) {
-		function add_bank(){
-			var form = $('#form-add-bank').serialize();
+		function add_city(){
+			
+			var form = $('#form-add-city').serialize();
 			$.ajax({
 				type : "GET",
-				url: '<?php echo base_url();?>index.php/admin/bank_add',
+				url: '<?php echo base_url();?>index.php/admin/city_add',
 				data: form,
 				cache: false,
 				dataType: "json",
 				success:function(data){
-					window.location.assign("<?php echo base_url('index.php/admin/setting_bank_page/bank_list');?>");
+					window.location.assign("<?php echo base_url('index.php/admin/setting_city_page');?>");
 				}
 			})
 		}
 		
 		var addRowBtn  = Y.one('#add-city');
-		// Create the main modal form for add bank
+		// Create the main modal form for add city
 		var panel = new Y.Panel({
-			srcNode      : '#panel-add-bank',
-			headerContent: 'Tambah Akun Bank',
+			srcNode      : '#panel-add-city',
+			headerContent: 'Tambah Kota',
 			width        : 250,
 			zIndex       : 5,
 			centered     : true,
@@ -136,7 +164,7 @@ YUI().use('tabview', function(Y) {
 			section: Y.WidgetStdMod.FOOTER,
 			action : function (e) {
 				e.preventDefault();
-				add_bank();
+				add_city();
 			}
 		});
 		panel.addButton({
@@ -153,8 +181,8 @@ YUI().use('tabview', function(Y) {
 	});
 	
 	YUI().use('panel', 'dd-plugin', function (Y) {
-		function add_bank_via(){
-			var form = $('#form-add-bank-via').serialize();
+		function edit_city(){
+			var form = $('#form-edit-city').serialize();
 			$.ajax({
 				type : "GET",
 				url: '<?php echo base_url();?>index.php/admin/bank_via_add',
@@ -166,11 +194,11 @@ YUI().use('tabview', function(Y) {
 				}
 			})
 		}
-		var addRowBtn  = Y.one('#add-bank-via');
+		var addRowBtn  = Y.one('#edit-city');
 		// Create the main modal form for add bank
 		var panel_via = new Y.Panel({
-			srcNode      : '#panel-add-bank-via',
-			headerContent: 'Tambah Bank Via',
+			srcNode      : '#panel-edit-city',
+			headerContent: 'Ubah nama kota',
 			width        : 250,
 			zIndex       : 5,
 			centered     : true,

@@ -13,7 +13,8 @@
 			<?php
 				if ($this->uri->segment(3)=="success"){
 					echo '<h4>Masukan anda telah kami terima</h4>';
-                    echo '<p>Kami akan segera menghubungi anda pada jam kerja.</p>';
+                    echo '<p>Email berisi informasi login telah kami kirimkan, mohon cek di folder spam apabila tidak masuk kedalam folder inbox anda.</p>';
+					echo '<p>Kami akan segera menghubungi anda pada jam kerja.</p>';
 				}
 			?>
 			<div class="span8 boxfix" style="margin-right:10px">            

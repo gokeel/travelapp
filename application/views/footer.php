@@ -2,7 +2,7 @@
       <div class="page-out clearfix">
         <div class="container">
           <div class="row-fluid">
-            <div class="footer-logo span3"> <img src="<?php echo IMG_DIR;?>//footer-verendus-logo.png" alt="Verendus" /> </div>
+            <div class="footer-logo span3"> <img src="<?php echo IMG_DIR;?>/footer-verendus-logo.png" alt="Verendus" /> </div>
             <div class="top-off-page span1 offset8"> <a href="#"><i class="icon-arrow-up"></i></a> </div>
           </div>
         </div>

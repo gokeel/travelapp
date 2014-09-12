@@ -91,3 +91,39 @@ function replace_undefined(variable){
 	var result = (typeof variable === 'undefined' ? '' : variable);
 	return result;
 }
+
+function simple_load(uri, el_sel, selected_id){
+	$.ajax({
+		type : "GET",
+		url: uri,
+		dataType: "json",
+		success:function(data){
+			insert_select(el_sel, data, selected_id);
+		}
+	})
+}
+	
+function insert_select(el_sel, data, selected_id){
+		
+	var sel = $(el_sel);
+	for(var i=0; i<data.length;i++){
+		if (selected_id == '')
+			sel.append('<option value="'+data[i].value+'">'+data[i].name+'</option>');
+		else {
+			if (selected_id == data[i].value)
+				sel.append('<option value="'+data[i].value+'" selected="selected">'+data[i].name+'</option>');
+			else
+				sel.append('<option value="'+data[i].value+'">'+data[i].name+'</option>');
+		}
+	}
+}
+
+function prompt_delete_item()
+{
+	var answer = confirm("Hapus data ini?")
+	if (answer){
+		document.messages.submit();
+	}
+		
+	return false;  
+}

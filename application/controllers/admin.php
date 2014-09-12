@@ -11,6 +11,9 @@ class Admin extends CI_Controller {
 		$this->load->model('agents');
 		$this->load->model('bank');
 		$this->load->model('orders');
+		$this->load->model('posts');
+		$this->load->model('cities');
+		$this->load->model('yahoo_messenger');
 	}
 	
 	public function index() {
@@ -51,9 +54,36 @@ class Admin extends CI_Controller {
 	}
 	/*******************************************/
 	
-	/**				Any page will be here	  **/
+	/**				Any pages will be here	  **/
 	
 	/*******************************************/
+	function show_message_page($in, $message){
+		$data = array(
+				'user_name' => $this->session->userdata('user_name'),
+				'ip_address' => $this->session->userdata('ip_address'),
+				'title' => 'Pesan Kesalahan',
+				'subtitle' => 'Terjadi kesalahan pada saat '.$in,
+				'message' => $message
+			);
+			$this->load->view('admin_page_header', $data);
+			$this->load->view('admin_any_message', $data);
+			$this->load->view('admin_page_footer');
+	}
+	
+	function show_success_page($message){
+		$data = array(
+				'user_name' => $this->session->userdata('user_name'),
+				'ip_address' => $this->session->userdata('ip_address'),
+				'title' => 'Pesan Berhasil',
+				'subtitle' => '',
+				'message' => $message
+			);
+			$this->load->view('admin_page_header', $data);
+			$this->load->view('admin_any_message', $data);
+			$this->load->view('admin_page_footer');
+	}
+	
+	
 	function page($page_request, $additional=null){
 		$data = array(
 			'user_name' => $this->session->userdata('user_name'),
@@ -70,7 +100,9 @@ class Admin extends CI_Controller {
 			$this->load->view('admin_booking_header');
 		if (strpos($page_request, 'admin_deposit') !== false)
 			$this->load->view('admin_deposit_header');
-		$this->load->view($page_request);
+		if (strpos($page_request, 'admin_cms') !== false)
+			$this->load->view('admin_cms_header');
+		$this->load->view($page_request, $additional);
 		$this->load->view('admin_page_footer');
 	}
 	
@@ -172,7 +204,34 @@ class Admin extends CI_Controller {
 	public function edit_agent(){
 		$this->page('admin_agent_data_modify');
 	}
+	public function user_edit_page(){
+		$this->page('admin_setting_user_modify');
+	}
 	
+	public function my_account_page(){
+		$this->page('admin_my_account_page');
+	}
+	
+	public function cms_page(){
+		$this->page('admin_cms_page');
+	}
+	
+	public function content_category_page(){
+		$this->page('admin_cms_content_category');
+	}
+	public function edit_content_category(){
+		$this->page('admin_cms_content_category_modify');
+	}
+	public function content_add_page(){
+		//create a blank row and insert to post, finally get the inserted ID
+		$get_id = $this->posts->add_blank_post();
+		$this->page('admin_cms_content_add', array('id' => $get_id));
+	}
+	
+	public function content_modify(){
+		$id = $this->uri->segment(3);
+		$this->page('admin_cms_content_modify', array('id' => $id));
+	}
 	
 	/******************************/
 	
@@ -953,19 +1012,6 @@ class Admin extends CI_Controller {
 		echo json_encode($data);
 	}
 	
-	function show_message_page($in, $message){
-		$data = array(
-				'user_name' => $this->session->userdata('user_name'),
-				'ip_address' => $this->session->userdata('ip_address'),
-				'title' => 'Pesan Kesalahan',
-				'subtitle' => 'Terjadi kesalahan pada saat '.$in,
-				'message' => $message
-			);
-			$this->load->view('admin_page_header', $data);
-			$this->load->view('admin_any_message', $data);
-			$this->load->view('admin_page_footer');
-	}
-	
 	function reject_order(){
 		$id = $this->uri->segment(3);
 		$reject = $this->orders->update_order_status($id, 'Rejected');
@@ -1071,5 +1117,382 @@ class Admin extends CI_Controller {
 			redirect(base_url('index.php/admin/setting_deposit_withdraw'));
 		else
 			$this->show_message_page('reject withdraw', $this->db->_error_message());
+	}
+	
+	public function get_users_by_type(){
+		$type = $this->uri->segment(3);
+		$account = $this->users->get_accounts_by_level($type);
+		if ($account==false){
+			$data['error'] = 'No rows returned';
+		}
+		else {
+			$number_row = 0;
+			foreach ($account->result_array() as $row){
+				$number_row++;
+				$data[] = array(
+					'number_row' => $number_row,
+					'id' => $row['account_id'],
+					'username' => $row['user_name'],
+					'email' => $row['email_login'],
+					'name' => $row['name'],
+					'job_position' => $row['job_position'],
+					'city' => $row['city'],
+					'phone' => $row['phone'],
+					'address' => $row['address']
+				);
+			}
+		}
+		
+		
+		echo json_encode($data);
+	}
+	
+	public function user_add(){
+		$posts = $this->input->get(NULL, TRUE);
+		foreach ($posts as $key => $value){
+			if ($key != '_'){
+				if ($key == 'password')
+					$data[$key] = md5($value);
+				else
+					$data[$key] = $value;
+			}
+			
+		}
+		
+		$insert = $this->users->add_user($data);
+	}
+	
+	public function user_edit(){
+		$id = $this->uri->segment(3);
+		$posts = $this->input->post(NULL, TRUE);
+		foreach ($posts as $key => $value)
+			$data[$key] = $value;
+		
+		$edit = $this->users->edit_user($id, $data);
+		if($edit)
+			$this->show_success_page('Proses ubah data user berhasil.');
+		else
+			$this->show_message_page('mengubah data user', 'Mohon cek kembali input anda, atau hubungi web administrator.');
+	}
+	
+	public function user_delete(){
+		$id = $this->uri->segment(3);
+		
+		$del = $this->users->del_user($id);
+		if($del)
+			$this->show_success_page('Proses hapus user berhasil.');
+		else
+			$this->show_message_page('menghapus data user', 'Mohon hubungi web administrator.');
+	}
+	
+	public function get_user_by_id(){
+		$id = $this->uri->segment(3);
+		$get = $this->users->get_account_by_id($id);
+		foreach ($get->result_array() as $row){
+			$data = array(
+				'user_name' => $row['user_name'],
+				'email' => $row['email_login'],
+				'user_level' => $row['user_level'],
+				'job_position' => $row['job_position'],
+				'phone' => $row['phone'],
+				'address' => $row['address'],
+				'city_id' => $row['city_id'],
+				'city' => $row['city']
+			);
+		}
+		echo json_encode($data);
+	}
+	
+	public function change_password(){
+		$id = $this->uri->segment(3);
+		$check_pass = $this->users->get_password_by_id($id, $this->input->post('password-now', TRUE));
+		if ($check_pass==false)
+			$this->show_message_page('mengecek password lama', 'Mohon isi password lama dengan benar, perhatikan CAPS LOCK agar dalam keadaan OFF.');
+		else{
+			$data = array('password' => md5($this->input->post('password-new', TRUE)));
+			$upd = $this->users->edit_user($id, $data);
+			if($upd)
+				$this->show_success_page('Proses ubah password user berhasil.');
+			else
+				$this->show_message_page('mengubah password', 'Mohon cek kembali input anda, atau hubungi web administrator.');
+		}
+	}
+	
+	public function add_content_category(){
+		$inputs = $this->input->get(NULL, TRUE);
+		foreach ($inputs as $key => $value)
+			if ($key!='_')
+				$data[$key] = $value;
+			
+		$add = $this->posts->add_category($data);
+	}
+	
+	public function get_content_categories(){
+		$get = $this->posts->get_categories();
+		$number_row=0;
+		foreach ($get->result_array() as $row){
+			$number_row++;
+			$data[] = array(
+				'number_row' => $number_row,
+				'id' => $row['id'],
+				'category' => $row['category'],
+				'description' => $row['description'],
+				'removable' => $row['removable'],
+				'value' => $row['id'],
+				'name' => $row['category']
+			);
+		}
+		echo json_encode($data);
+	}
+	
+	public function get_category_by_id(){
+		$id = $this->uri->segment(3);
+		$get = $this->posts->get_category_by_id($id);
+		foreach ($get->result_array() as $row){
+			$data = array(
+				'category' => $row['category'],
+				'description' => $row['description'],
+				'removable' => $row['removable']
+			);
+		}
+		echo json_encode($data);
+	}
+	
+	public function edit_category(){
+		$id = $this->uri->segment(3);
+		$inputs = $this->input->post(NULL, TRUE);
+		foreach ($inputs as $key => $value)
+			$data[$key] = $value;
+		$upd = $this->posts->edit_category($id, $data);
+		if($upd)
+			redirect(base_url('index.php/admin/content_category_page'));
+		else
+			$this->show_message_page('mengubah data kategori konten', 'Mohon cek kembali input anda, atau hubungi web administrator.');
+	}
+	
+	public function delete_content_category(){
+		$id = $this->uri->segment(3);
+		$del = $this->posts->del_category($id);
+		if($del)
+			redirect(base_url('index.php/admin/content_category_page'));
+		else
+			$this->show_message_page('menghapus data kategori konten', 'Mohon cek kembali input anda, atau hubungi web administrator.');
+	}
+	
+	//cindy nordiansyah
+	public function city_add() {
+		$data =array(
+			'city' => $this->input->get('namakota', TRUE)
+		);
+		
+		$insert_city = $this->cities->add_city('cities', $data);
+		
+		$response[] = array('response' => $insert_city);
+		echo json_encode($response);
+	}
+	//cindy nordiansyah
+	public function city_edit_page() {
+		$this->page('admin_setting_city_modify');
+	}
+	//cindy nordiansyah
+	public function city_edit() {
+		$city_code= $this->uri->segment(3);
+		$data = array(
+			'city' => $this->input->get('city_name', TRUE),
+		);
+		$upd = $this->cities->upd_city('cities', 'id', $city_code, $data);
+	}
+	
+	//cindy nordiansyah
+	public function city_details(){
+		$id = $this->uri->segment(3);
+		$query = $this->cities->get_detail_by_id('cities', 'id', $id);
+		foreach ($query->result_array() as $row){
+			$data[] = array(
+				'city_name' => $row['city']
+			);
+		}
+		echo json_encode($data);
+	}
+	//cindy nordiansyah
+	/*public function city_delete() {
+		$city_code= $this->uri->segment(3);
+		
+	}*/
+	
+	//cindy nordiansyah
+	public function ym_add() {
+		$data =array(
+			'yahoo_account' => $this->input->get('akun_ym', TRUE),
+			'functional_type' => $this->input->get('tipe', TRUE),
+			'enabled' => 'YES'
+		);
+		
+		$insert_ym = $this->yahoo_messenger->add_ym('yahoo_accounts', $data);
+		
+		$response[] = array('response' => $insert_ym);
+		echo json_encode($response);
+	}
+	
+	//cindy nordiansyah
+	public function ym_update() {
+		$this->page('admin_setting_yahoo_modify');
+	}
+	//cindy nordiansyah
+	public function ym_edit() {
+		$ymid= $this->uri->segment(3);
+		$data = array(
+			'yahoo_account' => $this->input->get('akun', TRUE),
+			'functional_type' => $this->input->get('tipe', TRUE)
+		);
+		$upd = $this->yahoo_messenger->upd_ym('yahoo_accounts', 'id', $ymid, $data);
+	}
+	
+	//cindy nordiansyah
+	public function ym_details(){
+		$id = $this->uri->segment(3);
+		$query = $this->yahoo_messenger->get_detail_by_id('yahoo_accounts', 'id', $id);
+		foreach ($query->result_array() as $row){
+			$data[] = array(
+				'akun' => $row['yahoo_account'],
+				'tipe' => $row['functional_type']
+			);
+		}
+		echo json_encode($data);
+	}
+	//cindy nordiansyah
+	public function ym_delete() {
+		$ymid= $this->uri->segment(3);
+		//delete on table agents
+		$query = $this->yahoo_messenger->del_ym($ymid);
+		//also delete the user on table users
+		//$del_user = $this->users->del_user($id);
+		redirect(base_url('index.php/admin/setting_yahoo_page'));
+	}
+	
+	//cindy nordiansyah
+	public function get_yahoo() {
+		$number_row = 0;
+		$query = $this->yahoo_messenger->get_yahoo();
+		foreach ($query->result_array() as $row){
+			$number_row++;
+			$data[] = array(
+				'number_row' => $number_row,
+				'id' =>  $row['id'],
+				'name' => $row['yahoo_account'],
+				'type' => $row['functional_type']
+			);
+		}
+		echo json_encode($data);
+	}
+	
+	public function add_post(){
+		$config['upload_path'] = './assets/uploads/posts';
+		$config['file_name'] = 'pic_'.$this->input->post('post_id');
+		$config['allowed_types'] = 'gif|jpeg|jpg|png';
+		$config['overwrite']	= TRUE;
+		$config['max_size']	= '1000';
+		
+		
+		$this->load->library('upload', $config);
+		if ( ! $this->upload->do_upload('image'))
+			$this->show_message_page('mengunggah foto', $this->upload->display_errors());
+		else {
+			//$upload_data = $this->upload->data(); 
+			$ext = end(explode(".", $this->upload->file_name));
+			
+			$posts = $this->input->post(NULL, TRUE);
+			foreach ($posts as $key => $value)
+				if ($key!='image')
+					$data[$key] = $value;
+			$data['image_file'] = 'pic_'.$this->input->post('post_id').'.'.$ext;
+			$data['publish_date'] = ($this->input->post('status')=='publish' ? date('Y-m-d') : '');
+			$id = $this->input->post('post_id');
+			$upd = $this->posts->update_post($id, $data);
+			if($upd)
+				$this->show_success_page('Proses menambah konten berhasil.');
+			else
+				$this->show_message_page('menambah konten', 'Mohon cek inputan anda atau hubungi web administrator.');
+		}
+	}
+	
+	public function get_posts(){
+		$get = $this->posts->get_posts();
+		$number_row=0;
+		foreach ($get->result_array() as $row){
+			$number_row++;
+			$data[] = array(
+				'number_row' => $number_row,
+				'id' => $row['post_id'],
+				'category' => $row['category_name'],
+				'title' => $row['title'],
+				'is_promo' => $row['is_promo'],
+				'price' => $row['price'],
+				'author' => $row['user_name'],
+				'status' => $row['status'],
+				'enabled' => $row['enabled']				
+			);
+		}
+		echo json_encode($data);
+	}
+	
+	
+	public function edit_post(){
+		$id = $this->uri->segment(3);
+		$config['upload_path'] = './assets/uploads/posts';
+		$config['file_name'] = 'pic_'.$id;
+		$config['allowed_types'] = 'gif|jpeg|jpg|png';
+		$config['overwrite']	= TRUE;
+		$config['max_size']	= '1000';
+		
+		if (isset($_FILES['image'])){
+			$this->load->library('upload', $config);
+			if ( ! $this->upload->do_upload('image'))
+				$this->show_message_page('mengunggah foto', $this->upload->display_errors());
+			else {
+				$ext = end(explode(".", $this->upload->file_name));
+				$data['image_file'] = 'pic_'.$id.'.'.$ext;
+			}
+				
+		}
+		
+		$posts = $this->input->post(NULL, TRUE);
+		foreach ($posts as $key => $value)
+			if ($key!='image')
+				$data[$key] = $value;
+		$data['publish_date'] = ($this->input->post('status')=='publish' ? date('Y-m-d') : '');
+		$upd = $this->posts->update_post($id, $data);
+		if($upd)
+			$this->show_success_page('Proses menambah konten berhasil.');
+		else
+			$this->show_message_page('menambah konten', 'Mohon cek inputan anda atau hubungi web administrator.');
+	}
+	
+	public function del_post(){
+		$id = $this->uri->segment(3);
+		$del = $this->posts->del_post($id);
+		if($del)
+			redirect(base_url('index.php/admin/cms_page'));
+		else
+			$this->show_message_page('menghapus data konten', 'Mohon cek kembali input anda, atau hubungi web administrator.');
+	}
+	
+	public function get_content_by_id(){
+		$id = $this->uri->segment(3);
+		$get = $this->posts->get_post_by_id($id);
+		foreach ($get->result_array() as $row){
+			$data = array(
+				'id' => $row['post_id'],
+				'category' => $row['category'],
+				'title' => $row['title'],
+				'content' => $row['content'],
+				'is_promo' => $row['is_promo'],
+				'price' => $row['price'],
+				'status' => $row['status'],
+				'enabled' => $row['enabled']				,
+				'image' => $row['image_file']
+			);
+		}
+		echo json_encode($data);
 	}
 }

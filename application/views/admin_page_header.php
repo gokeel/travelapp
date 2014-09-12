@@ -491,7 +491,9 @@ $(function() {
 	echo ($uri2=='deposit_page' ? '<span class="select">Deposit</span>': '<a href="'.base_url('index.php/admin/deposit_page').'">Deposit</a>');
 	echo ($uri2=='setting_page' ? '<span class="select">Setting</span>': '<a href="'.base_url('index.php/admin/setting_page').'">Setting</a>');
 	echo ($uri2=='assets_page' ? '<span class="select">Assets</span>': '<a href="'.base_url('index.php/admin/assets_page').'">Assets</a>');
-	echo ($uri2=='cashflow_page' ? '<span class="select">Cashflow</span>': '<a href="'.base_url('index.php/admin/cashflow_page').'">Cashflow</a>');
+	echo ($uri2=='my_account_page' ? '<span class="select">My Account</span>': '<a href="'.base_url('index.php/admin/my_account_page').'">My Account</a>');
+	echo ($uri2=='cms_page' ? '<span class="select">Content Management</span>': '<a href="'.base_url('index.php/admin/cms_page').'">Content Management</a>');
+	//echo ($uri2=='cashflow_page' ? '<span class="select">Cashflow</span>': '<a href="'.base_url('index.php/admin/cashflow_page').'">Cashflow</a>');
 ?>
 
 

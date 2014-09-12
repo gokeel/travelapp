@@ -808,4 +808,44 @@ class Order extends CI_Controller {
 			$this->load->view('admin_any_message', $data);
 			$this->load->view('admin_page_footer');
 	}
+	
+	public function order_paket(){
+		$data_order = array(
+			'account_id' => $this->config->item('account_id'),
+			'paket_id' => $this->input->post('paket_id',TRUE),
+			'trip_category' => 'paket',
+			'order_status' => 'Registered',
+			'registered_date' => date('Y-m-d  H:i:s')
+		);
+		$data_passenger = array(
+			'first_name' => $this->input->post('first_name', TRUE),
+			'last_name' => $this->input->post('last_name', TRUE),
+			'phone_1' => $this->input->post('telp_no',TRUE),
+			'email' => $this->input->post('email',TRUE)
+		);
+		
+		$insert_order = $this->orders->add_order($data_order);
+		$insert_id = $this->orders->add_passenger($data_passenger);
+						
+		//sending email
+		//$email_config['mailtype'] = 'html';
+		//$data_email = array(
+			//'name' => $this->input->post('company_name', TRUE),
+			//'username' => $this->input->post('username', TRUE),
+			//'password' => $this->input->post('password', TRUE)
+		//);
+		//$this->load->library('email', $email_config);
+
+		//$this->email->from('intest@hellotraveler.co.id', 'Info Agen Hellotraveler.co.id');
+		//$this->email->to($this->input->post('email',TRUE));
+		
+		//$this->email->subject('Registrasi Agen Berhasil');
+		//$messages = $this->load->view('email_tpl/registrasi_agen_berhasil', $data_email, TRUE);
+		//$this->email->message($messages);
+
+		//$this->email->send();
+
+		
+		redirect(base_url('index.php/webfront/order_paket/success'));
+	}
 }

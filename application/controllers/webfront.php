@@ -72,9 +72,14 @@ class Webfront extends CI_Controller {
 		$this->load->view('footer');
 	}
 	
-	public function pesanpaket(){
+	public function order_paket(){
+		$data = array(
+			'title' => 'Pemesanan Paket Wisata',
+			'sub_title' => 'Isikan data untuk memesan paket wisata pilihan Anda.'
+			);
 		$this->load->view('header');
-		$this->load->view('pesanpaket');
+		$this->load->view('page_nav_header', $data);
+		$this->load->view('order_paket');
 		$this->load->view('footer');
 	}
 	

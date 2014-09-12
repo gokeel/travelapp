@@ -38,7 +38,22 @@
 		<div id="data-ym"></div>
 	</div>
 	<div id="end"></div>
-	
+	<div id="panel-add-ym">
+		<div class="yui3-widget-bd">
+			<form id="form-add-ym" name="form-add-ym">
+				<fieldset>
+					<p>
+						<label for="tipe">Tipe Akun</label><br/>
+						<input type="text" name="tipe" id="tipe" placeholder="">
+					</p>
+					<p>
+						<label for="akun-ym">Akun</label><br/>
+						<input type="text" name="akun_ym" id="akun_ym" value="" placeholder="">
+					</p>
+				</fieldset>
+			</form>
+		</div>
+	</div>
   <!--&content--> 
 </div>
 <script>
@@ -48,15 +63,15 @@
 	
 	function load_ym(){
 		var data_via = [];
-			data_via[0] = {number_row:'1', id:'1', name:'hello_support@yahoo.co.id', type: 'Support'};
+		
 		$.ajax({
 			type : "GET",
 			async: false,
 			url: '<?php echo base_url();?>index.php/admin/get_yahoo',
 			dataType: "json",
 			success:function(datajson){
-				//for(var i=0; i<datajson.length;i++)
-					//data_via[i] = {number_row: datajson[i].number_row, id:datajson[i].value, name:datajson[i].name};
+				for(var i=0; i<datajson.length;i++)
+					data_via[i] = {number_row: datajson[i].number_row, id:datajson[i].id, name:datajson[i].name, type:datajson[i].type};
 			}
 		});
 		
@@ -72,14 +87,14 @@
 						key:"id", 
 						label: "Ubah",
 						width: "30px",
-						formatter:'<a href="<?php echo base_url();?>index.php/admin/yahoo_edit/{value}"><img src="<?php echo IMAGES_DIR;?>/edit.ico"/ class="crud-btn"></a>',
+						formatter:'<a href="<?php echo base_url();?>index.php/admin/ym_update/{value}"><img src="<?php echo IMAGES_DIR;?>/edit.ico"/ class="crud-btn"></a>',
 						allowHTML: true
 					},
 					{
 						key:"id", 
 						label: "Hapus",
 						width: "30px",
-						formatter:'<a href="<?php echo base_url();?>index.php/admin/yahoo_delete/{value}"><img src="<?php echo IMAGES_DIR;?>/delete.ico"/ class="crud-btn"></a>',
+						formatter:'<a href="<?php echo base_url();?>index.php/admin/ym_delete/{value}" onclick="return prompt_delete_item();" ><img src="<?php echo IMAGES_DIR;?>/delete.ico"/ class="crud-btn"></a>',
 						allowHTML: true
 					}
 				],
@@ -91,17 +106,27 @@
 		});
 	}
 	
+	function deletechecked()
+	{
+		var answer = confirm("Hapus akun ini?")
+		if (answer){
+			document.messages.submit();
+		}
+		
+		return false;  
+	}	  
+	
 	YUI().use('panel', 'dd-plugin', function (Y) {
-		function add_bank(){
-			var form = $('#form-add-bank').serialize();
+		function add_ym(){
+			var form = $('#form-add-ym').serialize();
 			$.ajax({
 				type : "GET",
-				url: '<?php echo base_url();?>index.php/admin/bank_add',
+				url: '<?php echo base_url();?>index.php/admin/ym_add',
 				data: form,
 				cache: false,
 				dataType: "json",
 				success:function(data){
-					window.location.assign("<?php echo base_url('index.php/admin/setting_bank_page/bank_list');?>");
+					window.location.assign("<?php echo base_url('index.php/admin/setting_yahoo_page');?>");
 				}
 			})
 		}
@@ -109,8 +134,8 @@
 		var addRowBtn  = Y.one('#add-ym');
 		// Create the main modal form for add bank
 		var panel = new Y.Panel({
-			srcNode      : '#panel-add-bank',
-			headerContent: 'Tambah Akun Bank',
+			srcNode      : '#panel-add-ym',
+			headerContent: 'Tambah Akun Yahoo! Messenger',
 			width        : 250,
 			zIndex       : 5,
 			centered     : true,
@@ -124,7 +149,7 @@
 			section: Y.WidgetStdMod.FOOTER,
 			action : function (e) {
 				e.preventDefault();
-				add_bank();
+				add_ym();
 			}
 		});
 		panel.addButton({
@@ -139,6 +164,10 @@
 			panel.show();
 		});
 	});
+	
+	
+   
+
 	
 	YUI().use('panel', 'dd-plugin', function (Y) {
 		function add_bank_via(){

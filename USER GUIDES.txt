@@ -1,0 +1,27 @@
+Program yang berisi tentang aplikasi keagenan pariwisata ini telah dibuat dengan memperhatikan kebutuhan pengguna agar dapat menggunakan program ini dengan mudah dan aman.
+Program ini dikembangkan oleh Irfan Nugroho dan Tim Development dari Harlisoft (Ocky Harliansyah dan Cindy Nordiansyah)
+
+Petunjuk penggunaan program ini berupa instalasi, inisiasi, dan prosedur.
+Disajikan dengan komprehensif sehingga pengguna dapat memahami dengan mudah.
+
+I. Instalasi
+
+
+
+
+II. Inisiasi
+	1. Konfigurasi awal
+		a. Buka file {ROOT}/application/config/config.php
+		b. Terdapat parameter yang harus dikonfigurasi dengan benar, antara lain: $config['api_server'], $config['api_key'], $config['account_id']
+		c. Parameter $config['api_server'] adalah parameter yang digunakan sebagai root website API Tiket.com. Informasi value dari parameter ini didapatkan dari dokumentasi API Tiket.com
+		d. Parameter $config['api_key'] adalah parameter yang digunakan sebagai key atas akun perusahaan yang terdaftar sebagai afiliasi dengan Tiket.com. Informasi value dari parameter ini dapat dilihat di website afiliasi Tiket.com.
+		e. Parameter $config['account_id'] adalah parameter ini berisi informasi ID pengguna yang merepresentasikan agen pusat, agen, atau sub agen. Default value adalah "2", value ini merepresentasikan agen pusat.
+	2. Konfigurasi paket
+		Website ini memberikan informasi mengenai paket wisata/travel/umrah/rental dan juga mengenai berita/blog. Informasi-informasi tersebut disajikan dalam beberapa kategori konten, dan harus dibuat sebelum website berfungsi.
+		Beberapa kategori yang harus dibuat di awal adalah:
+		- tour
+		- travel
+		- umrah
+		- rental
+		- news-agent
+		- blog
